@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">EzMaths</string>
+    <string name="avai">Anuitati viagere anticipate intregi</string>
+    <string name="avaf">Anuitati viagere anticipate fractionate</string>
+    <string name="avpi">Anuitati viagere posticipate intregi</string>
+    <string name="avpf">Anuitati viagere posticipate fractionate</string>
+    <string name="in">Imediate si nelimitate</string>
+    <string name="il">Imediate si limitate la N ani</string>
+    <string name="an">Nelimitate si amanate cu N ani</string>
+    <string name="amanata">Amanata cu </string>
+    <string name="suma">Suma </string>
 </resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_a">48dp</dimen>
+    <dimen name="size_nxm">24dp</dimen>
+    <dimen name="size_points">32dp</dimen>
+    <dimen name="size__">32dp</dimen>
+    <dimen name="size_title">18dp</dimen>
+    <dimen name="nomralTV">16dp</dimen>
+</resources>
