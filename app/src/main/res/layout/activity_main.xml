@@ -7,28 +7,17 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/avPosticipateFractionateibtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/avaf"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avAnticipateIntregibtn"
-        app:layout_constraintVertical_bias="0.418" />
-
-    <Button
         android:id="@+id/avAnticipateIntregibtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/avpi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/av2Title"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintVertical_bias="0.349"
+        android:background="@drawable/custom_bttn"/>
 
     <Button
         android:id="@+id/avAnticipateFractionatebtn"
@@ -37,10 +26,24 @@
         android:text="@string/avpf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avAnticipateIntregibtn"
-        app:layout_constraintVertical_bias="0.065" />
+        app:layout_constraintVertical_bias="0.073"
+        android:background="@drawable/custom_bttn"/>
+
+    <Button
+        android:id="@+id/avPosticipateFractionateibtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/avaf"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avAnticipateIntregibtn"
+        app:layout_constraintVertical_bias="0.536"
+        android:background="@drawable/custom_bttn"/>
 
     <Button
         android:id="@+id/avPosticipateIntregibtn"
@@ -49,10 +52,11 @@
         android:text="@string/avai"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avAnticipateIntregibtn"
-        app:layout_constraintVertical_bias="0.242" />
+        app:layout_constraintVertical_bias="0.304"
+        android:background="@drawable/custom_bttn"/>
 
     <TextView
         android:id="@+id/av2Title"
@@ -67,5 +71,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.106" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="uwu"
+        android:textSize="@dimen/size_a"
+        android:textColor="#F42CC3"
+        app:layout_constraintBottom_toTopOf="@+id/avAnticipateIntregibtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/av2Title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

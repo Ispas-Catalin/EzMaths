@@ -9,4 +9,5 @@
     <string name="an">Nelimitate si amanate cu N ani</string>
     <string name="amanata">Amanata cu </string>
     <string name="suma">Suma </string>
+    <string name="ToastMessage">Valoare Nula</string>
 </resources>

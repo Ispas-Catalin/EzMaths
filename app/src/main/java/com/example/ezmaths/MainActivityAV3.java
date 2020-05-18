@@ -1,18 +1,22 @@
 package com.example.ezmaths;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -41,20 +45,24 @@ public class MainActivityAV3 extends AppCompatActivity {
     TextView mTV;
     TextView pointsAnticipateTV ;
     TextView AmLimAuxTV;
+    TextView sumaTV;
 
     String varstaAux;
     String amlimAux;
     String platiPeAnAux;
 
+    NumberFormat resfmt;
 
     int type;
     double doubleRES;
+    Boolean setTextok;
 
     String aux;
 
     formuleAnuitati formuleAnuitati = new formuleAnuitati();
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +82,7 @@ public class MainActivityAV3 extends AppCompatActivity {
 
         amlimTV = findViewById(R.id.amlimnTV);
         platiPeAnTV = findViewById(R.id.platiPeAnTV);
+        sumaTV = findViewById(R.id.sumaTV);
 
         xTV = findViewById(R.id.xtv);
         nAmanataTV = findViewById(R.id.nAmanatatv);
@@ -94,24 +103,26 @@ public class MainActivityAV3 extends AppCompatActivity {
         setTitle(type);
 
         /// UI transofrm
-
+        sumaTV.setTextColor(getColor(R.color.silver));
+        sumaET.setTextColor(getColor(R.color.silver));
+        sumaET.setEnabled(false);
         if (type/10 <3)
         {
             pointsAnticipateTV.setVisibility(View.INVISIBLE);
             if(type/10 == 1)
             {
                 mTV.setVisibility(View.INVISIBLE);
-                platiPeAnET.setVisibility(View.INVISIBLE);
+                platiPeAnET.setTextColor(getColor(R.color.silver));
                 platiPeAnET.setEnabled(false);
-                platiPeAnTV.setVisibility(View.INVISIBLE);
+                platiPeAnTV.setTextColor(getColor(R.color.silver));
 
                 if (type%10 == 1) {
                 nImediataTV.setVisibility(View.INVISIBLE);
                 nAmanataTV.setVisibility(View.INVISIBLE);
                 nImediataTVaux.setVisibility(View.INVISIBLE);
-                amlimTV.setVisibility(View.INVISIBLE);
-                AmLimAuxTV.setVisibility(View.INVISIBLE);
-                amlimET.setVisibility(View.INVISIBLE);
+                amlimTV.setTextColor(getColor(R.color.silver));
+                AmLimAuxTV.setTextColor(getColor(R.color.silver));
+                amlimET.setTextColor(getColor(R.color.silver));
                 amlimET.setEnabled(false);
                 }
                 if (type%10 == 2) {
@@ -129,9 +140,9 @@ public class MainActivityAV3 extends AppCompatActivity {
                     nImediataTV.setVisibility(View.INVISIBLE);
                     nAmanataTV.setVisibility(View.INVISIBLE);
                     nImediataTVaux.setVisibility(View.INVISIBLE);
-                    amlimTV.setVisibility(View.INVISIBLE);
-                    AmLimAuxTV.setVisibility(View.INVISIBLE);
-                    amlimET.setVisibility(View.INVISIBLE);
+                    amlimTV.setTextColor(getColor(R.color.silver));
+                    AmLimAuxTV.setTextColor(getColor(R.color.silver));
+                    amlimET.setTextColor(getColor(R.color.silver));;
                     amlimET.setEnabled(false);
                 }
                 if (type%10 == 2) {
@@ -149,17 +160,17 @@ public class MainActivityAV3 extends AppCompatActivity {
             if (type/10 == 3)
             {
                 mTV.setVisibility(View.INVISIBLE);
-                platiPeAnET.setVisibility(View.INVISIBLE);
+                platiPeAnET.setTextColor(getColor(R.color.silver));;
                 platiPeAnET.setEnabled(false);
-                platiPeAnTV.setVisibility(View.INVISIBLE);
+                platiPeAnTV.setTextColor(getColor(R.color.silver));;
 
                 if (type%10 == 1) {
                     nImediataTV.setVisibility(View.INVISIBLE);
                     nAmanataTV.setVisibility(View.INVISIBLE);
                     nImediataTVaux.setVisibility(View.INVISIBLE);
-                    amlimTV.setVisibility(View.INVISIBLE);
-                    AmLimAuxTV.setVisibility(View.INVISIBLE);
-                    amlimET.setVisibility(View.INVISIBLE);
+                    amlimTV.setTextColor(getColor(R.color.silver));;
+                    AmLimAuxTV.setTextColor(getColor(R.color.silver));;
+                    amlimET.setTextColor(getColor(R.color.silver));;
                     amlimET.setEnabled(false);
                 }
                 if (type%10 == 2) {
@@ -177,9 +188,9 @@ public class MainActivityAV3 extends AppCompatActivity {
                     nImediataTV.setVisibility(View.INVISIBLE);
                     nAmanataTV.setVisibility(View.INVISIBLE);
                     nImediataTVaux.setVisibility(View.INVISIBLE);
-                    amlimTV.setVisibility(View.INVISIBLE);
-                    AmLimAuxTV.setVisibility(View.INVISIBLE);
-                    amlimET.setVisibility(View.INVISIBLE);
+                    amlimTV.setTextColor(getColor(R.color.silver));;
+                    AmLimAuxTV.setTextColor(getColor(R.color.silver));;
+                    amlimET.setTextColor(getColor(R.color.silver));;
                     amlimET.setEnabled(false);
                 }
                 if (type%10 == 2) {
@@ -195,47 +206,22 @@ public class MainActivityAV3 extends AppCompatActivity {
 
         // Calculate
 
-        final NumberFormat resfmt = NumberFormat.getInstance();
+        resfmt = NumberFormat.getInstance();
         resfmt.setMaximumFractionDigits(4);
 
         calculatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               Calculate(type);
 
-                if (type == 11)
-                    doubleRES = formuleAnuitati.AVPI_1(Integer.parseInt(varstaET.getText().toString()));
-                if (type == 12)
-                    doubleRES = formuleAnuitati.AVPI_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
-                if (type == 13)
-                    doubleRES = formuleAnuitati.AVPI_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
-
-
-                if (type == 21)
-                    doubleRES = formuleAnuitati.AVPF_1(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
-                if (type == 22)
-                    doubleRES = formuleAnuitati.AVPF_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
-                if (type == 23)
-                    doubleRES = formuleAnuitati.AVPF_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
-
-
-
-                if (type == 31)
-                    doubleRES = formuleAnuitati.AVAI_1(Integer.parseInt(varstaET.getText().toString()));
-                if (type == 32)
-                    doubleRES = formuleAnuitati.AVAI_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
-                if (type == 33)
-                    doubleRES = formuleAnuitati.AVAI_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
-
-
-                if (type == 41)
-                    doubleRES = formuleAnuitati.AVAF_1(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
-                if (type == 42)
-                    doubleRES = formuleAnuitati.AVAF_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
-                if (type == 43)
-                    doubleRES = formuleAnuitati.AVAF_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
-
-
-                av3Title.setText(resfmt.format(doubleRES));
+               if(setTextok)
+                   av3Title.setText(resfmt.format(doubleRES));
+               else
+               {
+                   Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
+                   toast.setGravity(Gravity.BOTTOM, 0, 40);
+                   toast.show();
+               }
 
             }
         });
@@ -260,6 +246,7 @@ public class MainActivityAV3 extends AppCompatActivity {
                 finish();
             }
         });
+
 
         infobtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -424,6 +411,82 @@ public class MainActivityAV3 extends AppCompatActivity {
         public void openDialog(){
             InfoDialog infoDialog = new InfoDialog();
             infoDialog.show(getSupportFragmentManager(),"info dialog");
+        }
+
+        private void Calculate (int type)
+        {
+            setTextok = true;
+
+            if (type == 11)
+            {
+                if(varstaET.getText().toString().isEmpty())
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVPI_1(Integer.parseInt(varstaET.getText().toString()));}
+            if (type == 12){
+                if(varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty())
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVPI_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));}
+            if (type == 13){
+                if(varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty())
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVPI_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));}
+
+
+            if (type == 21){
+                if(varstaET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVPF_1(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));}
+            if (type == 22){
+                if(varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVPF_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));}
+            if (type == 23){
+                if(varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVPF_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));}
+
+
+
+            if (type == 31){
+                if(varstaET.getText().toString().isEmpty() )
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVAI_1(Integer.parseInt(varstaET.getText().toString()));}
+            if (type == 32){
+                if(varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty())
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVAI_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));}
+            if (type == 33){
+                if(varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty())
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVAI_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));}
+
+
+            if (type == 41){
+                if(varstaET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVAF_1(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));}
+            if (type == 42){
+                if(varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVAF_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));}
+            if (type == 43){
+                if(varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                    setTextok = false;
+                else
+                    doubleRES = formuleAnuitati.AVAF_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));}
+
+
         }
 
 
