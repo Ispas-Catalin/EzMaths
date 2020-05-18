@@ -16,11 +16,14 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.NumberFormat;
+
 public class MainActivityAV3 extends AppCompatActivity {
 
     Button backbtn;
     Button homebtn;
     Button infobtn;
+    Button calculatebtn;
     TextView av3Title;
 
     EditText varstaET;
@@ -43,9 +46,13 @@ public class MainActivityAV3 extends AppCompatActivity {
     String amlimAux;
     String platiPeAnAux;
 
+
     int type;
+    double doubleRES;
 
     String aux;
+
+    formuleAnuitati formuleAnuitati = new formuleAnuitati();
 
 
     @Override
@@ -56,6 +63,7 @@ public class MainActivityAV3 extends AppCompatActivity {
         backbtn = findViewById(R.id.backbtn);
         homebtn = findViewById(R.id.homebtn);
         infobtn = findViewById(R.id.infobtn);
+        calculatebtn = findViewById(R.id.calculatebtn);
         av3Title = findViewById(R.id.av3Title);
 
         varstaET = findViewById(R.id.varstaET);
@@ -84,6 +92,8 @@ public class MainActivityAV3 extends AppCompatActivity {
         }
 
         setTitle(type);
+
+        /// UI transofrm
 
         if (type/10 <3)
         {
@@ -182,6 +192,57 @@ public class MainActivityAV3 extends AppCompatActivity {
                 }
             }
         }
+
+        // Calculate
+
+        final NumberFormat resfmt = NumberFormat.getInstance();
+        resfmt.setMaximumFractionDigits(4);
+
+        calculatebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (type == 11)
+                    doubleRES = formuleAnuitati.AVPI_1(Integer.parseInt(varstaET.getText().toString()));
+                if (type == 12)
+                    doubleRES = formuleAnuitati.AVPI_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
+                if (type == 13)
+                    doubleRES = formuleAnuitati.AVPI_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
+
+
+                if (type == 21)
+                    doubleRES = formuleAnuitati.AVPF_1(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+                if (type == 22)
+                    doubleRES = formuleAnuitati.AVPF_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+                if (type == 23)
+                    doubleRES = formuleAnuitati.AVPF_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+
+
+
+                if (type == 31)
+                    doubleRES = formuleAnuitati.AVAI_1(Integer.parseInt(varstaET.getText().toString()));
+                if (type == 32)
+                    doubleRES = formuleAnuitati.AVAI_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
+                if (type == 33)
+                    doubleRES = formuleAnuitati.AVAI_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
+
+
+                if (type == 41)
+                    doubleRES = formuleAnuitati.AVAF_1(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+                if (type == 42)
+                    doubleRES = formuleAnuitati.AVAF_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+                if (type == 43)
+                    doubleRES = formuleAnuitati.AVAF_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+
+
+                av3Title.setText(resfmt.format(doubleRES));
+
+            }
+        });
+
+
+
+
 
 
         backbtn.setOnClickListener(new View.OnClickListener() {
