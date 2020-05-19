@@ -8,11 +8,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:windowSoftInputMode="adjustPan|adjustResize"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivityAV3"></activity>
+        android:theme="@style/AppTheme"
+        android:windowSoftInputMode="adjustPan|adjustResize">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivityAV3" />
         <activity android:name=".MainActivityAV2" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivityRambursari">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
