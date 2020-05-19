@@ -10,10 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan|adjustResize">
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivityRambursari"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".MainActivityAV3" />
         <activity android:name=".MainActivityAV2" />
-        <activity android:name=".MainActivityRambursari">
+        <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         Button avPosticipateIntregibtn = findViewById(R.id.avPosticipateIntregibtn);
         Button getAvPosticipateFractionatebtn = findViewById(R.id.avPosticipateFractionateibtn);
 
+        Button backbtn = findViewById(R.id.backbtn);
+
         avAnticipateIntregibtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }
