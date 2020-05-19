@@ -310,12 +310,29 @@
         android:gravity="center_horizontal"
         android:hint="s"
         android:textSize="@dimen/nomralTV"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/sumaTV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/sumaTV"
         app:layout_constraintTop_toTopOf="@+id/sumaTV"
         app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/rezultatTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rezultat"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_title"
+        android:background="@drawable/result_backround"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/sumaTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/atv"
+        app:layout_constraintVertical_bias="0.65" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

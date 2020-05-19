@@ -37,6 +37,7 @@ public class MainActivityAV3 extends AppCompatActivity {
 
     TextView amlimTV;
     TextView platiPeAnTV;
+    TextView rezultatTV;
 
     TextView xTV;
     TextView nAmanataTV;
@@ -83,6 +84,7 @@ public class MainActivityAV3 extends AppCompatActivity {
         amlimTV = findViewById(R.id.amlimnTV);
         platiPeAnTV = findViewById(R.id.platiPeAnTV);
         sumaTV = findViewById(R.id.sumaTV);
+        rezultatTV = findViewById(R.id.rezultatTV);
 
         xTV = findViewById(R.id.xtv);
         nAmanataTV = findViewById(R.id.nAmanatatv);
@@ -214,10 +216,12 @@ public class MainActivityAV3 extends AppCompatActivity {
             public void onClick(View v) {
                Calculate(type);
 
-               if(setTextok)
-                   av3Title.setText(resfmt.format(doubleRES));
+               if(setTextok){
+                   rezultatTV.setText(resfmt.format(doubleRES));
+                   rezultatTV.setVisibility(View.VISIBLE);}
                else
                {
+                   rezultatTV.setVisibility(View.INVISIBLE);
                    Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
                    toast.setGravity(Gravity.BOTTOM, 0, 40);
                    toast.show();
@@ -329,6 +333,10 @@ public class MainActivityAV3 extends AppCompatActivity {
 
             }
         });
+
+
+
+
 
 
     }
