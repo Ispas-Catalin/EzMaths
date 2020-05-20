@@ -137,6 +137,7 @@ public class Rambursari1Fragment extends Fragment {
                 intent.putStringArrayListExtra(OMEGAKRAMBURSARI_KEY, (ArrayList<String>) OmegaKRambursari);
                 intent.putStringArrayListExtra(QKRAMBURSARI_KEY, (ArrayList<String>) QKRambursari);
 
+                startActivity(intent);
 
             }
         });

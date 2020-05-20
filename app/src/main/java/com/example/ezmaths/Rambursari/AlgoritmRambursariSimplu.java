@@ -1,5 +1,6 @@
 package com.example.ezmaths.Rambursari;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +12,12 @@ public class AlgoritmRambursariSimplu {
     List<String> OmegaKRambursari = new ArrayList<>();
     List<String> QKRambursari = new ArrayList<>();
 
-    double[] Rk;
-    double[] Dk;
-    double[] Qk;
-    double[] rk;
+    NumberFormat format;
+
+    double[] Rk = new double[100];
+    double[] Dk = new double[100];
+    double[] Qk = new double[100];
+    double[] rk = new double[100];
 
 
     private void Incarcare(double Rk[], double Dk[], double Qk[],double rk[], int k)
@@ -24,13 +27,16 @@ public class AlgoritmRambursariSimplu {
         DKRambursari.add("Dk");
         QKRambursari.add("Qk");
         OmegaKRambursari.add("Ωk");
+
+        format = NumberFormat.getInstance();
+        format.setMaximumFractionDigits(2);
         for(int i = 1; i <= k ; i ++)
         {
             KRambursari.add(Integer.toString(i));
-            RKRambursari.add(Double.toString(Rk[i]));
-            DKRambursari.add(Double.toString(Dk[i]));
-            OmegaKRambursari.add(Double.toString(rk[i]));
-            QKRambursari.add(Double.toString(Qk[i]));
+            RKRambursari.add(format.format(Rk[i]));
+            DKRambursari.add(format.format(Dk[i]));
+            OmegaKRambursari.add(format.format(rk[i]));
+            QKRambursari.add(format.format(Qk[i]));
         }
     }
 
