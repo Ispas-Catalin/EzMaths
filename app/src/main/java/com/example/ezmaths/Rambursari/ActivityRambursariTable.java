@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.ezmaths.DataSource;
 import com.example.ezmaths.R;
 import com.example.ezmaths.Rambursari.ui.main.Rambursari1Fragment;
 
