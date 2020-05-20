@@ -1,96 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-    >
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/silver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginBottom="32dp"
-        />
+        android:textColor="@color/silver"/>
 
-    <TextView
-        android:id="@+id/kTVramburs"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1"
-        android:layout_marginLeft="8dp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/nomralTV"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:padding="4dp"
+        android:baselineAligned="false">
 
-    <TextView
-        android:id="@+id/rkTVramburs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="39800"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/dkTVramburs"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/kTVramburs"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/dkTVramburs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3307,9"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/qkTVramburs"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/rkTVramburs"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/kTVramburs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_marginLeft="8dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/nomralTV"
+                android:gravity="center"/>
 
-    <TextView
-        android:id="@+id/qkTVramburs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1611,9"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/omegakTVramburs"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/dkTVramburs"
-        app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/omegakTVramburs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4919,2"
-        android:gravity="center"
-        android:layout_marginRight="8dp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/rkTVramburs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="39800"
+                android:textColor="@color/black"
+                android:textSize="@dimen/nomralTV"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dkTVramburs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3307,9"
+                android:textColor="@color/black"
+                android:textSize="@dimen/nomralTV"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/qkTVramburs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="1611,9"
+                android:textColor="@color/black"
+                android:textSize="@dimen/nomralTV"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/omegakTVramburs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4919,2"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/nomralTV"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

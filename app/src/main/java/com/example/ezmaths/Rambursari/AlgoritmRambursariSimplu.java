@@ -6,13 +6,13 @@ import java.util.List;
 
 public class AlgoritmRambursariSimplu {
 
-    List<String> KRambursari = new ArrayList<>();
-    List<String> RKRambursari = new ArrayList<>();
-    List<String> DKRambursari = new ArrayList<>();
-    List<String> OmegaKRambursari = new ArrayList<>();
-    List<String> QKRambursari = new ArrayList<>();
+    private List<String> KRambursari = new ArrayList<>();
+    private List<String> RKRambursari = new ArrayList<>();
+    private List<String> DKRambursari = new ArrayList<>();
+    private List<String> OmegaKRambursari = new ArrayList<>();
+    private List<String> QKRambursari = new ArrayList<>();
 
-    NumberFormat format;
+    private NumberFormat format;
 
     double[] Rk = new double[100];
     double[] Dk = new double[100];
@@ -22,6 +22,17 @@ public class AlgoritmRambursariSimplu {
 
     private void Incarcare(double Rk[], double Dk[], double Qk[],double rk[], int k)
     {
+        if(KRambursari!= null)
+            KRambursari.clear();
+        if(RKRambursari != null)
+            RKRambursari.clear();
+        if(DKRambursari != null)
+            DKRambursari.clear();
+        if(OmegaKRambursari != null)
+            OmegaKRambursari.clear();
+        if(QKRambursari != null)
+            QKRambursari.clear();
+
         KRambursari.add("K");
         RKRambursari.add("Rk");
         DKRambursari.add("Dk");
@@ -30,7 +41,7 @@ public class AlgoritmRambursariSimplu {
 
         format = NumberFormat.getInstance();
         format.setMaximumFractionDigits(2);
-        for(int i = 1; i <= k ; i ++)
+        for(int i = 1; i <= k  ; i ++)
         {
             KRambursari.add(Integer.toString(i));
             RKRambursari.add(format.format(Rk[i]));

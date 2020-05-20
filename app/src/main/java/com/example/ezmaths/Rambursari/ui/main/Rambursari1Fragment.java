@@ -3,6 +3,7 @@ package com.example.ezmaths.Rambursari.ui.main;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
@@ -50,9 +52,11 @@ public class Rambursari1Fragment extends Fragment {
     public static final String QKRAMBURSARI_KEY = "qkrambursari_key";
     public static final String OMEGAKRAMBURSARI_KEY = "omegakrambursari_key";
 
+
     AlgoritmRambursariSimplu algoritmRambursariSimplu = new AlgoritmRambursariSimplu();
 
     int ok;
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -118,26 +122,46 @@ public class Rambursari1Fragment extends Fragment {
 
 
 
+
         rCalculateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                List<String> KRambursari = null;
+                List<String> RKRambursari = null;
+                List<String> DKRambursari = null;
+                List<String> OmegaKRambursari = null;
+                List<String> QKRambursari = null;
+
+                if(okToast())
+                    Calculate();
+                else if(!okToast())
+                {
+                    Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.BOTTOM, 0, 40);
+                    toast.show();
+                }
+
+
                 Intent intent = new Intent(getActivity(), ActivityRambursariTable.class);
 
-                Calculate();
+                if(okToast()) {
+                    KRambursari = algoritmRambursariSimplu.getKRambursari();
+                    RKRambursari = algoritmRambursariSimplu.getRKRambursari();
+                    DKRambursari = algoritmRambursariSimplu.getDKRambursari();
+                    OmegaKRambursari = algoritmRambursariSimplu.getOmegaKRambursari();
+                    QKRambursari = algoritmRambursariSimplu.getQKRambursari();
 
-                List<String> KRambursari = algoritmRambursariSimplu.getKRambursari();
-                List<String> RKRambursari = algoritmRambursariSimplu.getRKRambursari();
-                List<String> DKRambursari = algoritmRambursariSimplu.getDKRambursari();
-                List<String> OmegaKRambursari = algoritmRambursariSimplu.getOmegaKRambursari();
-                List<String> QKRambursari = algoritmRambursariSimplu.getQKRambursari();
+                    intent.putStringArrayListExtra(KRAMBURSARI_KEY, (ArrayList<String>) KRambursari);
+                    intent.putStringArrayListExtra(RKAMBURSARI_KEY, (ArrayList<String>) RKRambursari);
+                    intent.putStringArrayListExtra(DKRAMBURSARI_KEY, (ArrayList<String>) DKRambursari);
+                    intent.putStringArrayListExtra(OMEGAKRAMBURSARI_KEY, (ArrayList<String>) OmegaKRambursari);
+                    intent.putStringArrayListExtra(QKRAMBURSARI_KEY, (ArrayList<String>) QKRambursari);
 
-                intent.putStringArrayListExtra(KRAMBURSARI_KEY, (ArrayList<String>) KRambursari);
-                intent.putStringArrayListExtra(RKAMBURSARI_KEY, (ArrayList<String>) RKRambursari);
-                intent.putStringArrayListExtra(DKRAMBURSARI_KEY, (ArrayList<String>) DKRambursari);
-                intent.putStringArrayListExtra(OMEGAKRAMBURSARI_KEY, (ArrayList<String>) OmegaKRambursari);
-                intent.putStringArrayListExtra(QKRAMBURSARI_KEY, (ArrayList<String>) QKRambursari);
 
-                startActivity(intent);
+                    startActivity(intent);
+                }
 
             }
         });
@@ -173,4 +197,40 @@ public class Rambursari1Fragment extends Fragment {
         }
     }
 
+    private Boolean okToast ()
+    {
+        if (checkboxRC.isChecked())
+        {
+            if(!nPlaticheckbox.isChecked())
+            {
+                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarAniET.getText().toString().isEmpty())
+                    return false;
+                else return true;
+            }
+            else if(nPlaticheckbox.isChecked())
+            {
+                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarAniET.getText().toString().isEmpty() || nPlatiEt.getText().toString().isEmpty())
+                    return false;
+                else return true;
+            }
+        }
+
+        else if (checkboxCC.isChecked())
+        {
+            if(!nPlaticheckbox.isChecked())
+            {
+                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarAniET.getText().toString().isEmpty())
+                    return false;
+                else return true;
+
+            }
+            else if(nPlaticheckbox.isChecked())
+            {
+                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarAniET.getText().toString().isEmpty() || nPlatiEt.getText().toString().isEmpty())
+                    return false;
+                else return true;
+            }
+        }
+        return false;
+    }
 }
