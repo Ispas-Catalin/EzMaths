@@ -1,4 +1,4 @@
-package com.example.ezmaths;
+package com.example.ezmaths.Anuitati;
 
 public class formuleAnuitati {
 

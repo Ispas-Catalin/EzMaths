@@ -10,10 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan|adjustResize">
-        <activity android:name=".MainActivityRambursari"></activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MainActivityAV3" />
-        <activity android:name=".MainActivityAV2" />
+        <activity
+            android:name=".Rambursari.MainActivityRambursari"
+            android:label="@string/title_activity_main_rambursari"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Rambursari.ActivityRambursariTable" />
+        <activity android:name=".Anuitati.MainActivity" />
+        <activity android:name=".Anuitati.MainActivityAV3" />
+        <activity android:name=".Anuitati.MainActivityAV2" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

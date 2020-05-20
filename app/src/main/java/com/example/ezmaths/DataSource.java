@@ -5,7 +5,7 @@ import java.util.List;
 
 public class DataSource {
 
-    List<String> getKRambursari()
+    public List<String> getKRambursari()
     {
         List<String> KRambursari = new ArrayList<>();
         KRambursari.add("K");
@@ -16,7 +16,7 @@ public class DataSource {
         return KRambursari;
     }
 
-    List<String> getRKRambursari()
+    public List<String> getRKRambursari()
     {
         List<String> RKRambursari = new ArrayList<>();
         RKRambursari.add("Rk");
@@ -27,7 +27,7 @@ public class DataSource {
         return RKRambursari;
     }
 
-    List<String> getDKRambursari()
+    public List<String> getDKRambursari()
     {
         List<String> DKRambursari = new ArrayList<>();
         DKRambursari.add("Dk");
@@ -38,7 +38,7 @@ public class DataSource {
         return DKRambursari;
     }
 
-    List<String> getQKRambursari()
+    public List<String> getQKRambursari()
     {
         List<String> QKRambursari = new ArrayList<>();
         QKRambursari.add("Qk");
@@ -49,7 +49,7 @@ public class DataSource {
         return QKRambursari;
     }
 
-    List<String> getOmegaKRambursari()
+    public List<String> getOmegaKRambursari()
     {
         List<String> OmegaKRambursari = new ArrayList<>();
         OmegaKRambursari.add("Ωk");

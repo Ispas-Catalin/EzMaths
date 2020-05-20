@@ -10,4 +10,10 @@
     <string name="amanata">Amanata cu </string>
     <string name="suma">Suma </string>
     <string name="ToastMessage">Valoare Nula</string>
+    <string name="title_activity_main_rambursari">MainActivityRambursari</string>
+    <string name="tab_text_1">Simple</string>
+    <string name="tab_text_2">Cu fond de acumulare</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.ezmaths;
+package com.example.ezmaths.Rambursari;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
+import com.example.ezmaths.R;
 
 import java.util.List;
 

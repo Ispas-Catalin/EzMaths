@@ -1,18 +1,16 @@
 package com.example.ezmaths;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
-import java.util.List;
+import com.example.ezmaths.Anuitati.MainActivity;
+import com.example.ezmaths.Rambursari.ActivityRambursariTable;
+import com.example.ezmaths.Rambursari.MainActivityRambursari;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -21,7 +19,7 @@ public class StartActivity extends AppCompatActivity {
     Button AnuitatiBtn;
     Button AsigurariBtn;
     Button RezervaMatematicaBtn;
-
+    public static Dialog dialog;
 
 
 
@@ -36,15 +34,18 @@ public class StartActivity extends AppCompatActivity {
         AsigurariBtn = findViewById(R.id.AsigurariBtn);
         RezervaMatematicaBtn = findViewById(R.id.RezervaMatematicaBtn);
 
+
+
         AnuitatiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, MainActivity.class);
-                startActivity(intent);
+
+                Intent intentav = new Intent(StartActivity.this, MainActivity.class);
+                startActivity(intentav);
             }
         });
 
-
+        
 
         RambursariBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +55,9 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
+        }
 
 
-    }
+
+
 }
