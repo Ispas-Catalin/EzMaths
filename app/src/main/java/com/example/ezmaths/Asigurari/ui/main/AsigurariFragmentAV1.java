@@ -1,5 +1,6 @@
 package com.example.ezmaths.Asigurari.ui.main;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,12 +14,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.ezmaths.R;
 
 import java.text.NumberFormat;
+import java.util.Objects;
 
 
 public class AsigurariFragmentAV1 extends Fragment {
@@ -46,19 +49,20 @@ public class AsigurariFragmentAV1 extends Fragment {
     private TextView AmLimAuxTV;
     private  TextView sumaTV;
 
-    String varstaAux;
-    String amlimAux;
-    String platiPeAnAux;
+    private String varstaAux;
+    private String amlimAux;
+    private String platiPeAnAux;
 
     NumberFormat resfmt;
 
-    int type;
+    private int type;
     double doubleRES;
     Boolean setTextok;
     Fragment thisFragment;
 
     String aux;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_asigurari_av1, container, false);
@@ -82,7 +86,7 @@ public class AsigurariFragmentAV1 extends Fragment {
 
 
         Spinner spinner = (Spinner) rootView.findViewById(R.id.spinneraAV1);
-        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, anuitati);
+        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(Objects.requireNonNull(this.getActivity()), android.R.layout.simple_spinner_item, anuitati);
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(LTRadapter);
 
@@ -110,7 +114,9 @@ public class AsigurariFragmentAV1 extends Fragment {
         pointsAnticipateTV = rootView.findViewById(R.id.pointsAnticipatetvAV1);
         AmLimAuxTV = rootView.findViewById(R.id.amlimauxTVAV1);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        /// Retine ce o fost ales din spinner si apeleaza setTitle si TransformUI
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { ///
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0)
@@ -275,7 +281,8 @@ public class AsigurariFragmentAV1 extends Fragment {
         mTV.setText("(" + S + ")");
     }
 
-    public void setTitle(int type)
+    /// In functie de tipul primit din spinner schimba titlul
+    private void setTitle(int type)
     {
         if (type == 11){
             aux = getString(R.string.avpi)  + getString(R.string.in);
@@ -306,35 +313,36 @@ public class AsigurariFragmentAV1 extends Fragment {
 
 
         if (type == 31){
-            aux = getString(R.string.avai) + '\n' + getString(R.string.in);
+            aux = getString(R.string.avai)  + getString(R.string.in);
             Title.setText(aux);
         }
         else if (type == 32){
-            aux = getString(R.string.avai) + '\n' + getString(R.string.il);
+            aux = getString(R.string.avai) + getString(R.string.il);
             Title.setText(aux);
         }
         else if (type == 33){
-            aux = getString(R.string.avai) + '\n' + getString(R.string.an);
+            aux = getString(R.string.avai)  + getString(R.string.an);
             Title.setText(aux);
         }
 
 
         if (type == 41){
-            aux = getString(R.string.avaf) + '\n' + getString(R.string.in);
+            aux = getString(R.string.avaf)  + getString(R.string.in);
             Title.setText(aux);
         }
         else if (type == 42){
-            aux = getString(R.string.avaf) + '\n' + getString(R.string.il);
+            aux = getString(R.string.avaf)  + getString(R.string.il);
             Title.setText(aux);
         }
         else if (type == 43){
-            aux = getString(R.string.avaf) + '\n' + getString(R.string.an);
+            aux = getString(R.string.avaf) + getString(R.string.an);
             Title.setText(aux);
         }
 
     }
 
-    public void TransformUI(int type)
+    /// In functie de tipul primit din spinner schimba culoarea/vizibilitate/interactibilitatea la elmente din layout
+    private void TransformUI(int type)
     {
         sumaTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
         sumaET.setTextColor(getActivity().getResources().getColor(R.color.silver));
@@ -436,6 +444,6 @@ public class AsigurariFragmentAV1 extends Fragment {
                 }
             }
         }
-    }
+    } /// Prima apelare la TransformUI merge, dupa in schimb, daca aleg alt item din spinner, doar setTitle schimba ceva
 
 }
