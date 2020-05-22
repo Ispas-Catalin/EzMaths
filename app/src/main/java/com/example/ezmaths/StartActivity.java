@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.ezmaths.Anuitati.MainActivity;
+import com.example.ezmaths.Asigurari.MainActivityAsigurari;
 import com.example.ezmaths.Rambursari.ActivityRambursariTable;
 import com.example.ezmaths.Rambursari.MainActivityRambursari;
 
@@ -51,6 +52,14 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, MainActivityRambursari.class);
+                startActivity(intent);
+            }
+        });
+
+        AsigurariBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this, MainActivityAsigurari.class);
                 startActivity(intent);
             }
         });

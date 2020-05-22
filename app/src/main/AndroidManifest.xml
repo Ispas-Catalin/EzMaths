@@ -11,11 +11,16 @@
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan|adjustResize">
         <activity
+            android:name=".Asigurari.MainActivityAsigurari"
+            android:label="@string/title_activity_main_asigurari"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Rambursari.MainActivityRambursari"
             android:label="@string/title_activity_main_rambursari"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Rambursari.ActivityRambursariTable"
-            android:launchMode="singleTask"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Rambursari.ActivityRambursariTable"
+            android:launchMode="singleTask" />
         <activity android:name=".Anuitati.MainActivity" />
         <activity android:name=".Anuitati.MainActivityAV3" />
         <activity android:name=".Anuitati.MainActivityAV2" />

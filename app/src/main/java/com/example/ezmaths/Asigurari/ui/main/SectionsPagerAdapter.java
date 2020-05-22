@@ -1,4 +1,4 @@
-package com.example.ezmaths.Rambursari.ui.main;
+package com.example.ezmaths.Asigurari.ui.main;
 
 import android.content.Context;
 
@@ -17,7 +17,7 @@ import com.example.ezmaths.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_simple, R.string.tab_text_acumulare};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_av1, R.string.tab_text_av2, R.string.tab_text_asigurari};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -27,16 +27,22 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = null;
-        switch (position){
-            case 0:
-                fragment= new Rambursari1Fragment();
-                break;
-            case 1:
-                fragment= new Rambursari2Fragment();
-                break;
-        }
-        return fragment;
+       Fragment fragment = null;
+       switch (position)
+       {
+           case 0:
+               fragment = new AsigurariFragmentAV1();
+               break;
+
+           case 1:
+               fragment = new AsigurariFragmentAV2();
+               break;
+
+           case 2:
+               fragment = new AsigurariFragment();
+               break;
+       }
+       return fragment;
     }
 
     @Nullable
@@ -48,6 +54,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 2 total pages.
-        return 2;
+        return 3;
     }
 }

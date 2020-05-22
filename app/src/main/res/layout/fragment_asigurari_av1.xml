@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Anuitati.MainActivityAV3"
+    android:tag="asigurari_av1_tag">
+
+    <Spinner
+        android:id="@+id/spinneraAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/av3Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/atvAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="@dimen/size_a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/av3TitleAV1"
+        app:layout_constraintVertical_bias="0.2"
+        android:text="a" />
+
+
+    <TextView
+        android:id="@+id/av3TitleAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Anuitati Viagere"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="@dimen/size_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.166" />
+
+    <TextView
+        android:id="@+id/varstaTVAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Varsta persoanei"
+        android:textColor="#000000"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sumaTVAV1"
+        app:layout_constraintVertical_bias="0.08" />
+
+    <EditText
+        android:id="@+id/varstaETAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:hint="x"
+        android:textSize="16dp"
+        android:gravity="center_horizontal"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/varstaTVAV1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/varstaTVAV1"
+        app:layout_constraintTop_toTopOf="@+id/varstaTVAV1"
+        app:layout_constraintVertical_bias="0.5"
+        android:imeOptions="actionDone"/>
+
+    <EditText
+        android:id="@+id/amlimnETAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:hint="n"
+        android:textSize="16dp"
+        android:inputType="number"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/amlimnTVAV1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/amlimnTVAV1"
+        app:layout_constraintTop_toTopOf="@+id/amlimnTVAV1"
+        app:layout_constraintVertical_bias="0.5"
+        android:imeOptions="actionDone"/>
+
+    <TextView
+        android:id="@+id/amlimauxTVAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="2dp"
+        android:text="ani"
+        android:textColor="#000000"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/amlimnTVAV1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/amlimnETAV1"
+        app:layout_constraintTop_toTopOf="@+id/amlimnTVAV1"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/amlimnTVAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Limitata la "
+        android:textColor="#000000"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/varstaTVAV1"
+        app:layout_constraintVertical_bias="0.08" />
+
+    <TextView
+        android:id="@+id/platiPeAnTVAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Numarul de plati pe an"
+        android:textColor="#000000"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amlimnTVAV1"
+        app:layout_constraintVertical_bias="0.08" />
+
+    <EditText
+        android:id="@+id/platiPeAnETAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:hint="m"
+        android:textSize="16dp"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/platiPeAnTVAV1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/platiPeAnTVAV1"
+        app:layout_constraintTop_toTopOf="@+id/platiPeAnTVAV1"
+        app:layout_constraintVertical_bias="0.5"
+        android:gravity="center_horizontal"
+        android:imeOptions="actionDone"/>
+
+    <Button
+        android:id="@+id/selecteazaBtnAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecteaza"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        android:background="@drawable/custom_bttn"/>
+
+
+
+    <TextView
+        android:id="@+id/xtvAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x"
+        android:textColor="#000000"
+        android:textSize="@dimen/size_nxm"
+        app:layout_constraintBottom_toTopOf="@+id/atvAV1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintStart_toEndOf="@+id/atvAV1"
+        app:layout_constraintTop_toBottomOf="@+id/atvAV1"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/nImediatatvAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":n|"
+        android:textColor="#000000"
+        android:textSize="@dimen/size_nxm"
+        app:layout_constraintBottom_toBottomOf="@+id/xtvAV1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginLeft="2dp"
+        app:layout_constraintStart_toEndOf="@+id/xtvAV1"
+        app:layout_constraintTop_toTopOf="@+id/xtvAV1"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/nImediatAuxtvAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="_"
+        android:textColor="#000000"
+        android:textSize="@dimen/size__"
+        app:layout_constraintBottom_toTopOf="@+id/nImediatatvAV1"
+        app:layout_constraintEnd_toEndOf="@+id/nImediatatvAV1"
+        app:layout_constraintStart_toStartOf="@+id/nImediatatvAV1"
+        app:layout_constraintTop_toBottomOf="@+id/nImediatatvAV1"
+        app:layout_constraintVertical_bias="0.82" />
+
+    <TextView
+        android:id="@+id/nAmanatatvAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="n|"
+        android:textColor="#000000"
+        android:textSize="@dimen/size_nxm"
+        app:layout_constraintBottom_toBottomOf="@+id/xtvAV1"
+        app:layout_constraintEnd_toStartOf="@+id/atvAV1"
+        app:layout_constraintHorizontal_bias="1"
+        android:layout_marginLeft="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/xtvAV1"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/mtvAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(m)"
+        android:textColor="#000000"
+        android:textSize="@dimen/size_nxm"
+        app:layout_constraintBottom_toTopOf="@+id/atvAV1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintStart_toEndOf="@+id/atvAV1"
+        app:layout_constraintTop_toBottomOf="@+id/atvAV1"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/pointsAnticipatetvAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=". ."
+        android:textColor="#000000"
+        android:textSize="@dimen/size_points"
+        app:layout_constraintBottom_toTopOf="@+id/atvAV1"
+        app:layout_constraintEnd_toEndOf="@+id/atvAV1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/atvAV1"
+        app:layout_constraintTop_toBottomOf="@+id/atvAV1"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <TextView
+        android:id="@+id/sumaTVAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/suma"
+        android:textColor="#000000"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.564" />
+
+    <EditText
+        android:id="@+id/sumaETAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:gravity="center_horizontal"
+        android:hint="s"
+        android:textSize="@dimen/nomralTV"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/sumaTVAV1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/sumaTVAV1"
+        app:layout_constraintTop_toTopOf="@+id/sumaTVAV1"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/rezultatTVAV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rezultat"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_title"
+        android:background="@drawable/result_backround"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/sumaTVAV1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/atvAV1"
+        app:layout_constraintVertical_bias="0.65" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

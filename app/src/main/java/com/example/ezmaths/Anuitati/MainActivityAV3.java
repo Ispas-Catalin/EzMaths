@@ -359,29 +359,29 @@ public class MainActivityAV3 extends AppCompatActivity {
         public void setTitle(int type)
         {
             if (type == 11){
-                aux = getString(R.string.avpi) + '\n' + getString(R.string.in);
+                aux = getString(R.string.avpi)  + getString(R.string.in);
                 av3Title.setText(aux);
             }
             else if (type == 12){
-                aux = getString(R.string.avpi) + '\n' + getString(R.string.il);
+                aux = getString(R.string.avpi) + getString(R.string.il);
                 av3Title.setText(aux);
             }
             else if (type == 13){
-                aux = getString(R.string.avpi) + '\n' + getString(R.string.an);
+                aux = getString(R.string.avpi)  + getString(R.string.an);
                 av3Title.setText(aux);
             }
 
 
             if (type == 21){
-                aux = getString(R.string.avpf) + '\n' + getString(R.string.in);
+                aux = getString(R.string.avpf) + getString(R.string.in);
                 av3Title.setText(aux);
             }
             else if (type == 22){
-                aux = getString(R.string.avaf) + '\n' + getString(R.string.il);
+                aux = getString(R.string.avaf)  + getString(R.string.il);
                 av3Title.setText(aux);
             }
             else if (type == 23){
-                aux = getString(R.string.avpf) + '\n' + getString(R.string.an);
+                aux = getString(R.string.avpf)  + getString(R.string.an);
                 av3Title.setText(aux);
             }
 
