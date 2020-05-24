@@ -8,7 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.ezmaths.Anuitati.MainActivity;
+
+import com.example.ezmaths.Anuitati2.MainActivityAnuitati;
 import com.example.ezmaths.Asigurari.MainActivityAsigurari;
 import com.example.ezmaths.Rambursari.ActivityRambursariTable;
 import com.example.ezmaths.Rambursari.MainActivityRambursari;
@@ -41,7 +42,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intentav = new Intent(StartActivity.this, MainActivity.class);
+                Intent intentav = new Intent(StartActivity.this, MainActivityAnuitati.class);
                 startActivity(intentav);
             }
         });

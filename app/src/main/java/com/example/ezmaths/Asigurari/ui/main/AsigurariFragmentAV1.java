@@ -64,6 +64,7 @@ public class AsigurariFragmentAV1 extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_asigurari_av1, container, false);
 
@@ -344,106 +345,214 @@ public class AsigurariFragmentAV1 extends Fragment {
     /// In functie de tipul primit din spinner schimba culoarea/vizibilitate/interactibilitatea la elmente din layout
     private void TransformUI(int type)
     {
-        sumaTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
         sumaET.setTextColor(getActivity().getResources().getColor(R.color.silver));
         sumaET.setEnabled(false);
-        if (type/10 <3)
+        sumaTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+
+        if(type == 11)
         {
             pointsAnticipateTV.setVisibility(View.INVISIBLE);
-            if(type/10 == 1)
-            {
-                mTV.setVisibility(View.INVISIBLE);
-                platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.silver));
-                platiPeAnET.setEnabled(false);
-                platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            mTV.setVisibility(View.INVISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            platiPeAnET.setEnabled(false);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            nImediataTV.setVisibility(View.INVISIBLE);
+            nAmanataTV.setVisibility(View.INVISIBLE);
+            nImediataTVaux.setVisibility(View.INVISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            amlimET.setEnabled(false);
 
-                if (type%10 == 1) {
-                    nImediataTV.setVisibility(View.INVISIBLE);
-                    nAmanataTV.setVisibility(View.INVISIBLE);
-                    nImediataTVaux.setVisibility(View.INVISIBLE);
-                    amlimTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
-                    AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
-                    amlimET.setTextColor(getActivity().getResources().getColor(R.color.silver));
-                    amlimET.setEnabled(false);
-                }
-                if (type%10 == 2) {
-                    nAmanataTV.setVisibility(View.INVISIBLE);
-                }
-                if (type%10 == 3) {
-                    nImediataTV.setVisibility(View.INVISIBLE);
-                    nImediataTVaux.setVisibility(View.INVISIBLE);
-                    amlimTV.setText(getString(R.string.amanata));
-                }
-            }
-            else if (type/10 == 2)
-            {
-                if (type%10 == 1) {
-                    nImediataTV.setVisibility(View.INVISIBLE);
-                    nAmanataTV.setVisibility(View.INVISIBLE);
-                    nImediataTVaux.setVisibility(View.INVISIBLE);
-                    amlimTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
-                    AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
-                    amlimET.setTextColor(getActivity().getResources().getColor(R.color.silver));;
-                    amlimET.setEnabled(false);
-                }
-                if (type%10 == 2) {
-                    nAmanataTV.setVisibility(View.INVISIBLE);
-                }
-                if (type%10 == 3) {
-                    nImediataTV.setVisibility(View.INVISIBLE);
-                    nImediataTVaux.setVisibility(View.INVISIBLE);
-                    amlimTV.setText(getString(R.string.amanata));
-                }
-            }
         }
-        else if (type/10 >2)
+        if (type == 12)
         {
-            if (type/10 == 3)
-            {
-                mTV.setVisibility(View.INVISIBLE);
-                platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.silver));;
-                platiPeAnET.setEnabled(false);
-                platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.silver));;
+            pointsAnticipateTV.setVisibility(View.INVISIBLE);
+            mTV.setVisibility(View.INVISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            platiPeAnET.setEnabled(false);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            nImediataTV.setVisibility(View.VISIBLE);
+            nAmanataTV.setVisibility(View.INVISIBLE);
+            nImediataTVaux.setVisibility(View.VISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setEnabled(true);
+            amlimTV.setText("Limita la ");
 
-                if (type%10 == 1) {
-                    nImediataTV.setVisibility(View.INVISIBLE);
-                    nAmanataTV.setVisibility(View.INVISIBLE);
-                    nImediataTVaux.setVisibility(View.INVISIBLE);
-                    amlimTV.setTextColor(getActivity().getResources().getColor(R.color.silver));;
-                    AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.silver));;
-                    amlimET.setTextColor(getActivity().getResources().getColor(R.color.silver));;
-                    amlimET.setEnabled(false);
-                }
-                if (type%10 == 2) {
-                    nAmanataTV.setVisibility(View.INVISIBLE);
-                }
-                if (type%10 == 3) {
-                    nImediataTV.setVisibility(View.INVISIBLE);
-                    nImediataTVaux.setVisibility(View.INVISIBLE);
-                    amlimTV.setText(getString(R.string.amanata));
-                }
-            }
-            else if (type/10 ==4)
-            {
-                if (type%10 == 1) {
-                    nImediataTV.setVisibility(View.INVISIBLE);
-                    nAmanataTV.setVisibility(View.INVISIBLE);
-                    nImediataTVaux.setVisibility(View.INVISIBLE);
-                    amlimTV.setTextColor(getActivity().getResources().getColor(R.color.silver));;
-                    AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.silver));;
-                    amlimET.setTextColor(getActivity().getResources().getColor(R.color.silver));;
-                    amlimET.setEnabled(false);
-                }
-                if (type%10 == 2) {
-                    nAmanataTV.setVisibility(View.INVISIBLE);
-                }
-                if (type%10 == 3) {
-                    nImediataTV.setVisibility(View.INVISIBLE);
-                    nImediataTVaux.setVisibility(View.INVISIBLE);
-                    amlimTV.setText(getString(R.string.amanata));
-                }
-            }
         }
-    } /// Prima apelare la TransformUI merge, dupa in schimb, daca aleg alt item din spinner, doar setTitle schimba ceva
+        if (type == 13)
+        {
+            pointsAnticipateTV.setVisibility(View.INVISIBLE);
+            mTV.setVisibility(View.INVISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            platiPeAnET.setEnabled(false);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            nImediataTV.setVisibility(View.INVISIBLE);
+            nAmanataTV.setVisibility(View.VISIBLE);
+            nImediataTVaux.setVisibility(View.INVISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setEnabled(true);
+            amlimTV.setText("Amanata cu ");
+
+        }
+
+        if(type == 21)
+        {
+            pointsAnticipateTV.setVisibility(View.INVISIBLE);
+            mTV.setVisibility(View.VISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            platiPeAnET.setEnabled(true);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            nImediataTV.setVisibility(View.INVISIBLE);
+            nAmanataTV.setVisibility(View.INVISIBLE);
+            nImediataTVaux.setVisibility(View.INVISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            amlimET.setEnabled(false);
+
+        }
+        if (type == 22)
+        {
+            pointsAnticipateTV.setVisibility(View.INVISIBLE);
+            mTV.setVisibility(View.VISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            platiPeAnET.setEnabled(true);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            nImediataTV.setVisibility(View.VISIBLE);
+            nAmanataTV.setVisibility(View.INVISIBLE);
+            nImediataTVaux.setVisibility(View.VISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setEnabled(true);
+            amlimTV.setText("Limita la ");
+
+
+        }
+        if (type == 23)
+        {
+            pointsAnticipateTV.setVisibility(View.INVISIBLE);
+            mTV.setVisibility(View.VISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            platiPeAnET.setEnabled(true);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            nImediataTV.setVisibility(View.INVISIBLE);
+            nAmanataTV.setVisibility(View.VISIBLE);
+            nImediataTVaux.setVisibility(View.INVISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setEnabled(true);
+            amlimTV.setText("Amanata cu ");
+
+        }
+
+        if(type == 31)
+        {
+            pointsAnticipateTV.setVisibility(View.VISIBLE);
+            mTV.setVisibility(View.INVISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            platiPeAnET.setEnabled(false);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            nImediataTV.setVisibility(View.INVISIBLE);
+            nAmanataTV.setVisibility(View.INVISIBLE);
+            nImediataTVaux.setVisibility(View.INVISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            amlimET.setEnabled(false);
+
+        }
+        if (type == 32)
+        {
+            pointsAnticipateTV.setVisibility(View.VISIBLE);
+            mTV.setVisibility(View.INVISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            platiPeAnET.setEnabled(false);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            nImediataTV.setVisibility(View.VISIBLE);
+            nAmanataTV.setVisibility(View.INVISIBLE);
+            nImediataTVaux.setVisibility(View.VISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setEnabled(true);
+            amlimTV.setText("Limita la ");
+
+        }
+        if (type == 33)
+        {
+            pointsAnticipateTV.setVisibility(View.VISIBLE);
+            mTV.setVisibility(View.INVISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            platiPeAnET.setEnabled(false);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            nImediataTV.setVisibility(View.INVISIBLE);
+            nAmanataTV.setVisibility(View.VISIBLE);
+            nImediataTVaux.setVisibility(View.INVISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setEnabled(true);
+            amlimTV.setText("Amanata cu ");
+
+        }
+
+        if(type == 41)
+        {
+            pointsAnticipateTV.setVisibility(View.VISIBLE);
+            mTV.setVisibility(View.VISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            platiPeAnET.setEnabled(true);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            nImediataTV.setVisibility(View.INVISIBLE);
+            nAmanataTV.setVisibility(View.INVISIBLE);
+            nImediataTVaux.setVisibility(View.INVISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            amlimET.setEnabled(false);
+
+        }
+        if (type == 42)
+        {
+            pointsAnticipateTV.setVisibility(View.VISIBLE);
+            mTV.setVisibility(View.VISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            platiPeAnET.setEnabled(true);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            nImediataTV.setVisibility(View.VISIBLE);
+            nAmanataTV.setVisibility(View.INVISIBLE);
+            nImediataTVaux.setVisibility(View.VISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setEnabled(true);
+            amlimTV.setText("Limita la ");
+
+        }
+        if (type == 43)
+        {
+            pointsAnticipateTV.setVisibility(View.VISIBLE);
+            mTV.setVisibility(View.VISIBLE);
+            platiPeAnET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            platiPeAnET.setEnabled(true);
+            platiPeAnTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            nImediataTV.setVisibility(View.INVISIBLE);
+            nAmanataTV.setVisibility(View.VISIBLE);
+            nImediataTVaux.setVisibility(View.INVISIBLE);
+            amlimTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            AmLimAuxTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setTextColor(getActivity().getResources().getColor(R.color.black));
+            amlimET.setEnabled(true);
+            amlimTV.setText("Amanata cu ");
+        }
+
+    }
 
 }

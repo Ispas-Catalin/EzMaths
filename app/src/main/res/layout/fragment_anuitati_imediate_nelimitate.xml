@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Anuitati2.AntiPost.ui.main.AvImediateNelimFragment"
+    >
+
+
+    <TextView
+        android:id="@+id/atvIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="@dimen/size_a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/av3TitleIN"
+        app:layout_constraintVertical_bias="0.248"
+        android:text="a" />
+
+
+    <TextView
+        android:id="@+id/av3TitleIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Anuitati Viagere Imediate si Nelimitate"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="@dimen/size_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <EditText
+        android:id="@+id/varstaETIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:hint="x"
+        android:textSize="16dp"
+        android:gravity="center_horizontal"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/varstaTVIN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/varstaTVIN"
+        app:layout_constraintTop_toTopOf="@+id/varstaTVIN"
+        app:layout_constraintVertical_bias="0.5"
+        android:imeOptions="actionDone"/>
+
+    <EditText
+        android:id="@+id/platiPeAnETIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:hint="m"
+        android:textSize="16dp"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/platiPeAnTVIN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/platiPeAnTVIN"
+        app:layout_constraintTop_toTopOf="@+id/platiPeAnTVIN"
+        app:layout_constraintVertical_bias="0.5"
+        android:gravity="center_horizontal"
+        android:imeOptions="actionDone"/>
+
+    <Button
+        android:id="@+id/calculeazaBtnIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculeaza"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        android:background="@drawable/custom_bttn"/>
+
+
+
+    <TextView
+        android:id="@+id/xtvIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x"
+        android:textColor="#000000"
+        android:textSize="@dimen/size_nxm"
+        app:layout_constraintBottom_toTopOf="@+id/atvIN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintStart_toEndOf="@+id/atvIN"
+        app:layout_constraintTop_toBottomOf="@+id/atvIN"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/mtvIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(m)"
+        android:textColor="#000000"
+        android:textSize="@dimen/size_nxm"
+        app:layout_constraintBottom_toTopOf="@+id/atvIN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintStart_toEndOf="@+id/atvIN"
+        app:layout_constraintTop_toBottomOf="@+id/atvIN"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/pointsAnticipatetvIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=". ."
+        android:textColor="#000000"
+        android:textSize="@dimen/size_points"
+        app:layout_constraintBottom_toTopOf="@+id/atvIN"
+        app:layout_constraintEnd_toEndOf="@+id/atvAV1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/atvIN"
+        app:layout_constraintTop_toBottomOf="@+id/atvIN"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <TextView
+        android:id="@+id/sumaTVIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/suma"
+        android:textColor="#000000"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.596" />
+
+    <TextView
+        android:id="@+id/varstaTVIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Varsta persoanei"
+        android:textColor="#000000"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sumaTVIN"
+        app:layout_constraintVertical_bias="0.087" />
+
+    <TextView
+        android:id="@+id/platiPeAnTVIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Numarul de plati pe an"
+        android:textColor="#000000"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/varstaTVIN"
+        app:layout_constraintVertical_bias="0.123" />
+
+    <EditText
+        android:id="@+id/sumaETIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:gravity="center_horizontal"
+        android:hint="s"
+        android:inputType="number"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/sumaTVIN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.012"
+        app:layout_constraintStart_toEndOf="@+id/sumaTVIN"
+        app:layout_constraintTop_toTopOf="@+id/sumaTVIN"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/rezultatTVIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/result_backround"
+        android:text="Rezultat"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_title"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/pointsAnticipatetvIN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/av3TitleIN"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <CheckBox
+        android:id="@+id/platiPeAnCheckBoxIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/platiPeAnETIN"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/platiPeAnETIN"
+        app:layout_constraintTop_toTopOf="@+id/platiPeAnETIN"
+        app:layout_constraintVertical_bias="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

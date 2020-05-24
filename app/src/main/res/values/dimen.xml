@@ -6,4 +6,7 @@
     <dimen name="size__">32dp</dimen>
     <dimen name="size_title">18dp</dimen>
     <dimen name="nomralTV">16dp</dimen>
+    <dimen name="buton_width">240dp</dimen>
+    <dimen name="distance_buttons">30dp</dimen>
+    <dimen name="distance_buttons_home">30dp</dimen>
 </resources>

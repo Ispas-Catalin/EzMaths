@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">EzMaths</string>
-    <string name="avai">Anuitati viagere anticipate intregi\n</string>
-    <string name="avaf">Anuitati viagere anticipate fractionate\n</string>
-    <string name="avpi">Anuitati viagere posticipate intregi\n</string>
-    <string name="avpf">Anuitati viagere posticipate fractionat\n</string>
+    <string name="avai">Anuitati viagere anticipate intregi \n</string>
+    <string name="avaf">Anuitati viagere anticipate fractionate \n</string>
+    <string name="avpi">Anuitati viagere posticipate intregi \n</string>
+    <string name="avpf">Anuitati viagere posticipate fractionate \n</string>
     <string name="in">Imediate si nelimitate</string>
     <string name="il">Imediate si limitate la N ani</string>
     <string name="an">Nelimitate si amanate cu N ani</string>
@@ -19,8 +19,10 @@
     <string name="tab_text_av1">Anuitate I</string>
     <string name="tab_text_av2">Anuitate II</string>
     <string name="tab_text_asigurari">Asigurare</string>
-
-
+    <string name="title_activity_main_anuitati_anti_post">MainActivityAnuitatiAntiPost</string>
+    <string name="tab_text_in">Imediate si nelimitate</string>
+    <string name="tab_text_il">Imediate si limitate</string>
+    <string name="tab_text_an">Nelimitate si amanate</string>
 
 
 </resources>

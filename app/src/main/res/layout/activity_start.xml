@@ -23,68 +23,64 @@
 
     <Button
         android:id="@+id/DobanziBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/buton_width"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_bttn"
-        android:text="DobanziBtn"
+        android:text="Dobanzi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/uwu"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintVertical_bias="0.246" />
 
     <Button
         android:id="@+id/RambursariBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/buton_width"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_bttn"
         android:text="Rambursari de imprumut"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/distance_buttons_home"
         app:layout_constraintEnd_toEndOf="@+id/DobanziBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/DobanziBtn"
-        app:layout_constraintTop_toBottomOf="@+id/DobanziBtn"
-        app:layout_constraintVertical_bias="0.075" />
+        app:layout_constraintTop_toBottomOf="@+id/DobanziBtn" />
 
     <Button
         android:id="@+id/AnuitatiBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/buton_width"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_bttn"
         android:text="Anuitati Viagere"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/RambursariBtn"
-        app:layout_constraintStart_toStartOf="@+id/RambursariBtn"
-        app:layout_constraintTop_toBottomOf="@+id/RambursariBtn"
-        app:layout_constraintVertical_bias="0.109"
-        app:layout_constraintHorizontal_bias="0.5"/>
+        android:layout_marginTop="@dimen/distance_buttons_home"
+        app:layout_constraintEnd_toEndOf="@+id/DobanziBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/DobanziBtn"
+        app:layout_constraintTop_toBottomOf="@+id/RambursariBtn"  />
 
     <Button
         android:id="@+id/AsigurariBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/buton_width"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_bttn"
         android:text="Asigurari"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/AnuitatiBtn"
+        android:layout_marginTop="@dimen/distance_buttons_home"
+        app:layout_constraintEnd_toEndOf="@+id/DobanziBtn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/AnuitatiBtn"
-        app:layout_constraintTop_toBottomOf="@+id/AnuitatiBtn"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintStart_toStartOf="@+id/DobanziBtn"
+        app:layout_constraintTop_toBottomOf="@+id/AnuitatiBtn" />
 
     <Button
         android:id="@+id/RezervaMatematicaBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/buton_width"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_bttn"
         android:text="Rezerva Matematica"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/AsigurariBtn"
-        app:layout_constraintStart_toStartOf="@+id/AsigurariBtn"
-        app:layout_constraintTop_toBottomOf="@+id/AsigurariBtn"
-        app:layout_constraintVertical_bias="0.215"
-        app:layout_constraintHorizontal_bias="0.5"/>
+        android:layout_marginTop="@dimen/distance_buttons_home"
+        app:layout_constraintEnd_toEndOf="@+id/DobanziBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/DobanziBtn"
+        app:layout_constraintTop_toBottomOf="@+id/AsigurariBtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

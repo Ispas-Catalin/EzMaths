@@ -1,4 +1,4 @@
-package com.example.ezmaths.Anuitati;
+package com.example.ezmaths.Anuitati2;
 
 public class formuleAnuitati {
 
@@ -19,78 +19,78 @@ public class formuleAnuitati {
     }
 
     // ANUITATI VIAGERE POSTICIPATE INTREGI 1) IMEDIATA, NELIMITATA
-    double AVPI_1(int x)
+    public double AVPI_1(int x)
     {
         return  Nx[x+1] / Dx[x];
     }
 
     //ANUITATI VIAGERE POSTICIPATE INTREGI 2) IMEDIATA, LIMITATA LA "N" ANI
-    double AVPI_2(int x, int n)
+    public double AVPI_2(int x, int n)
     {
         return (Nx[x+1] - Nx[x+n+1])/Dx[x];
     }
 
     //ANUITATI VIAGERE POSTICIPATE INTREGI 3) AMANATA CU "N" ANI
-    double AVPI_3( int x, int n)
+    public double AVPI_3( int x, int n)
     {
         return Nx[x+n+1]/Dx[x];
     }
 
     //ANUITATI VIAGERE POSTICIPATE FRACTIONATE 1) IMEDIATA, NELIMITATA
-    double AVPF_1( int x, int m)
+    public double AVPF_1( int x, int m)
     {
         double aux = (double)(m-1)/(double)(2*m);
         return AVPI_1(x) + aux ;
     }
 
     //ANUITATI VIAGRERE POSTICIPATE FRACTIONATE 2) IMEDIATA, LIMITATA LA "N" ANI
-    double AVPF_2( int x, int n, int m)
+    public double AVPF_2( int x, int n, int m)
     {
         double aux = (double)(m-1)/(double)(2*m);
         return AVPI_2(x,n) + aux*(1-FAV(x,n));
     }
 
     //ANUITATI VIAGERE POSTICIPATE FRACTIONATE 3) AMANATA CU "N" ANI
-    double AVPF_3( int x, int n, int m)
+    public double AVPF_3( int x, int n, int m)
     {
         double aux = (double)(m-1)/(double)(2*m);
         return AVPI_3(x,n) + aux*(FAV(x,n));
     }
 
     //ANUITATI VIAGERE ANTICIPATE INTREGI 1) IMEDIATA, NELIMITATA
-    double AVAI_1( int x)
+    public double AVAI_1( int x)
     {
         return Nx[x] / Dx[x];
     }
 
     //ANUITATI VIAGERE ANTICIPATE INTREGI 2) IMEDIATA, LIMITATA LA "N" ANI
-    double AVAI_2( int x, int n)
+    public double AVAI_2( int x, int n)
     {
         return (Nx[x] - Nx[x+n]) / Dx[x];
     }
 
     //ANUITATI VIAGERE ANTICIPATE INTREGI 3) AMANATA CU "N" ANI
-    double AVAI_3( int x, int n)
+    public double AVAI_3( int x, int n)
     {
         return Nx[x+n] / Dx[x];
     }
 
     //ANUITATI VIAGERE ANTICIPATE FRACTIONATE 1) IMEDIATA, NELIMITATA
-    double AVAF_1( int x , int m)
+    public double AVAF_1( int x , int m)
     {
         double aux = (double)(m-1)/(double)(2*m);
         return AVAI_1(x) - aux;
     }
 
     //ANUITATI VIAGERE ANTICIPATE FRACTIONATE 2) IMEDIATA, LIMITATA LA "N" ANI
-    double AVAF_2( int x, int n , int m)
+    public double AVAF_2( int x, int n , int m)
     {
         double aux = (double)(m-1)/(double)(2*m);
         return AVAI_2(x,n) - aux*(1 - FAV(x,n));
     }
 
     //ANUITATI VIAGERE ANTICIPATE FRACTIONATE 3) AMANATA CU "N" ANI
-    double AVAF_3( int x, int n, int m)
+    public double AVAF_3( int x, int n, int m)
     {
         double aux = (double)(m-1)/(double)(2*m);
         return AVAI_3(x,n) - aux*FAV(x,n);
