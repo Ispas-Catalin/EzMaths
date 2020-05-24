@@ -8,5 +8,7 @@
     <dimen name="nomralTV">16dp</dimen>
     <dimen name="buton_width">240dp</dimen>
     <dimen name="distance_buttons">30dp</dimen>
-    <dimen name="distance_buttons_home">30dp</dimen>
+    <dimen name="distance_buttons_home">24dp</dimen>
+    <dimen name="distance_TV_Horizontal">40dp</dimen>
+    <dimen name="distance_TV_Vertical">16dp</dimen>
 </resources>

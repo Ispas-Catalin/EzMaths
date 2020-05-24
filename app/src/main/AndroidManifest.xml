@@ -11,9 +11,13 @@
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan|adjustResize">
         <activity
+            android:name=".Anuitati2.Deces.MainActivityAnuitatiDeces"
+            android:label="@string/title_activity_main_anuitati_deces"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Anuitati2.AntiPost.MainActivityAnuitatiAntiPost"
             android:label="@string/title_activity_main_anuitati_anti_post"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Anuitati2.MainActivityAnuitati" />
         <activity
             android:name=".Asigurari.MainActivityAsigurari"
@@ -26,9 +30,6 @@
         <activity
             android:name=".Rambursari.ActivityRambursariTable"
             android:launchMode="singleTask" />
-        <activity android:name=".Anuitati.MainActivity" />
-        <activity android:name=".Anuitati.MainActivityAV3" />
-        <activity android:name=".Anuitati.MainActivityAV2" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

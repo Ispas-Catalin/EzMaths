@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Anuitati.MainActivityAV3"
+    tools:context=".Asigurari.ui.main.AsigurariFragmentAV1"
     android:tag="asigurari_av1_tag">
 
     <Spinner

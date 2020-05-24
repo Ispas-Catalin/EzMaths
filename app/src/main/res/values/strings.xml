@@ -23,6 +23,11 @@
     <string name="tab_text_in">Imediate si nelimitate</string>
     <string name="tab_text_il">Imediate si limitate</string>
     <string name="tab_text_an">Nelimitate si amanate</string>
+    <string name="title_activity_main_anuitati_deces">MainActivityAnuitatiDeces</string>
+    <string name="tab_text_deces_1">Neilimitate</string>
+    <string name="tab_text_deces_2">Limitate</string>
+    <string name="tab_text_deces_3">Dublu limitate</string>
+    <string name="tab_text_deces_4">Amanate</string>
 
 
 </resources>

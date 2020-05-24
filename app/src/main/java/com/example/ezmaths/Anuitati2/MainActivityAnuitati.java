@@ -9,12 +9,15 @@ import android.widget.Button;
 
 import com.example.ezmaths.Anuitati2.AntiPost.MainActivityAnuitatiAntiPost;
 import com.example.ezmaths.Anuitati2.AntiPost.ui.main.SectionsPagerAdapter;
+import com.example.ezmaths.Anuitati2.Deces.MainActivityAnuitatiDeces;
 import com.example.ezmaths.R;
 
 public class MainActivityAnuitati extends AppCompatActivity {
 
     public final static String TYPE_KEY = "type_key";
     private int type;
+
+    Button backbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,8 @@ public class MainActivityAnuitati extends AppCompatActivity {
         Button avPosticipateBtn = findViewById(R.id.avPosticipatebtn);
         Button avAnticipateBtn = findViewById(R.id.avAnticipatebtn);
         Button avDecesBtn = findViewById(R.id.avDecesbtn);
+
+        backbtn = findViewById(R.id.backbtn);
 
         avPosticipateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +54,16 @@ public class MainActivityAnuitati extends AppCompatActivity {
         avDecesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intet3 = new Intent(MainActivityAnuitati.this, MainActivityAnuitatiDeces.class);
+                startActivity(intet3);
+            }
+        });
 
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
