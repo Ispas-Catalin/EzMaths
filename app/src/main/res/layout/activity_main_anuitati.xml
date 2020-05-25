@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Anuitati2.MainActivityAnuitati">
+    tools:context=".Anuitati.MainActivityAnuitati">
 
     <Button
         android:id="@+id/avPosticipatebtn"
@@ -60,14 +60,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
         android:text="uwu"
         android:textColor="#F42CC3"
         android:textSize="@dimen/size_a"
-        app:layout_constraintBottom_toTopOf="@+id/avAnticipateIntregibtn"
+        app:layout_constraintBottom_toTopOf="@+id/avPosticipatebtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/av2Title" />
+        app:layout_constraintTop_toBottomOf="@+id/av2Title"
+        app:layout_constraintVertical_bias="0.23" />
 
     <Button
         android:id="@+id/backbtn"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Anuitati.AntiPost.MainActivityAnuitatiAntiPost">
+    tools:context=".Asigurari.AsigurariPensiiDeces.MainActivityAsigPensiiDecesUnica">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <TextView
-            android:id="@+id/titleOof"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

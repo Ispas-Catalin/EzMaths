@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Asigurari.AsigurariViata.MaiMultePlati.ui.main.AsigViataMultePlatiFragment">
+
+
+    <TextView
+        android:id="@+id/titleAsigTVmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Asigurari de viata cu mai multe plati"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toTopOf="@+id/nAsigurareTVmv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/resultAsigTVmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rezultat"
+        android:textColor="@color/black"
+        android:background="@drawable/result_backround"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/nAsigurareTVmv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleAsigTVmv"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/nAsigurareTVmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/distance_TV_Horizontal"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:text="Peste cati ani se va plati asigurarea"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <EditText
+        android:id="@+id/nAsigurareETmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="n"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/nAsigurareTVmv"
+        app:layout_constraintStart_toEndOf="@+id/nAsigurareTVmv"
+        app:layout_constraintTop_toTopOf="@+id/nAsigurareTVmv"
+        android:layout_marginLeft="4dp"/>
+
+    <TextView
+        android:id="@+id/xAsigurareTVmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/distance_TV_Horizontal"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
+        android:text="Varsta asiguratorului"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nAsigurareTVmv" />
+
+    <EditText
+        android:id="@+id/xAsigurareETmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="x"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/xAsigurareTVmv"
+        app:layout_constraintStart_toEndOf="@+id/xAsigurareTVmv"
+        app:layout_constraintTop_toTopOf="@+id/xAsigurareTVmv"
+        android:layout_marginLeft="4dp"/>
+
+    <TextView
+        android:id="@+id/primaAsiguratorTVmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/distance_TV_Horizontal"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:text="Calculeaza prima Asiguratorului"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <EditText
+        android:id="@+id/primaAsiguratorETmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="s"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratorTVmv"
+        app:layout_constraintStart_toEndOf="@+id/primaAsiguratorTVmv"
+        app:layout_constraintTop_toTopOf="@+id/primaAsiguratorTVmv"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginLeft="4dp"/>
+
+    <CheckBox
+        android:id="@+id/primaAsiguratorCheckBoxTVmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratorETmv"
+        app:layout_constraintStart_toEndOf="@+id/primaAsiguratorETmv"
+        app:layout_constraintTop_toTopOf="@+id/primaAsiguratorETmv"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginLeft="4dp"/>
+
+
+    <TextView
+        android:id="@+id/primaAsiguratTVmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/distance_TV_Horizontal"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:text="Calculeaza prima Asiguratului"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/primaAsiguratorTVmv" />
+
+    <EditText
+        android:id="@+id/primaAsiguratETmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="p"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratTVmv"
+        app:layout_constraintStart_toEndOf="@+id/primaAsiguratTVmv"
+        app:layout_constraintTop_toTopOf="@+id/primaAsiguratTVmv"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginLeft="4dp"/>
+
+    <CheckBox
+        android:id="@+id/primaAsiguratCheckBoxTVmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratETmv"
+        app:layout_constraintStart_toEndOf="@+id/primaAsiguratETmv"
+        app:layout_constraintTop_toTopOf="@+id/primaAsiguratETmv"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginLeft="4dp"/>
+
+    <Button
+        android:id="@+id/calculeazaAsigurareBtnmv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_bttn"
+        android:text="calculeaza"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/primaAsiguratTVmv"
+        app:layout_constraintVertical_bias="0.6" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

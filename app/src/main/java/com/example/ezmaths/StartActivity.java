@@ -9,9 +9,8 @@ import android.view.View;
 import android.widget.Button;
 
 
-import com.example.ezmaths.Anuitati2.MainActivityAnuitati;
+import com.example.ezmaths.Anuitati.MainActivityAnuitati;
 import com.example.ezmaths.Asigurari.MainActivityAsigurari;
-import com.example.ezmaths.Rambursari.ActivityRambursariTable;
 import com.example.ezmaths.Rambursari.MainActivityRambursari;
 
 public class StartActivity extends AppCompatActivity {

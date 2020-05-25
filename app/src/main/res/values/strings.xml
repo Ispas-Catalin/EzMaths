@@ -28,6 +28,15 @@
     <string name="tab_text_deces_2">Limitate</string>
     <string name="tab_text_deces_3">Dublu limitate</string>
     <string name="tab_text_deces_4">Amanate</string>
+    <string name="title_activity_asigurari_viata_mai_multe_plati_main">
+        AsigurariViataMaiMultePlatiMainActivity
+    </string>
+    <string name="tab_text_asig_viata_multe_plati_1">Anuitate</string>
+    <string name="tab_text_asig_viata_multe_plati_2">Asigurare</string>
+    <string name="tab_text_anuitateI">Anuitate I</string>
+    <string name="tab_text_anuitateII">Anuitate II</string>
+    <string name="title_activity_main_asig_pensii_deces">MainActivityAsigPensiiDeces</string>
+
 
 
 </resources>
