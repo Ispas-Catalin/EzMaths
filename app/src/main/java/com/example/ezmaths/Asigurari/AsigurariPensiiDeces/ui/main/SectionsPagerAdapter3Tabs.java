@@ -22,6 +22,7 @@ public class SectionsPagerAdapter3Tabs extends FragmentPagerAdapter {
 
     private int versiontab1;
     private int versiontab2;
+    private int asigType;
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_anuitateI,R.string.tab_text_anuitateII, R.string.tab_text_asig_viata_multe_plati_2};
@@ -36,10 +37,14 @@ public class SectionsPagerAdapter3Tabs extends FragmentPagerAdapter {
         this.versiontab2 = version;
     }
 
+    public void setAsigType(int AsigType){this.asigType = AsigType;}
+
     public SectionsPagerAdapter3Tabs(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
+
+    AsigAnuitatiFragment asigAnuitatiFragment = new AsigAnuitatiFragment();
 
     @Override
     public Fragment getItem(int position) {
@@ -50,16 +55,23 @@ public class SectionsPagerAdapter3Tabs extends FragmentPagerAdapter {
                 fragment = new AsigAnuitatiFragment();
                 Bundle bundle = new Bundle();
                 bundle.putInt("key_version", versiontab1);
+                bundle.putInt("asig_type_version", asigType);
                 fragment.setArguments(bundle);
+                asigAnuitatiFragment.setframgentVersion(versiontab1);
                 break;
             case 1:
                 fragment = new AsigAnuitatiFragment();
                 Bundle bundle2 = new Bundle();
                 bundle2.putInt("key_version", versiontab2);
+                bundle2.putInt("asig_type_version", asigType);
+                asigAnuitatiFragment.setframgentVersion(versiontab2);
                 fragment.setArguments(bundle2);
                 break;
             case 2:
                 fragment = new AsigurariPensiDecesFragment();
+                Bundle bundle3 = new Bundle();
+                bundle3.putInt("asig_type_version", asigType);
+                fragment.setArguments(bundle3);
                 break;
         }
         return fragment;

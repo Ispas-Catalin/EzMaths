@@ -15,9 +15,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.ezmaths.Asigurari.AnuitatiViewModel;
+import com.example.ezmaths.Asigurari.AsigurariViata.AsigDataSource;
 import com.example.ezmaths.R;
+
+import java.text.NumberFormat;
 
 
 public class AsigurariPensiDecesFragment extends Fragment {
@@ -45,6 +50,18 @@ public class AsigurariPensiDecesFragment extends Fragment {
 
     private Button calculeazaBtn;
 
+    public TextView anuitate1TV;
+    public TextView anuitate1RezTV;
+    public TextView anuitate2TV;
+    public TextView anuitate2RezTV;
+    private int typeAsig;
+
+    AsigDataSource asigDataSource = new AsigDataSource();
+
+    private NumberFormat fmt;
+
+
+    private AnuitatiViewModel anuitatiViewModel;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
 
@@ -52,7 +69,15 @@ public class AsigurariPensiDecesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_asig_pensii_deces, container, false);
 
-        resultTV = rootView.findViewById(R.id.resultAsigTVpd);
+        Bundle b = getArguments();
+
+        if(b != null)
+        {
+
+            typeAsig = b.getInt("asig_type_version",0);
+        }
+        if (b == null)
+            typeAsig = 69;
 
 
         xAsigurareTV = rootView.findViewById(R.id.xAsigurareTVpd);
@@ -68,10 +93,23 @@ public class AsigurariPensiDecesFragment extends Fragment {
 
         calculeazaBtn = rootView.findViewById(R.id.calculeazaAsigurareBtnpd);
 
+
+       anuitate1TV = rootView.findViewById(R.id.anuitate1TV);
+       anuitate1RezTV = rootView.findViewById(R.id.anuitate1RezTV);
+       anuitate2TV = rootView.findViewById(R.id.anuitate2TV);
+       anuitate2RezTV = rootView.findViewById(R.id.anuitate2RezTV);
+
+        fmt = NumberFormat.getInstance();
+        fmt.setMaximumFractionDigits(4);
+
         primaAsiguratorCheckBox.setChecked(true);
         primaAsiguratCheckBox.setChecked(false);
         primaAsiguratET.setEnabled(false);
         primaAsiguratTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+
+
+
+
 
         primaAsiguratorCheckBox.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -103,6 +141,42 @@ public class AsigurariPensiDecesFragment extends Fragment {
             }
         });
 
+
+
         return  rootView;
+    }
+
+    private double anuitate1aux;
+    private double anuitate2aux;
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        anuitate1RezTV = rootView.findViewById(R.id.anuitate1RezTV);
+        anuitate1TV = rootView.findViewById(R.id.anuitate1TV);
+
+        anuitate2RezTV = rootView.findViewById(R.id.anuitate2RezTV);
+        anuitate2TV = rootView.findViewById(R.id.anuitate2TV);
+
+
+        anuitatiViewModel = new ViewModelProvider(requireActivity()).get(AnuitatiViewModel.class);
+
+
+        anuitate1RezTV.setVisibility(View.VISIBLE);
+        anuitate1RezTV.setText(Integer.toString(typeAsig));
+
+        anuitate1aux = 0;
+        anuitate2aux = 0;
+
+
+            anuitatiViewModel.getAnuitateLiveData1().observe(getViewLifecycleOwner(), new Observer<Double>() {
+                @Override
+                public void onChanged(Double aDouble) {
+
+                        anuitate1RezTV.setText(fmt.format(aDouble));
+                }
+            });
+
+
     }
 }

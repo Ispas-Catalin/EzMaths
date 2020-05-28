@@ -20,6 +20,7 @@ import com.example.ezmaths.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     private int version;
+    private int asigType;
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_asig_viata_multe_plati_1, R.string.tab_text_asig_viata_multe_plati_2};
@@ -28,6 +29,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public void setVersion(int version) {
         this.version = version;
     }
+
+    public void setAsigType(int AsigType){this.asigType = AsigType;}
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
@@ -43,10 +46,15 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new AsigAnuitatiFragment();
                 Bundle bundle = new Bundle();
                 bundle.putInt("key_version", version);
+                bundle.putInt("asig_type_version", asigType);
                 fragment.setArguments(bundle);
                 break;
             case 1:
                 fragment = new AsigurariPensiDecesFragment();
+                Bundle bundle1 = new Bundle();
+                bundle1.putInt("asig_type_version", asigType);
+                fragment.setArguments(bundle1);
+
                 break;
         }
         return fragment;

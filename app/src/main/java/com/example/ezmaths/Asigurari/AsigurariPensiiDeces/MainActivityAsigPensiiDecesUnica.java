@@ -2,6 +2,7 @@ package com.example.ezmaths.Asigurari.AsigurariPensiiDeces;
 
 import android.os.Bundle;
 
+import com.example.ezmaths.Asigurari.AnuitatiViewModel;
 import com.example.ezmaths.Asigurari.AsigurariPensiiDeces.ui.main.SectionsPagerAdapter3Tabs;
 import com.example.ezmaths.Asigurari.MainActivityAsigurari;
 import com.example.ezmaths.R;
@@ -9,6 +10,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +25,7 @@ import com.example.ezmaths.Asigurari.AsigurariPensiiDeces.ui.main.SectionsPagerA
 public class MainActivityAsigPensiiDecesUnica extends AppCompatActivity {
 
     int aux;
+    private AnuitatiViewModel anuitatiViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class MainActivityAsigPensiiDecesUnica extends AppCompatActivity {
                 sectionsPagerAdapter.setVersion(2);
             if (aux == 31)
                 sectionsPagerAdapter.setVersion(4);
+            sectionsPagerAdapter.setAsigType(aux);
             ViewPager viewPager = findViewById(R.id.view_pager);
             viewPager.setAdapter(sectionsPagerAdapter);
             TabLayout tabs = findViewById(R.id.tabs);
@@ -58,6 +63,7 @@ public class MainActivityAsigPensiiDecesUnica extends AppCompatActivity {
                 sectionsPagerAdapter3Tabs.setVersionTab1(3);
                 sectionsPagerAdapter3Tabs.setVersionTab2(4);
             }
+            sectionsPagerAdapter3Tabs.setAsigType(aux);
             ViewPager viewPager = findViewById(R.id.view_pager);
             viewPager.setAdapter(sectionsPagerAdapter3Tabs);
             TabLayout tabs = findViewById(R.id.tabs);
@@ -65,4 +71,6 @@ public class MainActivityAsigPensiiDecesUnica extends AppCompatActivity {
         }
 
     }
+
+
 }

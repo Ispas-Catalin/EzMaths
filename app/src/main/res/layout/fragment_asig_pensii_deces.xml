@@ -21,21 +21,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2" />
 
-    <TextView
-        android:id="@+id/resultAsigTVpd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/result_backround"
-        android:text="Rezultat"
-        android:textColor="@color/black"
-        android:textSize="24dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/xAsigurareTVpd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleAsigTVpd"
-        app:layout_constraintVertical_bias="0.28" />
 
     <TextView
         android:id="@+id/xAsigurareTVpd"
@@ -146,6 +131,66 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/primaAsiguratTVpd"
         app:layout_constraintVertical_bias="0.6" />
+
+    <TextView
+        android:id="@+id/anuitate1TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/distance_TV_Horizontal"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:text="Anuitate I "
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.301" />
+
+    <TextView
+        android:id="@+id/anuitate1RezTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1234.56"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        android:visibility="invisible"
+        android:background="@drawable/result_backround"
+        app:layout_constraintBottom_toBottomOf="@+id/anuitate1TV"
+        app:layout_constraintStart_toEndOf="@+id/anuitate1TV"
+        app:layout_constraintTop_toTopOf="@+id/anuitate1TV"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginLeft="4dp"/>
+
+    <TextView
+        android:id="@+id/anuitate2TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/distance_TV_Horizontal"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
+        android:text="Anuitate II"
+        android:visibility="invisible"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/anuitate1TV" />
+
+
+    <TextView
+        android:id="@+id/anuitate2RezTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1234.56"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        android:visibility="invisible"
+        android:background="@drawable/result_backround"
+        app:layout_constraintBottom_toBottomOf="@+id/anuitate2TV"
+        app:layout_constraintStart_toEndOf="@+id/anuitate2TV"
+        app:layout_constraintTop_toTopOf="@+id/anuitate2TV"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginLeft="4dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.example.ezmaths.Anuitati.formuleAnuitati;
+import com.example.ezmaths.Asigurari.AsigurariPensiiDeces.ui.main.AsigurariPensiDecesFragment;
 import com.example.ezmaths.Asigurari.AsigurariViata.AsigDataSource;
 import com.example.ezmaths.R;
 
@@ -58,16 +64,23 @@ public class AsigAnuitatiFragment extends Fragment {
     private TextView mDecesAuxTV;
     private TextView aTV;
 
-    NumberFormat resfmt;
+    private NumberFormat resfmt;
 
     private int type;
-    double doubleRES;
-    Boolean setTextok;
+    private Boolean setTextok;
     Fragment thisFragment;
+    private double doubleRes;
 
     private int variant;
+    private int fragmentVersion;
+    private Integer asigType;
 
-    AsigDataSource asigDataSource = new AsigDataSource();
+    private AsigurariPensiDecesFragment asigurariPensiDecesFragment = new AsigurariPensiDecesFragment();
+    private AsigDataSource asigDataSource = new AsigDataSource();
+
+    private AnuitatiViewModel anuitatiViewModel = new AnuitatiViewModel();
+
+    private com.example.ezmaths.Anuitati.formuleAnuitati formuleAnuitati = new formuleAnuitati();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 
@@ -80,9 +93,10 @@ public class AsigAnuitatiFragment extends Fragment {
         if(b != null)
         {
             variant = b.getInt("key_version",0);
+            asigType = b.getInt("asig_type_version",0);
         }
 
-        String [] anuitati = asigDataSource.getAnuitati(variant);
+        final String [] anuitati = asigDataSource.getAnuitati(variant);
 
 
         Spinner spinner = (Spinner) rootView.findViewById(R.id.spinneraAV1);
@@ -214,11 +228,39 @@ public class AsigAnuitatiFragment extends Fragment {
             }
         });
 
+        resfmt = NumberFormat.getInstance();
+        resfmt.setMaximumFractionDigits(4);
+
+        anuitatiViewModel = new ViewModelProvider(requireActivity()).get(AnuitatiViewModel.class);
 
 
+
+        selecteazabtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calculeaza();
+
+                if(setTextok){
+                    rezultatTV.setText(resfmt.format(doubleRes));
+                    rezultatTV.setVisibility(View.VISIBLE);
+                    Toast toast = Toast.makeText(getActivity(), "Anuitate selectata", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.BOTTOM, 0, 40);
+                    toast.show();
+                    anuitatiViewModel.setAnuitateLiveData1(doubleRes);
+            }
+                else {
+                    rezultatTV.setVisibility(View.INVISIBLE);
+                    Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.BOTTOM, 0, 40);
+                    toast.show();
+                }
+            }
+        });
 
         return  rootView;
     }
+
+
 
     private void setTextnAmanataTV(String S)
     {
@@ -444,6 +486,8 @@ public class AsigAnuitatiFragment extends Fragment {
     /// In functie de tipul primit din spinner schimba culoarea/vizibilitate/interactibilitatea la elmente din layout
     private void TransformUI(int type)
     {
+
+        rezultatTV.setVisibility(View.INVISIBLE);
         sumaET.setTextColor(getActivity().getResources().getColor(R.color.silver));
         sumaET.setEnabled(false);
         sumaTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
@@ -863,6 +907,119 @@ public class AsigAnuitatiFragment extends Fragment {
             sumaET.getText().clear();
         }
 
+    }
+
+    private void Calculeaza()
+    {
+        setTextok = true;
+        if (type==11){
+            if (varstaET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVPI_1(Integer.parseInt(varstaET.getText().toString()));
+        }
+        if (type==12){
+            if (varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVPI_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
+        }
+        if (type==13){
+            if (varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVPI_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
+        }
+
+        if (type==21){
+            if (varstaET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVPF_1(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+        }
+        if (type==22){
+            if (varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVPF_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+        }
+        if (type==23){
+            if (varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVPF_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+        }
+
+        if (type==31){
+            if (varstaET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVAI_1(Integer.parseInt(varstaET.getText().toString()));
+        }
+        if (type==32){
+            if (varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVAI_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
+        }
+        if (type==33){
+            if (varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVAI_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
+        }
+
+        if (type==41){
+            if (varstaET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVAF_1(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+        }
+        if (type==42){
+            if (varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVAF_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+        }
+        if (type==43){
+            if (varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.AVAF_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()));
+        }
+
+        if (type==51){
+            if (varstaET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.anuitatiDeces_1(Integer.parseInt(varstaET.getText().toString()));
+        }
+        if (type==52){
+            if (varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.anutiatiDeces_3(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
+        }
+        if (type==53){
+            if (varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty() || platiPeAnET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.anuitatiDeces_2(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(platiPeAnET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
+        }
+
+        if (type==54){
+            if (varstaET.getText().toString().isEmpty() || amlimET.getText().toString().isEmpty())
+                setTextok = false;
+            else
+                doubleRes = formuleAnuitati.anuitatiDeces_4(Integer.parseInt(varstaET.getText().toString()),Integer.parseInt(amlimET.getText().toString()));
+        }
+
+    }
+
+
+    public void setframgentVersion (int FragmentVersion)
+    {
+        fragmentVersion = FragmentVersion;
     }
 
 

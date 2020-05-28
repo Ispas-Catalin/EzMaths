@@ -28,6 +28,8 @@ public class MainActivityAsigurari extends AppCompatActivity {
     CheckBox platiCheckBox;
     TextView platiTV;
 
+    private AnuitatiViewModel anuitatiViewModel = new AnuitatiViewModel();
+
     public final static String ATYPE_KEY = "atype_key";
 
     @Override
@@ -117,6 +119,13 @@ public class MainActivityAsigurari extends AppCompatActivity {
                     platiTV.setTextColor(getColor(R.color.black));
                     asigurariTitle.setText("Asigurari cu mai multe plati");
                 }
+            }
+        });
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

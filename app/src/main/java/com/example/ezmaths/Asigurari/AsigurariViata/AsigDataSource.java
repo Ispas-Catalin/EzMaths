@@ -7,7 +7,6 @@ import static android.provider.Settings.System.getString;
 public class AsigDataSource {
 
 
-
     public String[] getAnuitati (int variant)
     {
 

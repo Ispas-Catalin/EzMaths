@@ -29,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleAsigAnuitFragTV"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.26" />
 
 
     <TextView
@@ -322,12 +322,12 @@
         android:textColor="@color/black"
         android:textSize="@dimen/size_title"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/sumaTVAV1"
+        app:layout_constraintBottom_toTopOf="@+id/atvAV1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/atvAV1"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintTop_toBottomOf="@+id/titleAsigAnuitFragTV"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.5"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
