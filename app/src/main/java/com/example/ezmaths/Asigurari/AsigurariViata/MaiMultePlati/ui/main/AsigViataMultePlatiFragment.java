@@ -3,8 +3,11 @@ package com.example.ezmaths.Asigurari.AsigurariViata.MaiMultePlati.ui.main;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,15 +17,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.ezmaths.Asigurari.AnuitatiViewModel;
 import com.example.ezmaths.R;
+
+import java.text.NumberFormat;
 
 
 public class AsigViataMultePlatiFragment extends Fragment {
 
     private View rootView;
-
-    private TextView titleTV;
-    private TextView resultTV;
 
 
     private TextView nAsigurareTV;
@@ -41,13 +44,18 @@ public class AsigViataMultePlatiFragment extends Fragment {
 
     private Button calculeazaBtn;
 
+    private TextView anuitateTV;
+    private TextView anuitateRezTV;
+    private AnuitatiViewModel anuitatiViewModel;
+
+    private NumberFormat fmt;
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_asig_viata_multe_plati, container, false);
 
-        resultTV = rootView.findViewById(R.id.resultAsigTVmv);
 
         nAsigurareTV = rootView.findViewById(R.id.nAsigurareTVmv);
         nAsigurareET = rootView.findViewById(R.id.nAsigurareETmv);
@@ -102,4 +110,39 @@ public class AsigViataMultePlatiFragment extends Fragment {
 
         return  rootView;
     }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        anuitateRezTV = rootView.findViewById(R.id.anuitateRezTV);
+        anuitateTV = rootView.findViewById(R.id.anuitateTV);
+
+        fmt = NumberFormat.getInstance();
+        fmt.setMaximumFractionDigits(4);
+
+        anuitatiViewModel = new ViewModelProvider(requireActivity()).get(AnuitatiViewModel.class);
+
+
+        anuitatiViewModel.getAnuitateLiveData1().observe(getViewLifecycleOwner(), new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                if (aDouble == 0)
+                {
+                    anuitateRezTV.setVisibility(View.INVISIBLE);
+                    anuitateTV.setVisibility(View.INVISIBLE);
+                }
+                else if (aDouble!=0)
+                {
+                    anuitateRezTV.setVisibility(View.VISIBLE);
+                    anuitateTV.setVisibility(View.VISIBLE);
+                    anuitateRezTV.setText(fmt.format(aDouble));
+                }
+            }
+        });
+
+
+    }
+
 }

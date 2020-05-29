@@ -16,11 +16,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager.widget.ViewPager;
 
+import com.example.ezmaths.Anuitati.Deces.ui.main.PageViewModel;
 import com.example.ezmaths.Anuitati.formuleAnuitati;
 import com.example.ezmaths.Asigurari.AsigurariPensiiDeces.ui.main.AsigurariPensiDecesFragment;
 import com.example.ezmaths.Asigurari.AsigurariViata.AsigDataSource;
@@ -73,7 +76,7 @@ public class AsigAnuitatiFragment extends Fragment {
 
     private int variant;
     private int fragmentVersion;
-    private Integer asigType;
+    private int asigType;
 
     private AsigurariPensiDecesFragment asigurariPensiDecesFragment = new AsigurariPensiDecesFragment();
     private AsigDataSource asigDataSource = new AsigDataSource();
@@ -82,11 +85,13 @@ public class AsigAnuitatiFragment extends Fragment {
 
     private com.example.ezmaths.Anuitati.formuleAnuitati formuleAnuitati = new formuleAnuitati();
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         rootView = inflater.inflate(R.layout.fragment_asigurari_anuitate, container, false);
+
 
         Bundle b = getArguments();
 
@@ -234,7 +239,6 @@ public class AsigAnuitatiFragment extends Fragment {
         anuitatiViewModel = new ViewModelProvider(requireActivity()).get(AnuitatiViewModel.class);
 
 
-
         selecteazabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -246,13 +250,33 @@ public class AsigAnuitatiFragment extends Fragment {
                     Toast toast = Toast.makeText(getActivity(), "Anuitate selectata", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.BOTTOM, 0, 40);
                     toast.show();
-                    anuitatiViewModel.setAnuitateLiveData1(doubleRes);
+                    if (asigType%10 == 1 || asigType == 12)
+                        anuitatiViewModel.setAnuitateLiveData1(doubleRes);
+                    if (asigType == 22 && variant ==2)
+                        anuitatiViewModel.setAnuitateLiveData1(doubleRes);
+                    if (asigType == 22 && variant == 3)
+                        anuitatiViewModel.setAnuitateLiveData2(doubleRes);
+                    if (asigType == 32 && variant ==3)
+                        anuitatiViewModel.setAnuitateLiveData1(doubleRes);
+                    if (asigType == 32 && variant == 4)
+                        anuitatiViewModel.setAnuitateLiveData2(doubleRes);
             }
                 else {
                     rezultatTV.setVisibility(View.INVISIBLE);
                     Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.BOTTOM, 0, 40);
                     toast.show();
+                    if (asigType%10 == 1 || asigType == 12)
+                        anuitatiViewModel.setAnuitateLiveData1(0);
+                    if (asigType == 22 && variant ==2)
+                        anuitatiViewModel.setAnuitateLiveData1(0);
+                    if (asigType == 22 && variant == 3)
+                        anuitatiViewModel.setAnuitateLiveData2(0);
+                    if (asigType == 32 && variant ==3)
+                        anuitatiViewModel.setAnuitateLiveData1(0);
+                    if (asigType == 32 && variant == 4)
+                        anuitatiViewModel.setAnuitateLiveData2(0);
+
                 }
             }
         });
@@ -486,6 +510,16 @@ public class AsigAnuitatiFragment extends Fragment {
     /// In functie de tipul primit din spinner schimba culoarea/vizibilitate/interactibilitatea la elmente din layout
     private void TransformUI(int type)
     {
+        if (asigType%10 == 1 || asigType == 12)
+            anuitatiViewModel.setAnuitateLiveData1(0);
+        if (asigType == 22 && variant ==2)
+            anuitatiViewModel.setAnuitateLiveData1(0);
+        if (asigType == 22 && variant == 3)
+            anuitatiViewModel.setAnuitateLiveData2(0);
+        if (asigType == 32 && variant ==3)
+            anuitatiViewModel.setAnuitateLiveData1(0);
+        if (asigType == 32 && variant == 4)
+            anuitatiViewModel.setAnuitateLiveData2(0);
 
         rezultatTV.setVisibility(View.INVISIBLE);
         sumaET.setTextColor(getActivity().getResources().getColor(R.color.silver));

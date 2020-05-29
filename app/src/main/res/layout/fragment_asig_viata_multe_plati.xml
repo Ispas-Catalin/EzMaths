@@ -22,18 +22,34 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <TextView
-        android:id="@+id/resultAsigTVmv"
+        android:id="@+id/anuitateTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rezultat"
+        android:layout_marginStart="@dimen/distance_TV_Horizontal"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:text="Valoare anuitate selectata "
         android:textColor="@color/black"
-        android:background="@drawable/result_backround"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/nAsigurareTVmv"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/nomralTV"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleAsigTVmv"
-        android:visibility="invisible"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.301" />
+
+    <TextView
+        android:id="@+id/anuitateRezTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1234.56"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        android:visibility="invisible"
+        android:background="@drawable/result_backround"
+        app:layout_constraintBottom_toBottomOf="@+id/anuitateTV"
+        app:layout_constraintStart_toEndOf="@+id/anuitateTV"
+        app:layout_constraintTop_toTopOf="@+id/anuitateTV"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginLeft="4dp"/>
 
     <TextView
         android:id="@+id/nAsigurareTVmv"

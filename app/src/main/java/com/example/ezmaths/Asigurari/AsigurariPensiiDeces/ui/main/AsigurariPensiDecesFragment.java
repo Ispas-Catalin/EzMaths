@@ -25,7 +25,7 @@ import com.example.ezmaths.R;
 import java.text.NumberFormat;
 
 
-public class AsigurariPensiDecesFragment extends Fragment {
+public class AsigurariPensiDecesFragment extends Fragment  {
 
 
     private View rootView;
@@ -60,8 +60,10 @@ public class AsigurariPensiDecesFragment extends Fragment {
 
     private NumberFormat fmt;
 
-
     private AnuitatiViewModel anuitatiViewModel;
+
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
 
@@ -76,8 +78,6 @@ public class AsigurariPensiDecesFragment extends Fragment {
 
             typeAsig = b.getInt("asig_type_version",0);
         }
-        if (b == null)
-            typeAsig = 69;
 
 
         xAsigurareTV = rootView.findViewById(R.id.xAsigurareTVpd);
@@ -169,14 +169,133 @@ public class AsigurariPensiDecesFragment extends Fragment {
         anuitate2aux = 0;
 
 
+        anuitate1RezTV = rootView.findViewById(R.id.anuitate1RezTV);
+        anuitate1TV = rootView.findViewById(R.id.anuitate1TV);
+
+        anuitate2RezTV = rootView.findViewById(R.id.anuitate2RezTV);
+        anuitate2TV = rootView.findViewById(R.id.anuitate2TV);
+
+
+        anuitatiViewModel = new ViewModelProvider(requireActivity()).get(AnuitatiViewModel.class);
+
+
+
+
+        anuitate1aux = 0;
+        anuitate2aux = 0;
+
+        if (typeAsig%10 == 1) {
+            anuitate1TV.setText("Valoare anuitate selectata ");
             anuitatiViewModel.getAnuitateLiveData1().observe(getViewLifecycleOwner(), new Observer<Double>() {
                 @Override
                 public void onChanged(Double aDouble) {
-
+                    if (aDouble == 0) {
+                        anuitate1RezTV.setVisibility(View.INVISIBLE);
+                        anuitate1TV.setVisibility(View.INVISIBLE);
+                    } else if (aDouble != 0) {
+                        anuitate1RezTV.setVisibility(View.VISIBLE);
+                        anuitate1TV.setVisibility(View.VISIBLE);
                         anuitate1RezTV.setText(fmt.format(aDouble));
+                    }
+                }
+            });
+        }
+
+
+        if (typeAsig %10 == 2) {
+
+            anuitate1TV.setText("Valoare anuitate I ");
+            anuitate2TV.setText("Valoare anuitate II");
+            anuitatiViewModel.getAnuitateLiveData1().observe(getViewLifecycleOwner(), new Observer<Double>() {
+                @Override
+                public void onChanged(Double aDouble) {
+                    anuitate1aux = aDouble;
+                    if (anuitate1aux == 0 && anuitate2aux == 0)
+                    {
+                        anuitate1TV.setVisibility(View.INVISIBLE);
+                        anuitate1RezTV.setVisibility(View.INVISIBLE);
+
+                        anuitate2TV.setVisibility(View.INVISIBLE);
+                        anuitate2RezTV.setVisibility(View.INVISIBLE);
+                    }
+                    if (anuitate1aux != 0 && anuitate2aux == 0)
+                    {
+                        anuitate1TV.setVisibility(View.VISIBLE);
+                        anuitate1RezTV.setVisibility(View.VISIBLE);
+                        anuitate1RezTV.setText(fmt.format(anuitate1aux));
+
+                        anuitate2TV.setVisibility(View.INVISIBLE);
+                        anuitate2RezTV.setVisibility(View.INVISIBLE);
+                    }
+                    if (anuitate1aux == 0 && anuitate2aux != 0)
+                    {
+                        anuitate1TV.setVisibility(View.INVISIBLE);
+                        anuitate1RezTV.setVisibility(View.INVISIBLE);
+
+                        anuitate2TV.setVisibility(View.VISIBLE);
+                        anuitate2RezTV.setVisibility(View.VISIBLE);
+                        anuitate2RezTV.setText(fmt.format(anuitate2aux));
+                    }
+                    if (anuitate1aux != 0 && anuitate2aux != 0)
+                    {
+                        anuitate1TV.setVisibility(View.VISIBLE);
+                        anuitate1RezTV.setVisibility(View.VISIBLE);
+                        anuitate1RezTV.setText(fmt.format(anuitate1aux));
+
+                        anuitate2TV.setVisibility(View.VISIBLE);
+                        anuitate2RezTV.setVisibility(View.VISIBLE);
+                        anuitate2RezTV.setText(fmt.format(anuitate2aux));
+
+                    }
+
+                }
+            });
+            anuitatiViewModel.getAnuitateLiveData2().observe(getViewLifecycleOwner(), new Observer<Double>() {
+                @Override
+                public void onChanged(Double aDouble) {
+                    anuitate2aux = aDouble;
+                    if (anuitate1aux == 0 && anuitate2aux == 0)
+                    {
+                        anuitate1TV.setVisibility(View.INVISIBLE);
+                        anuitate1RezTV.setVisibility(View.INVISIBLE);
+
+                        anuitate2TV.setVisibility(View.INVISIBLE);
+                        anuitate2RezTV.setVisibility(View.INVISIBLE);
+                    }
+                    if (anuitate1aux != 0 && anuitate2aux == 0)
+                    {
+                        anuitate1TV.setVisibility(View.VISIBLE);
+                        anuitate1RezTV.setVisibility(View.VISIBLE);
+                        anuitate1RezTV.setText(fmt.format(anuitate1aux));
+
+                        anuitate2TV.setVisibility(View.INVISIBLE);
+                        anuitate2RezTV.setVisibility(View.INVISIBLE);
+                    }
+                    if (anuitate1aux == 0 && anuitate2aux != 0)
+                    {
+                        anuitate1TV.setVisibility(View.INVISIBLE);
+                        anuitate1RezTV.setVisibility(View.INVISIBLE);
+
+                        anuitate2TV.setVisibility(View.VISIBLE);
+                        anuitate2RezTV.setVisibility(View.VISIBLE);
+                        anuitate2RezTV.setText(fmt.format(anuitate2aux));
+                    }
+                    if (anuitate1aux != 0 && anuitate2aux != 0)
+                    {
+                        anuitate1TV.setVisibility(View.VISIBLE);
+                        anuitate1RezTV.setVisibility(View.VISIBLE);
+                        anuitate1RezTV.setText(fmt.format(anuitate1aux));
+
+                        anuitate2TV.setVisibility(View.VISIBLE);
+                        anuitate2RezTV.setVisibility(View.VISIBLE);
+                        anuitate2RezTV.setText(fmt.format(anuitate2aux));
+
+                    }
+
                 }
             });
 
-
+        }
     }
+
 }

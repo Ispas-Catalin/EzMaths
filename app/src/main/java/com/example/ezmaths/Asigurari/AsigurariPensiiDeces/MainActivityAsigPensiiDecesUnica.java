@@ -46,6 +46,7 @@ public class MainActivityAsigPensiiDecesUnica extends AppCompatActivity {
                 sectionsPagerAdapter.setVersion(4);
             sectionsPagerAdapter.setAsigType(aux);
             ViewPager viewPager = findViewById(R.id.view_pager);
+            viewPager.setOffscreenPageLimit(2);
             viewPager.setAdapter(sectionsPagerAdapter);
             TabLayout tabs = findViewById(R.id.tabs);
             tabs.setupWithViewPager(viewPager);
@@ -66,6 +67,7 @@ public class MainActivityAsigPensiiDecesUnica extends AppCompatActivity {
             sectionsPagerAdapter3Tabs.setAsigType(aux);
             ViewPager viewPager = findViewById(R.id.view_pager);
             viewPager.setAdapter(sectionsPagerAdapter3Tabs);
+            viewPager.setOffscreenPageLimit(3);
             TabLayout tabs = findViewById(R.id.tabs);
             tabs.setupWithViewPager(viewPager);
         }

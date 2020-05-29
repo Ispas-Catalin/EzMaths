@@ -35,6 +35,7 @@ public class AsigurariViataMaiMultePlatiMainActivity extends AppCompatActivity {
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         if (aux == 12)
             sectionsPagerAdapter.setVersion(1);
+        sectionsPagerAdapter.setAsigType(aux);
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
