@@ -176,11 +176,11 @@ public class Rambursari1Fragment extends Fragment {
         {
             if(!nPlaticheckbox.isChecked())
             {
-                algoritmRambursariSimplu.Generare_oSinguraPlata_RateConstante(Double.parseDouble(sumaET.getText().toString()), Integer.parseInt(numarAniET.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
+                algoritmRambursariSimplu.Generare_oSinguraPlata_RateConstante(Double.parseDouble(sumaET.getText().toString()), Double.parseDouble(numarAniET.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
             }
             else if(nPlaticheckbox.isChecked())
             {
-                algoritmRambursariSimplu.Generare_MaiMultePlati_RateConstante(Double.parseDouble(sumaET.getText().toString()), Integer.parseInt(nPlatiEt.getText().toString()), Integer.parseInt(numarAniET.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
+                algoritmRambursariSimplu.Generare_MaiMultePlati_RateConstante(Double.parseDouble(sumaET.getText().toString()), Integer.parseInt(nPlatiEt.getText().toString()), Double.parseDouble(numarAniET.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
             }
         }
 
@@ -188,11 +188,11 @@ public class Rambursari1Fragment extends Fragment {
         {
             if(!nPlaticheckbox.isChecked())
             {
-                algoritmRambursariSimplu.Generare_OSinguraPlata_CoteConstante(Double.parseDouble(sumaET.getText().toString()), Integer.parseInt(numarAniET.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
+                algoritmRambursariSimplu.Generare_OSinguraPlata_CoteConstante(Double.parseDouble(sumaET.getText().toString()), Double.parseDouble(numarAniET.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
             }
             else if(nPlaticheckbox.isChecked())
             {
-                algoritmRambursariSimplu.Generare_MaiMultePlatiPeAn_CoteConstante(Double.parseDouble(sumaET.getText().toString()), Integer.parseInt(nPlatiEt.getText().toString()), Integer.parseInt(numarAniET.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
+                algoritmRambursariSimplu.Generare_MaiMultePlatiPeAn_CoteConstante(Double.parseDouble(sumaET.getText().toString()), Double.parseDouble(numarAniET.getText().toString()), Integer.parseInt(nPlatiEt.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
             }
         }
     }

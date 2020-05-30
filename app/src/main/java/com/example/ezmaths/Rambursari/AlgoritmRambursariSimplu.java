@@ -19,8 +19,54 @@ public class AlgoritmRambursariSimplu {
     double[] Qk = new double[100];
     double[] rk = new double[100];
 
+    // Declarare lista string acumulare
+    private List<String> K_acumulare = new ArrayList<>();
+    private List<String> rk_acumulare = new ArrayList<>();
+    private List<String> SinK_acumulare = new ArrayList<>();
+    private List<String> SfinK_acumulare = new ArrayList<>();
+    private List<String> Dk_acumulare = new ArrayList<>();
+    // Declarare vectori acumulare
+    double[] rk_a = new double[100];
+    double[] K_a = new double[100];
+    double[] SinK_a = new double[100];
+    double[] Dk_a = new double[100];
+    double[] SfinK_a = new double[100];
 
-    private void Incarcare(double Rk[], double Dk[], double Qk[],double rk[], int k)
+    private void Incarcare_Acumulare(int k)
+    {
+        if(K_acumulare!= null)
+            K_acumulare.clear();
+        if(rk_acumulare != null)
+            rk_acumulare.clear();
+        if(SfinK_acumulare != null)
+            SfinK_acumulare.clear();
+        if(SfinK_acumulare != null)
+            SinK_acumulare.clear();
+        if(Dk_acumulare != null)
+            Dk_acumulare.clear();
+
+        K_acumulare.add("K");           //loc 1 in ordinea de afisare
+        rk_acumulare.add("rk");         //loc 2 in ordinea de afisare
+        Dk_acumulare.add("Dk");         //loc 3 in ordinea de afisare
+        SinK_acumulare.add("SinK");     //loc 4 in ordinea de afisare
+        SfinK_acumulare.add("SfinK");   //loc 5 in ordinea de afisare
+
+
+
+        format = NumberFormat.getInstance();
+        format.setMaximumFractionDigits(2);
+        for(int i = 1; i <= k  ; i ++)
+        {
+            K_acumulare.add(Integer.toString(i));
+            rk_acumulare.add(format.format(rk_a[i]));
+            Dk_acumulare.add(format.format(Dk_a[i]));
+            SinK_acumulare.add(format.format(SinK_a[i]));
+            SfinK_acumulare.add(format.format(SfinK_a[i]));
+        }
+
+    }
+
+    private void Incarcare(double Rk[], double Dk[], double Qk[],double rk[], double k)
     {
         if(KRambursari!= null)
             KRambursari.clear();
@@ -74,7 +120,7 @@ public class AlgoritmRambursariSimplu {
     public List<String> getQKRambursari(){return QKRambursari;}
 
 
-    double puterea( double numar, int pow)
+    double puterea( double numar, double pow)
     {
         double rez  = 1;
         for(int i = 1 ; i<= pow; i++)
@@ -83,13 +129,13 @@ public class AlgoritmRambursariSimplu {
         }
         return rez;
     }
-    double rata_constanta(double dobanda, int numarPlatiPeAn, int numarAni, double suma )
+    double rata_constanta(double dobanda, int numarPlatiPeAn, double numarAni, double suma )
     {
         double dobanda_2 = ((dobanda / 100)/numarPlatiPeAn);
         double rata = (dobanda_2 * suma) / ( 1 - ( 1 / puterea(1+dobanda_2 , numarPlatiPeAn * numarAni)) );
         return rata;
     }
-    public void Generare_MaiMultePlati_RateConstante(double suma, int numarPlatiPeAn, int numarAni, double dobanda)
+    public void Generare_MaiMultePlati_RateConstante(double suma, int numarPlatiPeAn, double numarAni, double dobanda)
     {
         double dobanda_2;
         dobanda_2 = dobanda / 100 / numarPlatiPeAn;
@@ -97,7 +143,7 @@ public class AlgoritmRambursariSimplu {
         double rata;
         rata = rata_constanta(dobanda,numarPlatiPeAn,numarAni,suma);
 
-        int k;
+        double k;
         k = numarAni * numarPlatiPeAn;
 
         for(int i = 1; i <=k ; i++)
@@ -116,7 +162,7 @@ public class AlgoritmRambursariSimplu {
         Incarcare(Rk,Dk,Qk,rk,k);
 
     }
-    public void Generare_oSinguraPlata_RateConstante(double suma, int numarAni, double dobanda)
+    public void Generare_oSinguraPlata_RateConstante(double suma, double numarAni, double dobanda)
     {
         double dobanda_2;
         dobanda_2 = dobanda / 100;
@@ -124,7 +170,7 @@ public class AlgoritmRambursariSimplu {
         double rata;
         rata  =rata_constanta(dobanda, 1, numarAni, suma);
 
-        int k;
+        double k;
         k = numarAni;
 
         for(int i = 1; i<=k ; i++)
@@ -143,12 +189,12 @@ public class AlgoritmRambursariSimplu {
         }
         Incarcare(Rk,Dk,Qk,rk,k);
     }
-    public void Generare_MaiMultePlatiPeAn_CoteConstante(double suma, int numarAni, int numarPlatiPeAn, double dobanda)
+    public void Generare_MaiMultePlatiPeAn_CoteConstante(double suma, double numarAni, int numarPlatiPeAn, double dobanda)
     {
         double dobanda_2;
         dobanda_2 = dobanda / 100 / numarPlatiPeAn;
 
-        int k;
+        double k;
         k = numarAni * numarPlatiPeAn;
 
         double cota  = suma / k;
@@ -169,12 +215,12 @@ public class AlgoritmRambursariSimplu {
         Incarcare(Rk,Dk,Qk,rk,k);
 
     }
-    public void Generare_OSinguraPlata_CoteConstante(double suma, int numarAni, double dobanda)
+    public void Generare_OSinguraPlata_CoteConstante(double suma, double numarAni, double dobanda)
     {
         double dobanda_2;
         dobanda_2 = dobanda / 100;
 
-        int k;
+        double k;
         k = numarAni;
 
         double cota  = suma / k;
@@ -194,6 +240,48 @@ public class AlgoritmRambursariSimplu {
         }
         Incarcare(Rk,Dk,Qk,rk,k);
 
+    }
+    private double pow(double n, double a)
+    {
+        double result = 1;
+        for(int i = 0 ; i < a; i++)
+            result = result * n;
+        return result;
+    }
+    private double rata_acumulare(double S, double dobanda, double n, double nrplati)
+    {
+        dobanda = dobanda / nrplati;
+        double dobanda_u = 1 + dobanda;
+        dobanda_u = pow(dobanda_u , n * nrplati);
+        return  (S * dobanda) / (dobanda_u - 1);
+
+    }
+    void generare_fond_acumulare(double S, double dobanda, int nr_ani, int nr_plati_per_an)
+    {
+        dobanda = dobanda / nr_plati_per_an;
+        int k  = nr_ani * nr_plati_per_an; // mereu va fi un int
+        double rata = rata_acumulare(S,dobanda,nr_ani,nr_plati_per_an);
+        double dobanda_u = 1 + dobanda;
+/*
+        K_acumulare.add(Integer.toString(i));
+        rk_acumulare.add(format.format(rk_a[i]));
+        Dk_acumulare.add(format.format(Dk_a[i]));
+        SinK_acumulare.add(format.format(SinK_a[i]));
+        SfinK_acumulare.add(format.format(SfinK_a[i]));
+  */
+        for(int i =1; i <= k; i++ )
+            rk_a[i] = rata;
+        SfinK_a[1] = 0;
+        SfinK_a[1] = rata;
+        Dk_a[1] = 0;
+        for(int i = 2; i <= k ; i++)
+        {
+            SinK_a[i] = SinK_a[i-1] * dobanda_u + rata;
+            Dk_a[i] = SinK_a[i] * dobanda;
+            SfinK_a[i] = SfinK_a[i-1] + SinK_a[i] + Dk_a[i];
+        }
+
+        Incarcare_Acumulare(k);
     }
 
 }
