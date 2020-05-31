@@ -278,6 +278,7 @@ public class AlgoritmRambursariSimplu {
 
     public void Generare_Plata_Dobanzilor(double S, double nrAni, double nrPlatiPeAn,double dobanda)
     {
+        dobanda = dobanda/100;
         double k = nrAni * nrPlatiPeAn;
         dobanda = dobanda / nrPlatiPeAn;
         for(int i = 1; i <= k; i++)
