@@ -17,6 +17,35 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintVertical_bias="0.3"/>
 
+
+    <TextView
+        android:id="@+id/SumaTVfond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginBottom="@dimen/distance_TV_Vertical"
+        android:gravity="center"
+        android:text="Suma"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/dobandaTVfond" />
+
+    <EditText
+        android:id="@+id/SumaEtfond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:gravity="center"
+        android:hint="s"
+        android:inputType="number"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/SumaTVfond"
+        app:layout_constraintStart_toEndOf="@+id/SumaTVfond"
+        app:layout_constraintTop_toTopOf="@+id/SumaTVfond"
+        app:layout_constraintVertical_bias="0.5" />
+
     <TextView
         android:id="@+id/dobandaTVfond"
         android:layout_width="wrap_content"
