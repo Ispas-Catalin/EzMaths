@@ -296,7 +296,7 @@
         android:layout_marginLeft="4dp"
         android:gravity="center"
         android:hint="i"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textSize="@dimen/nomralTV"
         app:layout_constraintBottom_toBottomOf="@+id/numarLuniTVacum"
         app:layout_constraintStart_toEndOf="@+id/numarLuniTVacum"
