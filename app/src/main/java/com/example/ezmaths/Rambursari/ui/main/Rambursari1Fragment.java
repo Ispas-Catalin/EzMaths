@@ -180,11 +180,74 @@ public class Rambursari1Fragment extends Fragment {
                 Intent intent = new Intent(getActivity(), ActivityRambursariTable.class);
 
                 if(okToast()) {
+                    if (type == 0 || type == 2) {
+                        if (!acumulareCheckBox.isChecked()) {
+                            KRambursari = algoritmRambursariSimplu.getKRambursari();
+                            RKRambursari = algoritmRambursariSimplu.getRKRambursari();
+                            DKRambursari = algoritmRambursariSimplu.getDKRambursari();
+                            OmegaKRambursari = algoritmRambursariSimplu.getOmegaKRambursari();
+                            QKRambursari = algoritmRambursariSimplu.getQKRambursari();
+
+                            intent.putStringArrayListExtra(KRAMBURSARI_KEY, (ArrayList<String>) KRambursari);
+                            intent.putStringArrayListExtra(RKAMBURSARI_KEY, (ArrayList<String>) RKRambursari);
+                            intent.putStringArrayListExtra(DKRAMBURSARI_KEY, (ArrayList<String>) DKRambursari);
+                            intent.putStringArrayListExtra(OMEGAKRAMBURSARI_KEY, (ArrayList<String>) OmegaKRambursari);
+                            intent.putStringArrayListExtra(QKRAMBURSARI_KEY, (ArrayList<String>) QKRambursari);
+
+
+                            startActivity(intent);
+                        } else {
+                            KRambursari = algoritmRambursariSimplu.getKRambursari();
+                            KRambursari.addAll(algoritmRambursariSimplu.getK_acumulare());
+
+                            RKRambursari = algoritmRambursariSimplu.getRKRambursari();
+                            RKRambursari.addAll(algoritmRambursariSimplu.getrk_acumulare());
+
+                            DKRambursari = algoritmRambursariSimplu.getDKRambursari();
+                            DKRambursari.addAll(algoritmRambursariSimplu.getSinK_acumulare());
+
+                            OmegaKRambursari = algoritmRambursariSimplu.getOmegaKRambursari();
+                            OmegaKRambursari.addAll(algoritmRambursariSimplu.getSfinK_acumulare());
+
+                            QKRambursari = algoritmRambursariSimplu.getQKRambursari();
+                            QKRambursari.addAll(algoritmRambursariSimplu.getDK_acumulare());
+
+
+                            intent.putStringArrayListExtra(KRAMBURSARI_KEY, (ArrayList<String>) KRambursari);
+                            intent.putStringArrayListExtra(RKAMBURSARI_KEY, (ArrayList<String>) RKRambursari);
+                            intent.putStringArrayListExtra(DKRAMBURSARI_KEY, (ArrayList<String>) DKRambursari);
+                            intent.putStringArrayListExtra(OMEGAKRAMBURSARI_KEY, (ArrayList<String>) OmegaKRambursari);
+                            intent.putStringArrayListExtra(QKRAMBURSARI_KEY, (ArrayList<String>) QKRambursari);
+
+                            startActivity(intent);
+                        }
+                    }
+                }
+                if (type == 1)
+                {
                     KRambursari = algoritmRambursariSimplu.getKRambursari();
                     RKRambursari = algoritmRambursariSimplu.getRKRambursari();
                     DKRambursari = algoritmRambursariSimplu.getDKRambursari();
                     OmegaKRambursari = algoritmRambursariSimplu.getOmegaKRambursari();
                     QKRambursari = algoritmRambursariSimplu.getQKRambursari();
+
+                    intent.putStringArrayListExtra(KRAMBURSARI_KEY, (ArrayList<String>) KRambursari);
+                    intent.putStringArrayListExtra(RKAMBURSARI_KEY, (ArrayList<String>) RKRambursari);
+                    intent.putStringArrayListExtra(DKRAMBURSARI_KEY, (ArrayList<String>) DKRambursari);
+                    intent.putStringArrayListExtra(OMEGAKRAMBURSARI_KEY, (ArrayList<String>) OmegaKRambursari);
+                    intent.putStringArrayListExtra(QKRAMBURSARI_KEY, (ArrayList<String>) QKRambursari);
+
+
+                    startActivity(intent);
+                }
+
+                if (type == 3)
+                {
+                    KRambursari = algoritmRambursariSimplu.getK_acumulare();
+                    RKRambursari = algoritmRambursariSimplu.getrk_acumulare();
+                    DKRambursari = algoritmRambursariSimplu.getSinK_acumulare();
+                    OmegaKRambursari = algoritmRambursariSimplu.getSfinK_acumulare();
+                    QKRambursari = algoritmRambursariSimplu.getDK_acumulare();
 
                     intent.putStringArrayListExtra(KRAMBURSARI_KEY, (ArrayList<String>) KRambursari);
                     intent.putStringArrayListExtra(RKAMBURSARI_KEY, (ArrayList<String>) RKRambursari);
@@ -203,13 +266,164 @@ public class Rambursari1Fragment extends Fragment {
         return rootView;
     }
 
-    private void Calculate ()
-    {
+    private void Calculate () {
+        if (type == 0)
+        {
+            if(!nPlaticheckbox.isChecked())
+            {
+                algoritmRambursariSimplu.Generare_oSinguraPlata_RateConstante(Double.parseDouble(sumaET.getText().toString()), Double.parseDouble(numarLuniET.getText().toString())/12, Double.parseDouble(dobandaET.getText().toString()));
+            }
+            else if(nPlaticheckbox.isChecked())
+            {
+                algoritmRambursariSimplu.Generare_MaiMultePlati_RateConstante(Double.parseDouble(sumaET.getText().toString()), Integer.parseInt(nPlatiEt.getText().toString()), Double.parseDouble(numarLuniET.getText().toString())/12, Double.parseDouble(dobandaET.getText().toString()));
+            }
+            if (acumulareCheckBox.isChecked())
+            {
+                if (!nPlaticheckBoxacum.isChecked())
+                {
+                    algoritmRambursariSimplu.generare_fond_acumulare_rateConstante(Double.parseDouble(dobandaETacum.getText().toString()), Double.parseDouble(numarLuniETacum.getText().toString())/12, 1);
+                }
+                else if (nPlaticheckBoxacum.isChecked())
+                {
+                    algoritmRambursariSimplu.generare_fond_acumulare_rateConstante(Double.parseDouble(dobandaETacum.getText().toString()), Double.parseDouble(numarLuniETacum.getText().toString())/12, Double.parseDouble(nPlatiETacum.getText().toString()));
+                }
+            }
+        }
+
+        if (type == 1)
+        {
+            if(!nPlaticheckbox.isChecked())
+            {
+                algoritmRambursariSimplu.Generare_OSinguraPlata_CoteConstante(Double.parseDouble(sumaET.getText().toString()), Double.parseDouble(numarLuniET.getText().toString())/12, Double.parseDouble(dobandaET.getText().toString()));
+            }
+            else if(nPlaticheckbox.isChecked())
+            {
+                algoritmRambursariSimplu.Generare_MaiMultePlatiPeAn_CoteConstante(Double.parseDouble(sumaET.getText().toString()), Double.parseDouble(numarLuniET.getText().toString())/12, Integer.parseInt(nPlatiEt.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
+            }
+        }
+
+        if (type == 2)
+        {
+            if (!nPlaticheckbox.isChecked())
+            {
+                algoritmRambursariSimplu.Generare_Plata_Dobanzilor(Double.parseDouble(sumaET.getText().toString()),Double.parseDouble(numarLuniET.getText().toString())/12,1,Double.parseDouble(dobandaET.getText().toString()));
+            }
+            else if (nPlaticheckbox.isChecked())
+            {
+                algoritmRambursariSimplu.Generare_Plata_Dobanzilor(Double.parseDouble(sumaET.getText().toString()),Double.parseDouble(numarLuniET.getText().toString())/12,Double.parseDouble(nPlatiEt.getText().toString()),Double.parseDouble(dobandaET.getText().toString()));
+            }
+            if (acumulareCheckBox.isChecked())
+            {
+                if (!nPlaticheckBoxacum.isChecked())
+                {
+                    algoritmRambursariSimplu.generare_fond_acumulare(Double.parseDouble(sumaET.getText().toString()),Double.parseDouble(dobandaETacum.getText().toString()), Double.parseDouble(numarLuniETacum.getText().toString())/12,1);
+                }
+                else if (nPlaticheckBoxacum.isChecked())
+                {
+                    algoritmRambursariSimplu.generare_fond_acumulare(Double.parseDouble(sumaET.getText().toString()),Double.parseDouble(dobandaETacum.getText().toString()), Double.parseDouble(numarLuniETacum.getText().toString())/12,Double.parseDouble(nPlatiETacum.getText().toString()));
+                }
+            }
+        }
+
+        if (type == 3)
+        {
+            if (!nPlaticheckBoxacum.isChecked())
+            {
+                algoritmRambursariSimplu.generare_fond_acumulare_INTEGRAL(Double.parseDouble(sumaET.getText().toString()),Double.parseDouble(dobandaETacum.getText().toString()),Double.parseDouble(numarLuniETacum.getText().toString())/12,1 ,Double.parseDouble(dobandaET.getText().toString()), Double.parseDouble(numarLuniET.getText().toString())/12);
+            }
+            else if (nPlaticheckBoxacum.isChecked())
+            {
+                algoritmRambursariSimplu.generare_fond_acumulare_INTEGRAL(Double.parseDouble(sumaET.getText().toString()),Double.parseDouble(dobandaETacum.getText().toString()),Double.parseDouble(numarLuniETacum.getText().toString())/12,Double.parseDouble(nPlatiETacum.getText().toString()) ,Double.parseDouble(dobandaET.getText().toString()), Double.parseDouble(numarLuniET.getText().toString())/12);
+            }
+        }
 
     }
 
     private Boolean okToast () {
-        return false;
+        boolean ok;
+        ok = true;
+        if (type == 0)
+        {
+            if(!nPlaticheckbox.isChecked())
+            {
+                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty())
+                    ok = false;
+            }
+            else if(nPlaticheckbox.isChecked())
+            {
+                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty() || nPlatiEt.getText().toString().isEmpty())
+                    ok = false;
+            }
+            if (acumulareCheckBox.isChecked())
+            {
+                if (!nPlaticheckBoxacum.isChecked())
+                {
+                    if(dobandaETacum.getText().toString().isEmpty() || numarLuniETacum.getText().toString().isEmpty())
+                       ok = false;
+                }
+                else if (nPlaticheckBoxacum.isChecked())
+                {
+                    if(dobandaETacum.getText().toString().isEmpty() || numarLuniETacum.getText().toString().isEmpty() || nPlatiETacum.getText().toString().isEmpty())
+                        ok = false;
+                }
+            }
+
+        }
+        if (type == 1)
+        {
+            if(!nPlaticheckbox.isChecked())
+            {
+                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty())
+                    ok = false;
+
+            }
+            else if(nPlaticheckbox.isChecked())
+            {
+                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty() || nPlatiEt.getText().toString().isEmpty())
+                    ok = false;
+            }
+        }
+        if (type == 2)
+        {
+            if(!nPlaticheckbox.isChecked())
+            {
+                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty())
+                    ok = false;
+            }
+            else if(nPlaticheckbox.isChecked())
+            {
+                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty() || nPlatiEt.getText().toString().isEmpty())
+                    ok = false;
+            }
+            if (acumulareCheckBox.isChecked())
+            {
+                if (!nPlaticheckBoxacum.isChecked())
+                {
+                    if(dobandaETacum.getText().toString().isEmpty() || numarLuniETacum.getText().toString().isEmpty())
+                        ok = false;
+                }
+                else if (nPlaticheckBoxacum.isChecked())
+                {
+                    if(dobandaETacum.getText().toString().isEmpty() || numarLuniETacum.getText().toString().isEmpty() || nPlatiETacum.getText().toString().isEmpty())
+                        ok = false;
+                }
+            }
+        }
+        if (type == 3)
+        {
+            if (!nPlaticheckBoxacum.isChecked())
+            {
+               if (sumaET.getText().toString().isEmpty() || dobandaETacum.getText().toString().isEmpty() || numarLuniETacum.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty());
+                ok=false;
+            }
+            else if (nPlaticheckBoxacum.isChecked())
+            {
+                if (sumaET.getText().toString().isEmpty() || nPlatiETacum.getText().toString().isEmpty() || dobandaETacum.getText().toString().isEmpty() || numarLuniETacum.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty());
+                ok=false;
+            }
+        }
+
+        return ok;
     }
 
     private void TransformUI(int type)
@@ -242,6 +456,14 @@ public class Rambursari1Fragment extends Fragment {
             numarLuniETacum.setVisibility(View.VISIBLE);
             numarLuniETacum.setEnabled(true);
 
+            dobandaET.setText("");
+            nPlatiEt.setText("");
+            nPlatiETacum.setText("");
+            numarLuniET.setText("");
+            numarLuniETacum.setText("");
+            dobandaETacum.setText("");
+            sumaET.setText("");
+
             acumulareTransform(false);
 
         }
@@ -273,6 +495,14 @@ public class Rambursari1Fragment extends Fragment {
             numarLuniETacum.setVisibility(View.INVISIBLE);
             numarLuniETacum.setEnabled(false);
 
+            dobandaET.setText("");
+            nPlatiEt.setText("");
+            nPlatiETacum.setText("");
+            numarLuniET.setText("");
+            numarLuniETacum.setText("");
+            dobandaETacum.setText("");
+            sumaET.setText("");
+
         }
         else if (type == 2)
         {
@@ -301,6 +531,14 @@ public class Rambursari1Fragment extends Fragment {
             numarLuniTVacum.setVisibility(View.VISIBLE);
             numarLuniETacum.setVisibility(View.VISIBLE);
             numarLuniETacum.setEnabled(true);
+
+            dobandaET.setText("");
+            nPlatiEt.setText("");
+            nPlatiETacum.setText("");
+            numarLuniET.setText("");
+            numarLuniETacum.setText("");
+            dobandaETacum.setText("");
+            sumaET.setText("");
 
             acumulareTransform(false);
 
@@ -332,6 +570,14 @@ public class Rambursari1Fragment extends Fragment {
             numarLuniTVacum.setVisibility(View.VISIBLE);
             numarLuniETacum.setVisibility(View.VISIBLE);
             numarLuniETacum.setEnabled(true);
+
+            dobandaET.setText("");
+            nPlatiEt.setText("");
+            nPlatiETacum.setText("");
+            numarLuniET.setText("");
+            numarLuniETacum.setText("");
+            dobandaETacum.setText("");
+            sumaET.setText("");
 
             acumulareTransform(true);
         }
