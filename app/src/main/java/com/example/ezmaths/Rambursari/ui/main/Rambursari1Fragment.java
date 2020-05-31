@@ -7,9 +7,12 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,11 +30,6 @@ import java.util.Objects;
 
 public class Rambursari1Fragment extends Fragment {
 
-    private TextView rConstanteTV;
-    private TextView cConstanteTV;
-    private CheckBox checkboxRC;
-    private CheckBox checkboxCC;
-
     private TextView sumaTV;
     private EditText sumaET;
 
@@ -41,10 +39,18 @@ public class Rambursari1Fragment extends Fragment {
     private EditText nPlatiEt;
     private CheckBox nPlaticheckbox;
 
-    private TextView numarAniTV;
-    private EditText numarAniET;
+    private TextView numarLuniTV;
+    private EditText numarLuniET;
 
     private Button rCalculateBtn;
+
+
+    private TextView acumulareTitle, acumulareTitleTopAux, acumulareTitleBottomAux;
+
+    private TextView dobandaTVacum, nPlatiTVacum, numarLuniTVacum;
+    private EditText dobandaETacum, nPlatiETacum, numarLuniETacum;
+
+    private CheckBox nPlaticheckBoxacum, acumulareCheckBox;
 
     public static final String KRAMBURSARI_KEY = "krambursari_key";
     public static final String RKAMBURSARI_KEY = "rkrambursari_key";
@@ -53,9 +59,10 @@ public class Rambursari1Fragment extends Fragment {
     public static final String OMEGAKRAMBURSARI_KEY = "omegakrambursari_key";
 
 
-    AlgoritmRambursariSimplu algoritmRambursariSimplu = new AlgoritmRambursariSimplu();
+    private AlgoritmRambursariSimplu algoritmRambursariSimplu = new AlgoritmRambursariSimplu();
 
-    int ok;
+    private int ok;
+    private int type;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -63,10 +70,6 @@ public class Rambursari1Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_rambursari1, container, false);
 
-        rConstanteTV = rootView.findViewById(R.id.rConstanteTV);
-        cConstanteTV = rootView.findViewById(R.id.cConstanteTV);
-        checkboxRC = rootView.findViewById(R.id.checkboxRC);
-        checkboxCC = rootView.findViewById(R.id.checkboxCC);
 
         sumaTV = rootView.findViewById(R.id.sumarTV);
         sumaET = rootView.findViewById(R.id.sumarET);
@@ -77,46 +80,76 @@ public class Rambursari1Fragment extends Fragment {
         nPlatiEt = rootView.findViewById(R.id.nPlatiEt);
         nPlaticheckbox = rootView.findViewById(R.id.nPlaticheckbox);
 
-        numarAniET = rootView.findViewById(R.id.numariAniET);
-        numarAniTV = rootView.findViewById(R.id.numarAniTV);
+        numarLuniET = rootView.findViewById(R.id.numariLuniET);
+        numarLuniTV = rootView.findViewById(R.id.numarLuniTV);
 
         rCalculateBtn = rootView.findViewById(R.id.rCalculateBtn);
 
+        acumulareTitle = rootView.findViewById(R.id.acumulareTitle);
+        acumulareTitleTopAux = rootView.findViewById(R.id.middleAux);
+        acumulareTitleBottomAux = rootView.findViewById(R.id.acumulareAux);
+
+        dobandaTVacum = rootView.findViewById(R.id.dobandaTVacum);
+        dobandaETacum = rootView.findViewById(R.id.dobandaETacum);
+        nPlatiTVacum = rootView.findViewById(R.id.nPlatiTVacum);
+        nPlatiETacum = rootView.findViewById(R.id.nPlatiEtacum);
+        nPlaticheckBoxacum = rootView.findViewById(R.id.nPlatiCheckboxacum);
+
+        numarLuniETacum = rootView.findViewById(R.id.numariLuniETacum);
+        numarLuniTVacum = rootView.findViewById(R.id.numarLuniTVacum);
+
+        acumulareCheckBox = rootView.findViewById(R.id.acumulareCheckBox);
+
          ok = 0;
-
-         checkboxRC.setChecked(true);
-
-        checkboxRC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkboxCC.setChecked(false);
-            }
-        });
-
-        checkboxCC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkboxRC.setChecked(false);
-            }
-        });
 
         nPlaticheckbox.setChecked(false);
         nPlatiEt.setEnabled(false);
         nPlatiTV.setTextColor(Objects.requireNonNull(getActivity()).getResources().getColor(R.color.silver));
 
+        final String [] rambursari = {
+                "Rate constante",
+                "Cote constante",
+                "Plata dobanzilor",
+                "Plata integrala la final"
+        };
+
+        Spinner spinner = (Spinner) rootView.findViewById(R.id.spinnerRambursari);
+        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(Objects.requireNonNull(this.getActivity()), android.R.layout.simple_spinner_item, rambursari);
+        LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner.setAdapter(LTRadapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                type = position;
+                TransformUI(type);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        acumulareCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                acumulareTransform(acumulareCheckBox.isChecked());
+            }
+        });
+
         nPlaticheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nPlaticheckbox.isChecked())
-                {
-                    nPlatiEt.setEnabled(true);
-                    nPlatiTV.setTextColor(Objects.requireNonNull(getActivity()).getResources().getColor(R.color.black));
-                }
-                else if (!nPlaticheckbox.isChecked())
-                {
-                    nPlatiEt.setEnabled(false);
-                    nPlatiTV.setTextColor(Objects.requireNonNull(getActivity()).getResources().getColor(R.color.silver));
-                }
+                nPlatiTransform();
+            }
+        });
+
+        nPlaticheckBoxacum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nPlatiAcumTransform();
             }
         });
 
@@ -172,65 +205,200 @@ public class Rambursari1Fragment extends Fragment {
 
     private void Calculate ()
     {
-        if (checkboxRC.isChecked())
+
+    }
+
+    private Boolean okToast () {
+        return false;
+    }
+
+    private void TransformUI(int type)
+    {
+        if (type == 0)
         {
-            if(!nPlaticheckbox.isChecked())
-            {
-                algoritmRambursariSimplu.Generare_oSinguraPlata_RateConstante(Double.parseDouble(sumaET.getText().toString()), Integer.parseInt(numarAniET.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
-            }
-            else if(nPlaticheckbox.isChecked())
-            {
-                algoritmRambursariSimplu.Generare_MaiMultePlati_RateConstante(Double.parseDouble(sumaET.getText().toString()), Integer.parseInt(nPlatiEt.getText().toString()), Integer.parseInt(numarAniET.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
-            }
+            nPlatiTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            nPlatiEt.setEnabled(true);
+            nPlaticheckbox.setEnabled(true);
+            nPlaticheckbox.setVisibility(View.VISIBLE);
+
+            acumulareTitle.setVisibility(View.VISIBLE);
+            acumulareTitleTopAux.setVisibility(View.VISIBLE);
+            acumulareTitleBottomAux.setVisibility(View.VISIBLE);
+            acumulareCheckBox.setVisibility(View.VISIBLE);
+            acumulareCheckBox.setChecked(false);
+            acumulareCheckBox.setEnabled(true);
+
+            dobandaTVacum.setVisibility(View.VISIBLE);
+            dobandaETacum.setVisibility(View.VISIBLE);
+            dobandaETacum.setEnabled(true);
+
+            nPlatiTVacum.setVisibility(View.VISIBLE);
+            nPlatiETacum.setVisibility(View.VISIBLE);
+            nPlatiETacum.setEnabled(true);
+            nPlaticheckBoxacum.setVisibility(View.VISIBLE);
+            nPlaticheckBoxacum.setEnabled(true);
+
+            numarLuniTVacum.setVisibility(View.VISIBLE);
+            numarLuniETacum.setVisibility(View.VISIBLE);
+            numarLuniETacum.setEnabled(true);
+
+            acumulareTransform(false);
+
+        }
+        else if (type == 1)
+        {
+            nPlatiTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            nPlatiEt.setEnabled(true);
+            nPlaticheckbox.setEnabled(true);
+            nPlaticheckbox.setVisibility(View.VISIBLE);
+
+            acumulareTitle.setVisibility(View.INVISIBLE);
+            acumulareTitleTopAux.setVisibility(View.INVISIBLE);
+            acumulareTitleBottomAux.setVisibility(View.INVISIBLE);
+            acumulareCheckBox.setVisibility(View.INVISIBLE);
+            acumulareCheckBox.setChecked(false);
+            acumulareCheckBox.setEnabled(false);
+
+            dobandaTVacum.setVisibility(View.INVISIBLE);
+            dobandaETacum.setVisibility(View.INVISIBLE);
+            dobandaETacum.setEnabled(false);
+
+            nPlatiTVacum.setVisibility(View.INVISIBLE);
+            nPlatiETacum.setVisibility(View.INVISIBLE);
+            nPlatiETacum.setEnabled(false);
+            nPlaticheckBoxacum.setVisibility(View.INVISIBLE);
+            nPlaticheckBoxacum.setEnabled(false);
+
+            numarLuniTVacum.setVisibility(View.INVISIBLE);
+            numarLuniETacum.setVisibility(View.INVISIBLE);
+            numarLuniETacum.setEnabled(false);
+
+        }
+        else if (type == 2)
+        {
+            nPlatiTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            nPlatiEt.setEnabled(true);
+            nPlaticheckbox.setEnabled(true);
+            nPlaticheckbox.setVisibility(View.VISIBLE);
+
+            acumulareTitle.setVisibility(View.VISIBLE);
+            acumulareTitleTopAux.setVisibility(View.VISIBLE);
+            acumulareTitleBottomAux.setVisibility(View.VISIBLE);
+            acumulareCheckBox.setVisibility(View.VISIBLE);
+            acumulareCheckBox.setChecked(false);
+            acumulareCheckBox.setEnabled(true);
+
+            dobandaTVacum.setVisibility(View.VISIBLE);
+            dobandaETacum.setVisibility(View.VISIBLE);
+            dobandaETacum.setEnabled(true);
+
+            nPlatiTVacum.setVisibility(View.VISIBLE);
+            nPlatiETacum.setVisibility(View.VISIBLE);
+            nPlatiETacum.setEnabled(true);
+            nPlaticheckBoxacum.setVisibility(View.VISIBLE);
+            nPlaticheckBoxacum.setEnabled(true);
+
+            numarLuniTVacum.setVisibility(View.VISIBLE);
+            numarLuniETacum.setVisibility(View.VISIBLE);
+            numarLuniETacum.setEnabled(true);
+
+            acumulareTransform(false);
+
+        }
+        else if (type == 3)
+        {
+            nPlatiTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            nPlatiEt.setEnabled(false);
+            nPlaticheckbox.setEnabled(false);
+            nPlaticheckbox.setVisibility(View.INVISIBLE);
+
+            acumulareTitle.setVisibility(View.VISIBLE);
+            acumulareTitleTopAux.setVisibility(View.VISIBLE);
+            acumulareTitleBottomAux.setVisibility(View.VISIBLE);
+            acumulareCheckBox.setVisibility(View.INVISIBLE);
+            acumulareCheckBox.setChecked(true);
+            acumulareCheckBox.setEnabled(false);
+
+            dobandaTVacum.setVisibility(View.VISIBLE);
+            dobandaETacum.setVisibility(View.VISIBLE);
+            dobandaETacum.setEnabled(true);
+
+            nPlatiTVacum.setVisibility(View.VISIBLE);
+            nPlatiETacum.setVisibility(View.VISIBLE);
+            nPlatiETacum.setEnabled(true);
+            nPlaticheckBoxacum.setVisibility(View.VISIBLE);
+            nPlaticheckBoxacum.setEnabled(true);
+
+            numarLuniTVacum.setVisibility(View.VISIBLE);
+            numarLuniETacum.setVisibility(View.VISIBLE);
+            numarLuniETacum.setEnabled(true);
+
+            acumulareTransform(true);
         }
 
-        else if (checkboxCC.isChecked())
+        nPlatiTransform();
+        nPlatiAcumTransform();
+    }
+
+    private void acumulareTransform(boolean isChecked)
+    {
+        if (!isChecked)
         {
-            if(!nPlaticheckbox.isChecked())
-            {
-                algoritmRambursariSimplu.Generare_OSinguraPlata_CoteConstante(Double.parseDouble(sumaET.getText().toString()), Integer.parseInt(numarAniET.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
-            }
-            else if(nPlaticheckbox.isChecked())
-            {
-                algoritmRambursariSimplu.Generare_MaiMultePlatiPeAn_CoteConstante(Double.parseDouble(sumaET.getText().toString()), Integer.parseInt(nPlatiEt.getText().toString()), Integer.parseInt(numarAniET.getText().toString()), Double.parseDouble(dobandaET.getText().toString()));
-            }
+           dobandaTVacum.setTextColor(getActivity().getResources().getColor(R.color.silver));
+           dobandaETacum.setEnabled(false);
+
+           nPlatiTVacum.setTextColor(getActivity().getResources().getColor(R.color.silver));
+           nPlatiETacum.setEnabled(false);
+           nPlaticheckBoxacum.setEnabled(false);
+           nPlaticheckBoxacum.setChecked(false);
+
+           numarLuniTVacum.setTextColor(getActivity().getResources().getColor(R.color.silver));
+           numarLuniETacum.setEnabled(false);
+           nPlatiAcumTransform();
+        }
+        else {
+            dobandaTVacum.setTextColor(getActivity().getResources().getColor(R.color.black));
+            dobandaETacum.setEnabled(true);
+
+            nPlaticheckBoxacum.setEnabled(true);
+            nPlaticheckBoxacum.setChecked(false);
+            nPlatiAcumTransform();
+
+            numarLuniTVacum.setTextColor(getActivity().getResources().getColor(R.color.black));
+            numarLuniETacum.setEnabled(true);
         }
     }
 
-    private Boolean okToast ()
+
+    private void nPlatiTransform()
     {
-        if (checkboxRC.isChecked())
+        if (nPlaticheckbox.isChecked())
         {
-            if(!nPlaticheckbox.isChecked())
-            {
-                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarAniET.getText().toString().isEmpty())
-                    return false;
-                else return true;
-            }
-            else if(nPlaticheckbox.isChecked())
-            {
-                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarAniET.getText().toString().isEmpty() || nPlatiEt.getText().toString().isEmpty())
-                    return false;
-                else return true;
-            }
+            nPlatiEt.setEnabled(true);
+            nPlatiTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+            nPlatiEt.setText("");
         }
-
-        else if (checkboxCC.isChecked())
+        else if (!nPlaticheckbox.isChecked())
         {
-            if(!nPlaticheckbox.isChecked())
-            {
-                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarAniET.getText().toString().isEmpty())
-                    return false;
-                else return true;
-
-            }
-            else if(nPlaticheckbox.isChecked())
-            {
-                if(sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarAniET.getText().toString().isEmpty() || nPlatiEt.getText().toString().isEmpty())
-                    return false;
-                else return true;
-            }
+            nPlatiEt.setEnabled(false);
+            nPlatiTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            nPlatiEt.setText("");
         }
-        return false;
+    }
+
+    private void nPlatiAcumTransform()
+    {
+        if (nPlaticheckBoxacum.isChecked())
+        {
+            nPlatiETacum.setEnabled(true);
+            nPlatiTVacum.setTextColor(getActivity().getResources().getColor(R.color.black));
+            nPlatiETacum.setText("");
+        }
+        else if (!nPlaticheckBoxacum.isChecked())
+        {
+            nPlatiETacum.setEnabled(false);
+            nPlatiTVacum.setTextColor(getActivity().getResources().getColor(R.color.silver));
+            nPlatiETacum.setText("");
+        }
     }
 }

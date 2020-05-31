@@ -1,113 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/rConstanteTV"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/spinnerRambursari"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Rate constante"
-        android:textColor="@color/black"
-        android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225" />
-
-    <CheckBox
-        android:id="@+id/checkboxRC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/rConstanteTV"
-        app:layout_constraintStart_toEndOf="@+id/rConstanteTV"
-        app:layout_constraintTop_toTopOf="@+id/rConstanteTV"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintVertical_bias="0.5"
-        />
+        android:layout_marginTop="2dp"/>
 
     <TextView
-        android:id="@+id/cConstanteTV"
+        android:id="@+id/TopAux"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="4dp"
+        android:background="#E6E3E3"
+        app:layout_constraintBottom_toTopOf="@+id/rambursariTitle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/rambursariTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Cote constante"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="5dp"
+        android:text="Rambursari"
         android:textColor="@color/black"
         android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/rConstanteTV"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rConstanteTV"
-        app:layout_constraintTop_toBottomOf="@+id/rConstanteTV"
-        app:layout_constraintVertical_bias="0.039" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerRambursari"/>
 
-    <CheckBox
-        android:id="@+id/checkboxCC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/cConstanteTV"
-        app:layout_constraintStart_toEndOf="@+id/cConstanteTV"
-        app:layout_constraintTop_toTopOf="@+id/cConstanteTV"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintVertical_bias="0.5"
-        />
+    <TextView
+        android:id="@+id/rambursariAux"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#E6E3E3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rambursariTitle" />
 
     <TextView
         android:id="@+id/sumarTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/distance_TV_Horizontal"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="32dp"
         android:gravity="center"
         android:text="Suma"
         android:textColor="@color/black"
         android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/rConstanteTV"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rConstanteTV"
-        app:layout_constraintTop_toBottomOf="@+id/rConstanteTV"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rambursariAux" />
 
     <EditText
         android:id="@+id/sumarET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:gravity="center"
         android:hint="s"
         android:inputType="number"
         android:textSize="@dimen/nomralTV"
-        android:layout_marginLeft="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/sumarTV"
         app:layout_constraintStart_toEndOf="@+id/sumarTV"
         app:layout_constraintTop_toTopOf="@+id/sumarTV"
-        app:layout_constraintVertical_bias="0.5"/>
+        app:layout_constraintVertical_bias="0.5" />
 
 
     <TextView
         android:id="@+id/dobandaTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
         android:gravity="center"
         android:text="Dobanda unitara"
         android:textColor="@color/black"
         android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/rConstanteTV"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rConstanteTV"
-        app:layout_constraintTop_toBottomOf="@+id/rConstanteTV"
-        app:layout_constraintVertical_bias="0.296" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sumarTV" />
 
     <EditText
         android:id="@+id/dobandaET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:gravity="center"
         android:hint="i"
         android:inputType="numberDecimal"
@@ -121,23 +106,21 @@
         android:id="@+id/nPlatiTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
         android:gravity="center"
         android:text="Cu n plati pe an"
         android:textColor="@color/black"
         android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/rConstanteTV"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rConstanteTV"
-        app:layout_constraintTop_toBottomOf="@+id/rConstanteTV"
-        app:layout_constraintVertical_bias="0.404" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dobandaTV" />
 
     <EditText
         android:id="@+id/nPlatiEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:gravity="center"
         android:hint="n"
         android:inputType="number"
@@ -149,54 +132,189 @@
 
     <CheckBox
         android:id="@+id/nPlaticheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="27dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/nPlatiEt"
         app:layout_constraintStart_toEndOf="@+id/nPlatiEt"
         app:layout_constraintTop_toTopOf="@+id/nPlatiEt"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+    <TextView
+        android:id="@+id/numarLuniTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
+        android:gravity="center"
+        android:text="Numarul de luni"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nPlatiTV" />
+
+    <EditText
+        android:id="@+id/numariLuniET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:gravity="center"
+        android:hint="i"
+        android:inputType="number"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/numarLuniTV"
+        app:layout_constraintStart_toEndOf="@+id/numarLuniTV"
+        app:layout_constraintTop_toTopOf="@+id/numarLuniTV"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+    <TextView
+        android:id="@+id/middleAux"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="4dp"
+        android:background="#E6E3E3"
+        app:layout_constraintBottom_toTopOf="@+id/acumulareTitle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/acumulareTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="64dp"
+        android:text="Fond de acumulare"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numarLuniTV" />
+
+    <CheckBox
+        android:id="@+id/acumulareCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/acumulareTitle"
+        app:layout_constraintEnd_toEndOf="@+id/middleAux"
+        app:layout_constraintTop_toTopOf="@+id/acumulareTitle"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/acumulareAux"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#E6E3E3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acumulareTitle" />
+
+    <TextView
+        android:id="@+id/dobandaTVacum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="32dp"
+        android:text="Dobanda unitara"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acumulareAux" />
+
+    <EditText
+        android:id="@+id/dobandaETacum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:hint="i"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/dobandaTVacum"
+        app:layout_constraintStart_toEndOf="@+id/dobandaTVacum"
+        app:layout_constraintTop_toTopOf="@+id/dobandaTVacum"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+    <TextView
+        android:id="@+id/nPlatiTVacum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
+        android:gravity="center"
+        android:text="Cu n plati pe an"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dobandaTVacum" />
+
+    <EditText
+        android:id="@+id/nPlatiEtacum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:gravity="center"
+        android:hint="n"
+        android:inputType="number"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/nPlatiTVacum"
+        app:layout_constraintStart_toEndOf="@+id/nPlatiTVacum"
+        app:layout_constraintTop_toTopOf="@+id/nPlatiTVacum"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+    <CheckBox
+        android:id="@+id/nPlatiCheckboxacum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/nPlatiEtacum"
+        app:layout_constraintStart_toEndOf="@+id/nPlatiEtacum"
+        app:layout_constraintTop_toTopOf="@+id/nPlatiEtacum"
         app:layout_constraintVertical_bias="0.5"
-        />
+        android:layout_marginLeft="8dp"/>
+
+    <TextView
+        android:id="@+id/numarLuniTVacum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
+        android:gravity="center"
+        android:text="Numarul de luni"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nPlatiTVacum" />
+
+    <EditText
+        android:id="@+id/numariLuniETacum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:gravity="center"
+        android:hint="i"
+        android:inputType="number"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/numarLuniTVacum"
+        app:layout_constraintStart_toEndOf="@+id/numarLuniTVacum"
+        app:layout_constraintTop_toTopOf="@+id/numarLuniTVacum"
+        app:layout_constraintVertical_bias="0.5" />
+
 
     <Button
         android:id="@+id/rCalculateBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/custom_bttn"
-        android:text="Calculate"
+        android:text="Genereaza"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nPlatiTV" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-    <TextView
-        android:id="@+id/numarAniTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Numarul de ani"
-        android:textColor="@color/black"
-        android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/rConstanteTV"
-        app:layout_constraintHorizontal_bias="0.018"
-        app:layout_constraintStart_toStartOf="@+id/rConstanteTV"
-        app:layout_constraintTop_toBottomOf="@+id/rConstanteTV"
-        app:layout_constraintVertical_bias="0.495" />
-
-    <EditText
-        android:id="@+id/numariAniET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:gravity="center"
-        android:hint="i"
-        android:inputType="number"
-        android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="@+id/numarAniTV"
-        app:layout_constraintStart_toEndOf="@+id/numarAniTV"
-        app:layout_constraintTop_toTopOf="@+id/numarAniTV"
-        app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

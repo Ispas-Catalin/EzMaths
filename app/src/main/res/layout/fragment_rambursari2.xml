@@ -6,18 +6,122 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Rambursari.ui.main.Rambursari2Fragment">
 
+    <ImageView
+        android:layout_width="320dp"
+        android:layout_height="160dp"
+        app:layout_constraintBottom_toTopOf="@+id/dobandaTVfond"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/never_give_up"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.3"/>
+
     <TextView
-        android:id="@+id/uwu"
+        android:id="@+id/dobandaTVfond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="uwu"
-        android:textColor="#AF1A0C"
-        android:textSize="@dimen/size_a"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="Dobanda unitara"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6"/>
+
+    <EditText
+        android:id="@+id/dobandaETfond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:hint="i"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/dobandaTVfond"
+        app:layout_constraintStart_toEndOf="@+id/dobandaTVfond"
+        app:layout_constraintTop_toTopOf="@+id/dobandaTVfond"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+    <TextView
+        android:id="@+id/nPlatiTVfond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
+        android:gravity="center"
+        android:text="Cu n plati pe an"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dobandaTVfond" />
+
+    <EditText
+        android:id="@+id/nPlatiEtfond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:gravity="center"
+        android:hint="n"
+        android:inputType="number"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/nPlatiTVfond"
+        app:layout_constraintStart_toEndOf="@+id/nPlatiTVfond"
+        app:layout_constraintTop_toTopOf="@+id/nPlatiTVfond"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+    <CheckBox
+        android:id="@+id/nPlatiCheckboxfond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/nPlatiEtfond"
+        app:layout_constraintStart_toEndOf="@+id/nPlatiEtfond"
+        app:layout_constraintTop_toTopOf="@+id/nPlatiEtfond"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginLeft="8dp"/>
+
+    <TextView
+        android:id="@+id/numarLuniTVfond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
+        android:gravity="center"
+        android:text="Numarul de luni"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nPlatiTVfond" />
+
+    <EditText
+        android:id="@+id/numariLuniETfond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:gravity="center"
+        android:hint="i"
+        android:inputType="number"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/numarLuniTVfond"
+        app:layout_constraintStart_toEndOf="@+id/numarLuniTVfond"
+        app:layout_constraintTop_toTopOf="@+id/numarLuniTVfond"
+        app:layout_constraintVertical_bias="0.5" />
+
+
+    <Button
+        android:id="@+id/rCalculateBtnfond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/custom_bttn"
+        android:text="Genereaza"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
