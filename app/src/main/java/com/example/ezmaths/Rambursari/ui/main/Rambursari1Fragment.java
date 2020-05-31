@@ -222,41 +222,39 @@ public class Rambursari1Fragment extends Fragment {
                             startActivity(intent);
                         }
                     }
-                }
-                if (type == 1)
-                {
-                    KRambursari = algoritmRambursariSimplu.getKRambursari();
-                    RKRambursari = algoritmRambursariSimplu.getRKRambursari();
-                    DKRambursari = algoritmRambursariSimplu.getDKRambursari();
-                    OmegaKRambursari = algoritmRambursariSimplu.getOmegaKRambursari();
-                    QKRambursari = algoritmRambursariSimplu.getQKRambursari();
+                    if (type == 1) {
+                        KRambursari = algoritmRambursariSimplu.getKRambursari();
+                        RKRambursari = algoritmRambursariSimplu.getRKRambursari();
+                        DKRambursari = algoritmRambursariSimplu.getDKRambursari();
+                        OmegaKRambursari = algoritmRambursariSimplu.getOmegaKRambursari();
+                        QKRambursari = algoritmRambursariSimplu.getQKRambursari();
 
-                    intent.putStringArrayListExtra(KRAMBURSARI_KEY, (ArrayList<String>) KRambursari);
-                    intent.putStringArrayListExtra(RKAMBURSARI_KEY, (ArrayList<String>) RKRambursari);
-                    intent.putStringArrayListExtra(DKRAMBURSARI_KEY, (ArrayList<String>) DKRambursari);
-                    intent.putStringArrayListExtra(OMEGAKRAMBURSARI_KEY, (ArrayList<String>) OmegaKRambursari);
-                    intent.putStringArrayListExtra(QKRAMBURSARI_KEY, (ArrayList<String>) QKRambursari);
+                        intent.putStringArrayListExtra(KRAMBURSARI_KEY, (ArrayList<String>) KRambursari);
+                        intent.putStringArrayListExtra(RKAMBURSARI_KEY, (ArrayList<String>) RKRambursari);
+                        intent.putStringArrayListExtra(DKRAMBURSARI_KEY, (ArrayList<String>) DKRambursari);
+                        intent.putStringArrayListExtra(OMEGAKRAMBURSARI_KEY, (ArrayList<String>) OmegaKRambursari);
+                        intent.putStringArrayListExtra(QKRAMBURSARI_KEY, (ArrayList<String>) QKRambursari);
 
 
-                    startActivity(intent);
-                }
+                        startActivity(intent);
+                    }
 
-                if (type == 3)
-                {
-                    KRambursari = algoritmRambursariSimplu.getK_acumulare();
-                    RKRambursari = algoritmRambursariSimplu.getrk_acumulare();
-                    DKRambursari = algoritmRambursariSimplu.getSinK_acumulare();
-                    OmegaKRambursari = algoritmRambursariSimplu.getSfinK_acumulare();
-                    QKRambursari = algoritmRambursariSimplu.getDK_acumulare();
+                    if (type == 3) {
+                        KRambursari = algoritmRambursariSimplu.getK_acumulare();
+                        RKRambursari = algoritmRambursariSimplu.getrk_acumulare();
+                        DKRambursari = algoritmRambursariSimplu.getSinK_acumulare();
+                        OmegaKRambursari = algoritmRambursariSimplu.getSfinK_acumulare();
+                        QKRambursari = algoritmRambursariSimplu.getDK_acumulare();
 
-                    intent.putStringArrayListExtra(KRAMBURSARI_KEY, (ArrayList<String>) KRambursari);
-                    intent.putStringArrayListExtra(RKAMBURSARI_KEY, (ArrayList<String>) RKRambursari);
-                    intent.putStringArrayListExtra(DKRAMBURSARI_KEY, (ArrayList<String>) DKRambursari);
-                    intent.putStringArrayListExtra(OMEGAKRAMBURSARI_KEY, (ArrayList<String>) OmegaKRambursari);
-                    intent.putStringArrayListExtra(QKRAMBURSARI_KEY, (ArrayList<String>) QKRambursari);
+                        intent.putStringArrayListExtra(KRAMBURSARI_KEY, (ArrayList<String>) KRambursari);
+                        intent.putStringArrayListExtra(RKAMBURSARI_KEY, (ArrayList<String>) RKRambursari);
+                        intent.putStringArrayListExtra(DKRAMBURSARI_KEY, (ArrayList<String>) DKRambursari);
+                        intent.putStringArrayListExtra(OMEGAKRAMBURSARI_KEY, (ArrayList<String>) OmegaKRambursari);
+                        intent.putStringArrayListExtra(QKRAMBURSARI_KEY, (ArrayList<String>) QKRambursari);
 
 
-                    startActivity(intent);
+                        startActivity(intent);
+                    }
                 }
 
             }
@@ -411,16 +409,16 @@ public class Rambursari1Fragment extends Fragment {
         }
         if (type == 3)
         {
-            if (!nPlaticheckBoxacum.isChecked())
-            {
-               if (sumaET.getText().toString().isEmpty() || dobandaETacum.getText().toString().isEmpty() || numarLuniETacum.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty());
-                ok=false;
-            }
-            else if (nPlaticheckBoxacum.isChecked())
-            {
-                if (sumaET.getText().toString().isEmpty() || nPlatiETacum.getText().toString().isEmpty() || dobandaETacum.getText().toString().isEmpty() || numarLuniETacum.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty());
-                ok=false;
-            }
+           if (!nPlaticheckbox.isChecked())
+           {
+               if (sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty() || dobandaETacum.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty())
+                   ok = false;
+           }
+           if (nPlaticheckbox.isChecked())
+           {
+               if (sumaET.getText().toString().isEmpty() || dobandaET.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty() || dobandaETacum.getText().toString().isEmpty() || numarLuniET.getText().toString().isEmpty() || nPlatiETacum.getText().toString().isEmpty())
+                   ok = false;
+           }
         }
 
         return ok;
@@ -428,11 +426,20 @@ public class Rambursari1Fragment extends Fragment {
 
     private void TransformUI(int type)
     {
+        dobandaET.setText("");
+        nPlatiEt.setText("");
+        nPlatiETacum.setText("");
+        numarLuniET.setText("");
+        numarLuniETacum.setText("");
+        dobandaETacum.setText("");
+        sumaET.setText("");
+
         if (type == 0)
         {
             nPlatiTV.setTextColor(getActivity().getResources().getColor(R.color.black));
             nPlatiEt.setEnabled(true);
             nPlaticheckbox.setEnabled(true);
+            nPlaticheckbox.setChecked(false);
             nPlaticheckbox.setVisibility(View.VISIBLE);
 
             acumulareTitle.setVisibility(View.VISIBLE);
@@ -456,13 +463,6 @@ public class Rambursari1Fragment extends Fragment {
             numarLuniETacum.setVisibility(View.VISIBLE);
             numarLuniETacum.setEnabled(true);
 
-            dobandaET.setText("");
-            nPlatiEt.setText("");
-            nPlatiETacum.setText("");
-            numarLuniET.setText("");
-            numarLuniETacum.setText("");
-            dobandaETacum.setText("");
-            sumaET.setText("");
 
             acumulareTransform(false);
 
@@ -472,6 +472,7 @@ public class Rambursari1Fragment extends Fragment {
             nPlatiTV.setTextColor(getActivity().getResources().getColor(R.color.black));
             nPlatiEt.setEnabled(true);
             nPlaticheckbox.setEnabled(true);
+            nPlaticheckbox.setChecked(false);
             nPlaticheckbox.setVisibility(View.VISIBLE);
 
             acumulareTitle.setVisibility(View.INVISIBLE);
@@ -495,13 +496,6 @@ public class Rambursari1Fragment extends Fragment {
             numarLuniETacum.setVisibility(View.INVISIBLE);
             numarLuniETacum.setEnabled(false);
 
-            dobandaET.setText("");
-            nPlatiEt.setText("");
-            nPlatiETacum.setText("");
-            numarLuniET.setText("");
-            numarLuniETacum.setText("");
-            dobandaETacum.setText("");
-            sumaET.setText("");
 
         }
         else if (type == 2)
@@ -509,6 +503,7 @@ public class Rambursari1Fragment extends Fragment {
             nPlatiTV.setTextColor(getActivity().getResources().getColor(R.color.black));
             nPlatiEt.setEnabled(true);
             nPlaticheckbox.setEnabled(true);
+            nPlaticheckbox.setChecked(false);
             nPlaticheckbox.setVisibility(View.VISIBLE);
 
             acumulareTitle.setVisibility(View.VISIBLE);
@@ -532,13 +527,6 @@ public class Rambursari1Fragment extends Fragment {
             numarLuniETacum.setVisibility(View.VISIBLE);
             numarLuniETacum.setEnabled(true);
 
-            dobandaET.setText("");
-            nPlatiEt.setText("");
-            nPlatiETacum.setText("");
-            numarLuniET.setText("");
-            numarLuniETacum.setText("");
-            dobandaETacum.setText("");
-            sumaET.setText("");
 
             acumulareTransform(false);
 
@@ -548,6 +536,7 @@ public class Rambursari1Fragment extends Fragment {
             nPlatiTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
             nPlatiEt.setEnabled(false);
             nPlaticheckbox.setEnabled(false);
+            nPlaticheckbox.setChecked(false);
             nPlaticheckbox.setVisibility(View.INVISIBLE);
 
             acumulareTitle.setVisibility(View.VISIBLE);
@@ -571,13 +560,6 @@ public class Rambursari1Fragment extends Fragment {
             numarLuniETacum.setVisibility(View.VISIBLE);
             numarLuniETacum.setEnabled(true);
 
-            dobandaET.setText("");
-            nPlatiEt.setText("");
-            nPlatiETacum.setText("");
-            numarLuniET.setText("");
-            numarLuniETacum.setText("");
-            dobandaETacum.setText("");
-            sumaET.setText("");
 
             acumulareTransform(true);
         }
