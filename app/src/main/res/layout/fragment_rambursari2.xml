@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
         android:hint="i"
+        android:gravity="center"
         android:textSize="@dimen/nomralTV"
         app:layout_constraintBottom_toBottomOf="@+id/dobandaTVfond"
         app:layout_constraintStart_toEndOf="@+id/dobandaTVfond"
