@@ -13,7 +13,7 @@ public class formuleAnuitati {
     //FACTOR ACTUALIZARE VIAGER
 
 
-    private double FAV(int x, int n)
+    public double FAV(int x, int n)
     {
         return Dx[x+n]/Dx[x];
     }

@@ -44,7 +44,6 @@ public class AsigAnuitatiFragment extends Fragment {
     private EditText varstaET;
     private EditText amlimET;
     private EditText platiPeAnET;
-    private EditText sumaET;
 
     private TextView amlimTV;
     private TextView platiPeAnTV;
@@ -57,7 +56,6 @@ public class AsigAnuitatiFragment extends Fragment {
     private TextView mTV;
     private  TextView pointsAnticipateTV ;
     private TextView AmLimAuxTV;
-    private  TextView sumaTV;
 
     private String varstaAux;
     private String amlimAux;
@@ -116,12 +114,10 @@ public class AsigAnuitatiFragment extends Fragment {
         varstaET = rootView.findViewById(R.id.varstaETAV1);
         amlimET  = rootView.findViewById(R.id.amlimnETAV1);
         platiPeAnET = rootView.findViewById(R.id.platiPeAnETAV1);
-        sumaET = rootView.findViewById(R.id.sumaETAV1);
 
 
         amlimTV = rootView.findViewById(R.id.amlimnTVAV1);
         platiPeAnTV = rootView.findViewById(R.id.platiPeAnTVAV1);
-        sumaTV = rootView.findViewById(R.id.sumaTVAV1);
         rezultatTV = rootView.findViewById(R.id.rezultatTVAV1);
 
         xTV = rootView.findViewById(R.id.xtvAV1);
@@ -250,30 +246,62 @@ public class AsigAnuitatiFragment extends Fragment {
                     Toast toast = Toast.makeText(getActivity(), "Anuitate selectata", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.BOTTOM, 0, 40);
                     toast.show();
-                    if (asigType%10 == 1 || asigType == 12)
+                    if (asigType == 12){
                         anuitatiViewModel.setAnuitateLiveData1(doubleRes);
-                    if (asigType == 22 && variant ==2)
+                    }
+                    if (asigType==21){
                         anuitatiViewModel.setAnuitateLiveData1(doubleRes);
-                    if (asigType == 22 && variant == 3)
+                        anuitatiViewModel.setAnuitateLiveData1Type(type);
+                        if (type == 43 || type == 23)
+                            anuitatiViewModel.setnAmanata1LiveData(Integer.parseInt(platiPeAnET.getText().toString()));
+                    }
+                    if (asigType == 22 && variant ==2){
+                        anuitatiViewModel.setAnuitateLiveData1(doubleRes);
+                        anuitatiViewModel.setAnuitateLiveData1Type(type);
+                        if (type == 43 || type == 23)
+                            anuitatiViewModel.setnAmanata1LiveData(Integer.parseInt(platiPeAnET.getText().toString()));
+                        }
+                    if (asigType == 22 && variant == 3) {
                         anuitatiViewModel.setAnuitateLiveData2(doubleRes);
-                    if (asigType == 32 && variant ==3)
+                        anuitatiViewModel.setAnuitateLiveData2Type(type);
+                        if (type/10 == 4 || type/10 == 2)
+                            anuitatiViewModel.setnAmanata2LiveData(Integer.parseInt(platiPeAnET.getText().toString()));
+                    }
+
+                    if (asigType==31){
                         anuitatiViewModel.setAnuitateLiveData1(doubleRes);
-                    if (asigType == 32 && variant == 4)
+                        anuitatiViewModel.setAnuitateLiveData1Type(type);
+                    }
+
+                    if (asigType == 32 && variant ==3){
+                        anuitatiViewModel.setAnuitateLiveData1(doubleRes);
+                        anuitatiViewModel.setAnuitateLiveData1Type(type);
+                        if (type/10 == 4 || type/10 == 2)
+                            anuitatiViewModel.setnAmanata1LiveData(Integer.parseInt(platiPeAnET.getText().toString()));
+                    }
+                    if (asigType == 32 && variant == 4){
                         anuitatiViewModel.setAnuitateLiveData2(doubleRes);
+                        anuitatiViewModel.setAnuitateLiveData2Type(type); }
             }
                 else {
                     rezultatTV.setVisibility(View.INVISIBLE);
                     Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.BOTTOM, 0, 40);
                     toast.show();
-                    if (asigType%10 == 1 || asigType == 12)
-                        anuitatiViewModel.setAnuitateLiveData1(0);
-                    if (asigType == 22 && variant ==2)
-                        anuitatiViewModel.setAnuitateLiveData1(0);
+
+                    if (asigType%10 == 1 || asigType == 12){
+                        anuitatiViewModel.setnAmanata1LiveData(0);
+                        anuitatiViewModel.setAnuitateLiveData1(0);}
+                    if (asigType == 22 && variant ==2){
+                        anuitatiViewModel.setnAmanata1LiveData(0);
+                        anuitatiViewModel.setAnuitateLiveData1(0);}
                     if (asigType == 22 && variant == 3)
-                        anuitatiViewModel.setAnuitateLiveData2(0);
-                    if (asigType == 32 && variant ==3)
-                        anuitatiViewModel.setAnuitateLiveData1(0);
+                    {
+                        anuitatiViewModel.setnAmanata2LiveData(0);
+                        anuitatiViewModel.setAnuitateLiveData2(0);}
+                    if (asigType == 32 && variant ==3){
+                        anuitatiViewModel.setnAmanata1LiveData(0);
+                        anuitatiViewModel.setAnuitateLiveData1(0);}
                     if (asigType == 32 && variant == 4)
                         anuitatiViewModel.setAnuitateLiveData2(0);
 
@@ -510,6 +538,8 @@ public class AsigAnuitatiFragment extends Fragment {
     /// In functie de tipul primit din spinner schimba culoarea/vizibilitate/interactibilitatea la elmente din layout
     private void TransformUI(int type)
     {
+        anuitatiViewModel.setnAmanata1LiveData(0);
+        anuitatiViewModel.setnAmanata2LiveData(0);
         if (asigType%10 == 1 || asigType == 12)
             anuitatiViewModel.setAnuitateLiveData1(0);
         if (asigType == 22 && variant ==2)
@@ -522,9 +552,6 @@ public class AsigAnuitatiFragment extends Fragment {
             anuitatiViewModel.setAnuitateLiveData2(0);
 
         rezultatTV.setVisibility(View.INVISIBLE);
-        sumaET.setTextColor(getActivity().getResources().getColor(R.color.silver));
-        sumaET.setEnabled(false);
-        sumaTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
 
         if(type == 11)
         {
@@ -547,7 +574,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
         if (type == 12)
         {
@@ -571,7 +597,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
 
         }
         if (type == 13)
@@ -596,7 +621,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
 
         if(type == 21)
@@ -620,8 +644,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
-
         }
         if (type == 22)
         {
@@ -645,8 +667,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
-
 
         }
         if (type == 23)
@@ -671,7 +691,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
 
         if(type == 31)
@@ -695,7 +714,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
         if (type == 32)
         {
@@ -719,7 +737,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
 
         }
         if (type == 33)
@@ -744,7 +761,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
 
         if(type == 41)
@@ -768,7 +784,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
         if (type == 42)
         {
@@ -792,7 +807,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
         if (type == 43)
         {
@@ -816,7 +830,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
 
         if (type/10 == 5)
@@ -847,7 +860,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
 
         if (type == 52)
@@ -876,7 +888,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
 
         if (type == 53)
@@ -908,7 +919,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
 
         if (type == 54)
@@ -938,7 +948,6 @@ public class AsigAnuitatiFragment extends Fragment {
             platiPeAnET.getText().clear();
             amlimET.getText().clear();
             varstaET.getText().clear();
-            sumaET.getText().clear();
         }
 
     }

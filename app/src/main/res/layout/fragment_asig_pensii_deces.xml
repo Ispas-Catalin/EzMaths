@@ -14,38 +14,26 @@
         android:text="Asigurari de viata cu mai multe plati"
         android:textColor="@color/black"
         android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toTopOf="@+id/xAsigurareTVpd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        android:layout_marginTop="@dimen/distance_TV_Vertical"/>
 
 
     <TextView
-        android:id="@+id/xAsigurareTVpd"
+        android:id="@+id/resTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/distance_TV_Horizontal"
-        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
-        android:text="Varsta asiguratorului"
+        android:text="45176"
+        android:textSize="@dimen/nomralTV"
         android:textColor="@color/black"
-        android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/result_backround"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/primaAsiguratorTVpd"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55"/>
-
-    <EditText
-        android:id="@+id/xAsigurareETpd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="x"
-        android:textSize="@dimen/nomralTV"
-        app:layout_constraintBottom_toBottomOf="@+id/xAsigurareTVpd"
-        app:layout_constraintStart_toEndOf="@+id/xAsigurareTVpd"
-        app:layout_constraintTop_toTopOf="@+id/xAsigurareTVpd"
-        android:layout_marginLeft="4dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/anuitate2TV" />
 
     <TextView
         android:id="@+id/primaAsiguratorTVpd"
@@ -66,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="s"
+        android:gravity="center"
         android:textSize="@dimen/nomralTV"
         app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratorTVpd"
         app:layout_constraintStart_toEndOf="@+id/primaAsiguratorTVpd"
@@ -103,6 +92,7 @@
         android:layout_height="wrap_content"
         android:hint="p"
         android:textSize="@dimen/nomralTV"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratTVpd"
         app:layout_constraintStart_toEndOf="@+id/primaAsiguratTVpd"
         app:layout_constraintTop_toTopOf="@+id/primaAsiguratTVpd"
