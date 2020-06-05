@@ -290,17 +290,13 @@ public class AsigAnuitatiFragment extends Fragment {
                     toast.show();
 
                     if (asigType%10 == 1 || asigType == 12){
-                        anuitatiViewModel.setnAmanata1LiveData(0);
                         anuitatiViewModel.setAnuitateLiveData1(0);}
                     if (asigType == 22 && variant ==2){
-                        anuitatiViewModel.setnAmanata1LiveData(0);
                         anuitatiViewModel.setAnuitateLiveData1(0);}
                     if (asigType == 22 && variant == 3)
                     {
-                        anuitatiViewModel.setnAmanata2LiveData(0);
                         anuitatiViewModel.setAnuitateLiveData2(0);}
                     if (asigType == 32 && variant ==3){
-                        anuitatiViewModel.setnAmanata1LiveData(0);
                         anuitatiViewModel.setAnuitateLiveData1(0);}
                     if (asigType == 32 && variant == 4)
                         anuitatiViewModel.setAnuitateLiveData2(0);
@@ -538,8 +534,7 @@ public class AsigAnuitatiFragment extends Fragment {
     /// In functie de tipul primit din spinner schimba culoarea/vizibilitate/interactibilitatea la elmente din layout
     private void TransformUI(int type)
     {
-        anuitatiViewModel.setnAmanata1LiveData(0);
-        anuitatiViewModel.setnAmanata2LiveData(0);
+
         if (asigType%10 == 1 || asigType == 12)
             anuitatiViewModel.setAnuitateLiveData1(0);
         if (asigType == 22 && variant ==2)
