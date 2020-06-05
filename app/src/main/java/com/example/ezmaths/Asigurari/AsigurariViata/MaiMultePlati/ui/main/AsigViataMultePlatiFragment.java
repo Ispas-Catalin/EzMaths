@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ezmaths.Asigurari.AnuitatiViewModel;
+import com.example.ezmaths.Asigurari.FormuleAsigurari;
 import com.example.ezmaths.R;
 
 import java.text.NumberFormat;
@@ -49,6 +52,7 @@ public class AsigViataMultePlatiFragment extends Fragment {
     private AnuitatiViewModel anuitatiViewModel;
 
     private NumberFormat fmt;
+    private TextView resTV;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -78,6 +82,9 @@ public class AsigViataMultePlatiFragment extends Fragment {
         primaAsiguratET.setEnabled(false);
         primaAsiguratTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
 
+
+        resTV = rootView.findViewById(R.id.resultTVAV);
+
         primaAsiguratorCheckBox.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
@@ -88,8 +95,11 @@ public class AsigViataMultePlatiFragment extends Fragment {
                     primaAsiguratorTV.setTextColor(getActivity().getResources().getColor(R.color.black));
                     primaAsiguratCheckBox.setChecked(false);
                     primaAsiguratET.setEnabled(false);
+                    primaAsiguratET.setText("");
                     primaAsiguratTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+                    resTV.setVisibility(View.INVISIBLE);
                 }
+
             }
         });
 
@@ -103,7 +113,9 @@ public class AsigViataMultePlatiFragment extends Fragment {
                     primaAsiguratTV.setTextColor(getActivity().getResources().getColor(R.color.black));
                     primaAsiguratorCheckBox.setChecked(false);
                     primaAsiguratorET.setEnabled(false);
+                    primaAsiguratorET.setText("");
                     primaAsiguratorTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+                    resTV.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -111,6 +123,11 @@ public class AsigViataMultePlatiFragment extends Fragment {
         return  rootView;
     }
 
+    private boolean OK;
+    private double anuitate,dRes;
+
+
+    private FormuleAsigurari formuleAsigurari = new FormuleAsigurari();
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -128,6 +145,7 @@ public class AsigViataMultePlatiFragment extends Fragment {
         anuitatiViewModel.getAnuitateLiveData1().observe(getViewLifecycleOwner(), new Observer<Double>() {
             @Override
             public void onChanged(Double aDouble) {
+                anuitate = aDouble;
                 if (aDouble == 0)
                 {
                     anuitateRezTV.setVisibility(View.INVISIBLE);
@@ -142,7 +160,73 @@ public class AsigViataMultePlatiFragment extends Fragment {
             }
         });
 
+        nAsigurareET = rootView.findViewById(R.id.nAsigurareETmv);
+        xAsigurareET = rootView.findViewById(R.id.xAsigurareETmv);
+
+        primaAsiguratorET = rootView.findViewById(R.id.primaAsiguratorETmv);
+        primaAsiguratorCheckBox = rootView.findViewById(R.id.primaAsiguratorCheckBoxTVmv);
+
+        primaAsiguratET = rootView.findViewById(R.id.primaAsiguratETmv);
+        primaAsiguratCheckBox = rootView.findViewById(R.id.primaAsiguratCheckBoxTVmv);
+
+        calculeazaBtn = rootView.findViewById(R.id.calculeazaAsigurareBtnmv);
+        resTV = rootView.findViewById(R.id.resultTVAV);
+        resTV.setVisibility(View.INVISIBLE);
+
+        calculeazaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toastOK();
+                if (!OK)
+                {
+                    Toast toast = Toast.makeText(getActivity(), "Valoare nula", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.BOTTOM, 0, 40);
+                    toast.show();
+                    resTV.setVisibility(View.INVISIBLE);
+                }
+                if (anuitate == 0)
+                {
+                    Toast toast = Toast.makeText(getActivity(), "Anuitate neselectata", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.BOTTOM, 0, 40);
+                    toast.show();
+                    resTV.setVisibility(View.INVISIBLE);
+                }
+                else if (OK && anuitate != 0)
+                {
+                    calculate();
+                    resTV.setText(fmt.format(dRes));
+                    resTV.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
     }
 
+    private void toastOK()
+    {
+        if(primaAsiguratCheckBox.isChecked()) {
+            if (primaAsiguratET.getText().toString().isEmpty() || xAsigurareET.getText().toString().isEmpty() || nAsigurareET.getText().toString().isEmpty())
+                OK = false;
+            else OK = true;
+        }
+
+        else {
+            if (primaAsiguratorET.getText().toString().isEmpty() || xAsigurareET.getText().toString().isEmpty() || nAsigurareET.getText().toString().isEmpty())
+                OK = false;
+            else OK = true;
+        }
+
+    }
+
+    private void calculate()
+    {
+        if (primaAsiguratCheckBox.isChecked())
+        {
+          dRes =  formuleAsigurari.asigViata_MaiMulte_P(Double.parseDouble(primaAsiguratET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()), Integer.parseInt(xAsigurareET.getText().toString()), anuitate);
+
+        }
+        else
+            dRes =  formuleAsigurari.asigViata_MaiMulte_P(Double.parseDouble(primaAsiguratorET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()), Integer.parseInt(xAsigurareET.getText().toString()), anuitate);
+
+    }
 }

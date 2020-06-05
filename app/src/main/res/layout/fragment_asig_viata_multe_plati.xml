@@ -36,6 +36,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.301" />
 
+
     <TextView
         android:id="@+id/anuitateRezTV"
         android:layout_width="wrap_content"
@@ -50,6 +51,21 @@
         app:layout_constraintTop_toTopOf="@+id/anuitateTV"
         app:layout_constraintVertical_bias="0.5"
         android:layout_marginLeft="4dp"/>
+
+    <TextView
+        android:id="@+id/resultTVAV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/result_backround"
+        android:text="123,123"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/nAsigurareTVmv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/anuitateTV" />
 
     <TextView
         android:id="@+id/nAsigurareTVmv"
@@ -71,6 +87,7 @@
         android:layout_height="wrap_content"
         android:hint="n"
         android:textSize="@dimen/nomralTV"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/nAsigurareTVmv"
         app:layout_constraintStart_toEndOf="@+id/nAsigurareTVmv"
         app:layout_constraintTop_toTopOf="@+id/nAsigurareTVmv"
@@ -95,6 +112,7 @@
         android:layout_height="wrap_content"
         android:hint="x"
         android:textSize="@dimen/nomralTV"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/xAsigurareTVmv"
         app:layout_constraintStart_toEndOf="@+id/xAsigurareTVmv"
         app:layout_constraintTop_toTopOf="@+id/xAsigurareTVmv"
@@ -120,6 +138,7 @@
         android:layout_height="wrap_content"
         android:hint="s"
         android:textSize="@dimen/nomralTV"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratorTVmv"
         app:layout_constraintStart_toEndOf="@+id/primaAsiguratorTVmv"
         app:layout_constraintTop_toTopOf="@+id/primaAsiguratorTVmv"
@@ -154,13 +173,14 @@
         android:id="@+id/primaAsiguratETmv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:gravity="center_horizontal"
         android:hint="p"
         android:textSize="@dimen/nomralTV"
         app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratTVmv"
         app:layout_constraintStart_toEndOf="@+id/primaAsiguratTVmv"
         app:layout_constraintTop_toTopOf="@+id/primaAsiguratTVmv"
-        app:layout_constraintVertical_bias="0.5"
-        android:layout_marginLeft="4dp"/>
+        app:layout_constraintVertical_bias="0.5" />
 
     <CheckBox
         android:id="@+id/primaAsiguratCheckBoxTVmv"
