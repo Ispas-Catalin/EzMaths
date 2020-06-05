@@ -124,7 +124,8 @@ public class AsigViataMultePlatiFragment extends Fragment {
     }
 
     private boolean OK;
-    private double anuitate,dRes;
+    private double anuitate,dRes, mPlati;
+    private int anuitateType;
 
 
     private FormuleAsigurari formuleAsigurari = new FormuleAsigurari();
@@ -150,6 +151,7 @@ public class AsigViataMultePlatiFragment extends Fragment {
                 {
                     anuitateRezTV.setVisibility(View.INVISIBLE);
                     anuitateTV.setVisibility(View.INVISIBLE);
+                    resTV.setVisibility(View.INVISIBLE);
                 }
                 else if (aDouble!=0)
                 {
@@ -157,6 +159,21 @@ public class AsigViataMultePlatiFragment extends Fragment {
                     anuitateTV.setVisibility(View.VISIBLE);
                     anuitateRezTV.setText(fmt.format(aDouble));
                 }
+            }
+        });
+
+        anuitatiViewModel.getnAmanata1LiveData().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+               mPlati = integer;
+            }
+        });
+
+        anuitatiViewModel.getAnuitateLiveData1Type().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                anuitateType = integer;
+                resTV.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -220,13 +237,20 @@ public class AsigViataMultePlatiFragment extends Fragment {
 
     private void calculate()
     {
-        if (primaAsiguratCheckBox.isChecked())
+        if (anuitateType == 22 || anuitateType == 42)
         {
-          dRes =  formuleAsigurari.asigViata_MaiMulte_P(Double.parseDouble(primaAsiguratET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()), Integer.parseInt(xAsigurareET.getText().toString()), anuitate);
-
+            if (primaAsiguratCheckBox.isChecked())
+                dRes = formuleAsigurari.asigViata_MaiMulte_P(Double.parseDouble(primaAsiguratET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()), Integer.parseInt(xAsigurareET.getText().toString()),anuitate,mPlati);
+            else
+                dRes = formuleAsigurari.asigViata_MaiMulte_S(Double.parseDouble(primaAsiguratorET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()), Integer.parseInt(xAsigurareET.getText().toString()),anuitate,mPlati);
         }
         else
-            dRes =  formuleAsigurari.asigViata_MaiMulte_P(Double.parseDouble(primaAsiguratorET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()), Integer.parseInt(xAsigurareET.getText().toString()), anuitate);
+        {
+            if (primaAsiguratCheckBox.isChecked())
+                dRes = formuleAsigurari.asigViata_MaiMulte_P(Double.parseDouble(primaAsiguratET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()), Integer.parseInt(xAsigurareET.getText().toString()),anuitate,1);
+            else
+                dRes = formuleAsigurari.asigViata_MaiMulte_S(Double.parseDouble(primaAsiguratorET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()), Integer.parseInt(xAsigurareET.getText().toString()),anuitate,1);
+        }
 
     }
 }

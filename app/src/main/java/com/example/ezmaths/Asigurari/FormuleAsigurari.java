@@ -9,13 +9,13 @@ public class FormuleAsigurari   {
     {
         return P / formuleAnuitati.FAV(x,n);
     }
-    public double asigViata_MaiMulte_S(double P, int n, int x, double anuitateP)
+    public double asigViata_MaiMulte_S(double P, int n, int x, double anuitateP,double m)
     {
-        return P * anuitateP / formuleAnuitati.FAV(x,n);
+        return P * anuitateP * m / formuleAnuitati.FAV(x,n);
     }
-    public double asigViata_MaiMulte_P(double S, int n, int x, double anuitateP)
+    public double asigViata_MaiMulte_P(double S, int n, int x, double anuitateP, double m)
     {
-        return S * formuleAnuitati.FAV(x,n) / anuitateP;
+        return S * formuleAnuitati.FAV(x,n)  / anuitateP * m;
     }
     public double asigViata_Unic_P(double S, int n, int x)
     {
