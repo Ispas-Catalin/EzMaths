@@ -51,7 +51,10 @@ public class AvAmanateFragment extends Fragment {
     private boolean setTextok;
     private double doubleRes;
     private TextView rezultatTV;
-    NumberFormat resfmt;
+    private NumberFormat resfmt;
+
+    private CheckBox sumaCheckBox;
+    private double resAux;
 
     com.example.ezmaths.Anuitati.formuleAnuitati formuleAnuitati = new formuleAnuitati();
 
@@ -77,6 +80,11 @@ public class AvAmanateFragment extends Fragment {
 
         calculeazaBtn = rootView.findViewById(R.id.calculeazaBtnAN);
         rezultatTV = rootView.findViewById(R.id.rezultatTVAN);
+        sumaCheckBox = rootView.findViewById(R.id.sumaCheckBoxAN);
+
+        sumaCheckBox.setChecked(false);
+        sumatTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+        sumaET.setEnabled(false);
 
 
         Bundle b = getArguments();
@@ -94,6 +102,25 @@ public class AvAmanateFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 transformUI(type);
+                if (!platiPeAnCheckbox.isChecked())
+                    platiPeAnET.setText("");
+            }
+        });
+
+        sumaCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(sumaCheckBox.isChecked())
+                {
+                    sumatTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+                    sumaET.setEnabled(true);
+                }
+                else
+                {
+                    sumatTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+                    sumaET.setEnabled(false);
+                    sumaET.setText("");
+                }
             }
         });
 
@@ -106,8 +133,23 @@ public class AvAmanateFragment extends Fragment {
                 Calculeaza(platiPeAnCheckbox.isChecked());
 
                 if(setTextok){
-                    rezultatTV.setText(resfmt.format(doubleRes));
-                    rezultatTV.setVisibility(View.VISIBLE);}
+                    if (!sumaCheckBox.isChecked()) {
+                        rezultatTV.setVisibility(View.VISIBLE);
+                        rezultatTV.setText(resfmt.format(doubleRes));}
+                    else if (sumaCheckBox.isChecked() && okSuma())
+                    {
+                        rezultatTV.setVisibility(View.VISIBLE);
+                        resAux = doubleRes*Double.parseDouble(sumaET.getText().toString());
+                        rezultatTV.setText(resfmt.format(resAux));
+                    }
+                    else if(sumaCheckBox.isChecked() && !okSuma())
+                    {
+                        rezultatTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
+                }
                 else
                 {
                     rezultatTV.setVisibility(View.INVISIBLE);
@@ -197,8 +239,7 @@ public class AvAmanateFragment extends Fragment {
     }
 
     private void transformUI(int type) {
-        sumatTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
-        sumaET.setEnabled(false);
+
         if (type == 1) {
             pointsAnticipateTV.setVisibility(View.INVISIBLE);
             if (platiPeAnCheckbox.isChecked()) {
@@ -274,4 +315,8 @@ public class AvAmanateFragment extends Fragment {
         }
     }
 
+    private boolean okSuma()
+    {
+        return !sumaET.getText().toString().isEmpty();
+    }
 }

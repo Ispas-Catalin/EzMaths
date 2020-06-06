@@ -12,10 +12,10 @@ import android.widget.Button;
 import com.example.ezmaths.Anuitati.MainActivityAnuitati;
 import com.example.ezmaths.Asigurari.MainActivityAsigurari;
 import com.example.ezmaths.Rambursari.MainActivityRambursari;
+import com.example.ezmaths.RezervaMatematica.MainActivityRezerva;
 
 public class StartActivity extends AppCompatActivity {
 
-    Button DobanziBtn;
     Button RambursariBtn;
     Button AnuitatiBtn;
     Button AsigurariBtn;
@@ -29,7 +29,6 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        DobanziBtn = findViewById(R.id.DobanziBtn);
         RambursariBtn = findViewById(R.id.RambursariBtn);
         AnuitatiBtn = findViewById(R.id.AnuitatiBtn);
         AsigurariBtn = findViewById(R.id.AsigurariBtn);
@@ -46,7 +45,6 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-        
 
         RambursariBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +58,14 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, MainActivityAsigurari.class);
+                startActivity(intent);
+            }
+        });
+
+        RezervaMatematicaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this, MainActivityRezerva.class);
                 startActivity(intent);
             }
         });

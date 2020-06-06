@@ -11,9 +11,14 @@
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan|adjustResize">
         <activity
+            android:name=".Anuitati.FactorActualizareViager.MainActivityFactorViager"
+            android:label="@string/title_activity_main_factor_viager"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".RezervaMatematica.MainActivityRezerva" />
+        <activity
             android:name=".Asigurari.AsigurariPensiiDeces.MainActivityAsigPensiiDecesUnica"
             android:label="@string/title_activity_main_asig_pensii_deces"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Asigurari.AsigurariViata.MaiMultePlati.AsigurariViataMaiMultePlatiMainActivity"
             android:label="@string/title_activity_asigurari_viata_mai_multe_plati_main"

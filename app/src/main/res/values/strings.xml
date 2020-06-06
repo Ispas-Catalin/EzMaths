@@ -36,7 +36,9 @@
     <string name="tab_text_anuitateI">Anuitate I</string>
     <string name="tab_text_anuitateII">Anuitate II</string>
     <string name="title_activity_main_asig_pensii_deces">MainActivityAsigPensiiDeces</string>
-
+    <string name="title_activity_main_factor_viager">MainActivityFactorViager</string>
+    <string name="tab_factor_1">Factor de actualizare viager</string>
+    <string name="tab_factor_2">Factor de actualizare de deces</string>
 
 
 </resources>

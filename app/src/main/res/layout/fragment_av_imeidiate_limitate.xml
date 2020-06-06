@@ -263,6 +263,17 @@
         app:layout_constraintTop_toTopOf="@+id/sumaTVIL"
         app:layout_constraintVertical_bias="0.5" />
 
+    <CheckBox
+        android:id="@+id/sumaCheckBoxIL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sumaETIL"
+        app:layout_constraintStart_toEndOf="@+id/sumaETIL"
+        app:layout_constraintTop_toTopOf="@+id/sumaETIL"
+        app:layout_constraintVertical_bias="0.5" />
+
     <TextView
         android:id="@+id/rezultatTVIL"
         android:layout_width="wrap_content"

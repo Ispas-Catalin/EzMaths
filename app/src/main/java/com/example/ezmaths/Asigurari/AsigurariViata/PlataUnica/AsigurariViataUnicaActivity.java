@@ -154,5 +154,12 @@ public class AsigurariViataUnicaActivity extends AppCompatActivity {
             }
         });
 
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 }

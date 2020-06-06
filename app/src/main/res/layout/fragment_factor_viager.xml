@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Anuitati.FactorActualizareViager.ui.main.FactorViagerFragemnt">
+
+    <TextView
+        android:id="@+id/eTVviager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/nTVviager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"
+        android:text="n"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_nxm"
+        app:layout_constraintBottom_toTopOf="@+id/eTVviager"
+        app:layout_constraintEnd_toStartOf="@+id/eTVviager"
+        app:layout_constraintTop_toBottomOf="@+id/eTVviager"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/xTVviager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:text="X"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_nxm"
+        app:layout_constraintBottom_toTopOf="@+id/eTVviager"
+        app:layout_constraintStart_toEndOf="@id/eTVviager"
+        app:layout_constraintTop_toBottomOf="@+id/eTVviager"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/nVarstaTVviager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diferenta de varsta"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xDiferentaTVviager"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"/>
+
+    <EditText
+        android:id="@+id/nVarstaETviager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:gravity="center_horizontal"
+        android:hint="n"
+        android:inputType="number"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/nVarstaTVviager"
+        app:layout_constraintStart_toEndOf="@+id/nVarstaTVviager"
+        app:layout_constraintTop_toTopOf="@+id/nVarstaTVviager"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/xDiferentaTVviager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/distance_TV_Horizontal"
+        android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:text="Varsta"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <EditText
+        android:id="@+id/xDiferentaETviager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:gravity="center_horizontal"
+        android:hint="x"
+        android:inputType="number"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toBottomOf="@+id/xDiferentaTVviager"
+        app:layout_constraintStart_toEndOf="@+id/xDiferentaTVviager"
+        app:layout_constraintTop_toTopOf="@+id/xDiferentaTVviager"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/resTVviager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/result_backround"
+        android:text="123"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
+        app:layout_constraintBottom_toTopOf="@+id/nVarstaTVviager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eTVviager"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <Button
+        android:id="@+id/calculeazaFactorBTNviager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/custom_bttn"
+        android:text="Calculeaza"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,12 +23,12 @@ import java.text.NumberFormat;
 
 public class AvDecesFragment extends Fragment {
 
-    View rootView;
+    private View rootView;
     private int type;
 
     private TextView title;
 
-    private TextView resultTV;
+
 
     private TextView nImeidataTV;
     private TextView nImediataAxuTV;
@@ -57,17 +58,19 @@ public class AvDecesFragment extends Fragment {
 
     private Boolean setTextok;
     private TextView rezultatTV;
-    NumberFormat resfmt;
+    private NumberFormat resfmt;
     private Double doubleRes;
 
-    com.example.ezmaths.Anuitati.formuleAnuitati formuleAnuitati = new formuleAnuitati();
+    private CheckBox sumaCheckBox;
+    private double resAux;
+
+    private com.example.ezmaths.Anuitati.formuleAnuitati formuleAnuitati = new formuleAnuitati();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_anuitati_deces, container, false);
 
         title = rootView.findViewById(R.id.avTitleTVDeces);
-        resultTV = rootView.findViewById(R.id.rezultatTVAVDeces);
         nImediataAxuTV = rootView.findViewById(R.id.nImediatAuxtvAVDeces);
         nImeidataTV = rootView.findViewById(R.id.nImediatatvAVDeces);
         xTV = rootView.findViewById(R.id.xtvAVDeces);
@@ -86,6 +89,8 @@ public class AvDecesFragment extends Fragment {
         calculeaza = rootView.findViewById(R.id.calculeazaBtnAVDeces);
         rezultatTV = rootView.findViewById(R.id.rezultatTVAVDeces);
 
+        sumaCheckBox = rootView.findViewById(R.id.sumaCheckBoxDeces);
+
         Bundle b = getArguments();
 
         if(b != null)
@@ -98,14 +103,46 @@ public class AvDecesFragment extends Fragment {
         resfmt = NumberFormat.getInstance();
         resfmt.setMaximumFractionDigits(4);
 
+        sumaCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(sumaCheckBox.isChecked())
+                {
+                    sumaTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+                    sumaET.setEnabled(true);
+                }
+                else
+                {
+                    sumaTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+                    sumaET.setEnabled(false);
+                    sumaET.setText("");
+                }
+            }
+        });
+
         calculeaza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calculeaza();
 
                 if(setTextok){
-                    rezultatTV.setText(resfmt.format(doubleRes));
-                    rezultatTV.setVisibility(View.VISIBLE);}
+                    if (!sumaCheckBox.isChecked()) {
+                        rezultatTV.setVisibility(View.VISIBLE);
+                        rezultatTV.setText(resfmt.format(doubleRes));}
+                    else if (sumaCheckBox.isChecked() && okSuma())
+                    {
+                        rezultatTV.setVisibility(View.VISIBLE);
+                        resAux = doubleRes*Double.parseDouble(sumaET.getText().toString());
+                        rezultatTV.setText(resfmt.format(resAux));
+                    }
+                    else if(sumaCheckBox.isChecked() && !okSuma())
+                    {
+                        rezultatTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
+                }
                 else
                 {
                     rezultatTV.setVisibility(View.INVISIBLE);
@@ -338,4 +375,8 @@ public class AvDecesFragment extends Fragment {
         }
     }
 
+    private boolean okSuma()
+    {
+        return !sumaET.getText().toString().isEmpty();
+    }
 }

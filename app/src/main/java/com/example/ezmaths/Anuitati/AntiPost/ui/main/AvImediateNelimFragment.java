@@ -49,7 +49,10 @@ public class AvImediateNelimFragment extends Fragment {
     private boolean setTextok;
     private double doubleRes;
     private TextView rezultatTV;
-    NumberFormat resfmt;
+    private NumberFormat resfmt;
+    private CheckBox sumaCheckBox;
+
+    private double resAux;
 
     com.example.ezmaths.Anuitati.formuleAnuitati formuleAnuitati = new formuleAnuitati();
 
@@ -75,7 +78,11 @@ public class AvImediateNelimFragment extends Fragment {
 
         calculeazaBtn = rootView.findViewById(R.id.calculeazaBtnIN);
         rezultatTV = rootView.findViewById(R.id.rezultatTVIN);
+        sumaCheckBox = rootView.findViewById(R.id.sumaCheckBoxIN);
 
+        sumaCheckBox.setChecked(false);
+        sumatTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+        sumaET.setEnabled(false);
 
         Bundle b = getArguments();
 
@@ -96,8 +103,23 @@ public class AvImediateNelimFragment extends Fragment {
                 Calculeaza(platiPeAnCheckbox.isChecked());
 
                 if(setTextok){
-                    rezultatTV.setText(resfmt.format(doubleRes));
-                    rezultatTV.setVisibility(View.VISIBLE);}
+                    if (!sumaCheckBox.isChecked()) {
+                        rezultatTV.setVisibility(View.VISIBLE);
+                        rezultatTV.setText(resfmt.format(doubleRes));}
+                    else if (sumaCheckBox.isChecked() && okSuma())
+                    {
+                        rezultatTV.setVisibility(View.VISIBLE);
+                        resAux = doubleRes*Double.parseDouble(sumaET.getText().toString());
+                        rezultatTV.setText(resfmt.format(resAux));
+                    }
+                    else if(sumaCheckBox.isChecked() && !okSuma())
+                    {
+                        rezultatTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
+                }
                 else
                 {
                     rezultatTV.setVisibility(View.INVISIBLE);
@@ -112,7 +134,26 @@ public class AvImediateNelimFragment extends Fragment {
         platiPeAnCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               transformUI(type);
+                transformUI(type);
+                if (!platiPeAnCheckbox.isChecked())
+                    platiPeAnET.setText("");
+            }
+        });
+
+        sumaCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(sumaCheckBox.isChecked())
+                {
+                    sumatTV.setTextColor(getActivity().getResources().getColor(R.color.black));
+                    sumaET.setEnabled(true);
+                }
+                else
+                {
+                    sumatTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
+                    sumaET.setEnabled(false);
+                    sumaET.setText("");
+                }
             }
         });
 
@@ -171,8 +212,7 @@ public class AvImediateNelimFragment extends Fragment {
     }
 
     private void transformUI(int type) {
-        sumatTV.setTextColor(getActivity().getResources().getColor(R.color.silver));
-        sumaET.setEnabled(false);
+
         if (type == 1) {
             pointsAnticipateTV.setVisibility(View.INVISIBLE);
             if (platiPeAnCheckbox.isChecked()) {
@@ -241,6 +281,11 @@ public class AvImediateNelimFragment extends Fragment {
                     doubleRes = formuleAnuitati.AVAI_1(Integer.parseInt(varstaET.getText().toString()));
             }
         }
+    }
+
+    private boolean okSuma()
+    {
+        return !sumaET.getText().toString().isEmpty();
     }
 
 

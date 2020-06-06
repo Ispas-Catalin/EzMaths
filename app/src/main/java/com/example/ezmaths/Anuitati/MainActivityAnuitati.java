@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.ezmaths.Anuitati.AntiPost.MainActivityAnuitatiAntiPost;
 import com.example.ezmaths.Anuitati.Deces.MainActivityAnuitatiDeces;
+import com.example.ezmaths.Anuitati.FactorActualizareViager.MainActivityFactorViager;
 import com.example.ezmaths.R;
 
 public class MainActivityAnuitati extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class MainActivityAnuitati extends AppCompatActivity {
         Button avPosticipateBtn = findViewById(R.id.avPosticipatebtn);
         Button avAnticipateBtn = findViewById(R.id.avAnticipatebtn);
         Button avDecesBtn = findViewById(R.id.avDecesbtn);
+        Button avFactor = findViewById(R.id.avFactorbtn);
 
         backbtn = findViewById(R.id.backbtn);
 
@@ -55,6 +57,14 @@ public class MainActivityAnuitati extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intet3 = new Intent(MainActivityAnuitati.this, MainActivityAnuitatiDeces.class);
                 startActivity(intet3);
+            }
+        });
+
+        avFactor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intet4 = new Intent(MainActivityAnuitati.this, MainActivityFactorViager.class);
+                startActivity(intet4);
             }
         });
 

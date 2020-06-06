@@ -43,6 +43,20 @@
         app:layout_constraintStart_toStartOf="@+id/avPosticipatebtn"
         app:layout_constraintTop_toBottomOf="@+id/avAnticipatebtn" />
 
+
+    <Button
+        android:id="@+id/avFactorbtn"
+        android:layout_width="@dimen/buton_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_buttons"
+        android:background="@drawable/custom_bttn"
+        android:text="Factori de actualizare"
+        app:layout_constraintEnd_toEndOf="@+id/avPosticipatebtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/avPosticipatebtn"
+        app:layout_constraintTop_toBottomOf="@+id/avDecesbtn" />
+
+
     <TextView
         android:id="@+id/av2Title"
         android:layout_width="wrap_content"
@@ -57,18 +71,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.106" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="uwu"
-        android:textColor="#F42CC3"
-        android:textSize="@dimen/size_a"
-        app:layout_constraintBottom_toTopOf="@+id/avPosticipatebtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/av2Title"
-        app:layout_constraintVertical_bias="0.23" />
-
     <Button
         android:id="@+id/backbtn"
         android:layout_width="36dp"
@@ -81,5 +83,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

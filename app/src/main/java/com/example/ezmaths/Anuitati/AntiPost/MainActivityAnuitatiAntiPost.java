@@ -34,6 +34,7 @@ public class MainActivityAnuitatiAntiPost extends AppCompatActivity {
         sectionsPagerAdapter.setType(type);
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
+        viewPager.setOffscreenPageLimit(3);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
