@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/appBackround"
     android:layout_height="match_parent"
     tools:context=".Anuitati.Deces.MainActivityAnuitatiDeces">
 
@@ -26,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabTextAppearance="@style/MyCustomTabText"
-            android:background="?attr/colorPrimary" />
+            android:background="@color/tabColor" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

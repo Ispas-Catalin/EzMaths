@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/appBackround"
     tools:context=".Anuitati.FactorActualizareViager.ui.main.FactorDecesFragment">
 
 
@@ -38,8 +39,8 @@
         android:id="@+id/xTVdeces"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
-        android:text="X"
+        android:layout_marginLeft="4dp"
+        android:text="x"
         android:textColor="@color/black"
         android:textSize="@dimen/size_nxm"
         app:layout_constraintBottom_toTopOf="@+id/dTVdeces"
@@ -76,8 +77,8 @@
 
     <TextView
         android:id="@+id/xDiferentaTVdeces"
-        android:layout_width="40dp"
-        android:layout_height="13dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/distance_TV_Horizontal"
         android:layout_marginLeft="@dimen/distance_TV_Horizontal"
         android:layout_marginTop="@dimen/distance_TV_Vertical"

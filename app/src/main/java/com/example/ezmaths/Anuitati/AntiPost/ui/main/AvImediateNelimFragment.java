@@ -53,6 +53,7 @@ public class AvImediateNelimFragment extends Fragment {
     private CheckBox sumaCheckBox;
 
     private double resAux;
+    private boolean lessThan100ok;
 
     com.example.ezmaths.Anuitati.formuleAnuitati formuleAnuitati = new formuleAnuitati();
 
@@ -100,9 +101,14 @@ public class AvImediateNelimFragment extends Fragment {
         calculeazaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calculeaza(platiPeAnCheckbox.isChecked());
+                lessThan100ok = true;
+                lessThan100();
+                if (lessThan100ok)
+                    Calculeaza(platiPeAnCheckbox.isChecked());
+                else
+                    setTextok =true;
 
-                if(setTextok){
+                if(setTextok && lessThan100ok){
                     if (!sumaCheckBox.isChecked()) {
                         rezultatTV.setVisibility(View.VISIBLE);
                         rezultatTV.setText(resfmt.format(doubleRes));}
@@ -122,10 +128,18 @@ public class AvImediateNelimFragment extends Fragment {
                 }
                 else
                 {
-                    rezultatTV.setVisibility(View.INVISIBLE);
-                    Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.BOTTOM, 0, 40);
-                    toast.show();
+                    if(setTextok && !lessThan100ok)
+                    {
+                        rezultatTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), "Limita de varsta depasita", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
+                    else if(!setTextok){
+                        rezultatTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();}
                 }
             }
         });
@@ -286,6 +300,12 @@ public class AvImediateNelimFragment extends Fragment {
     private boolean okSuma()
     {
         return !sumaET.getText().toString().isEmpty();
+    }
+
+    private void lessThan100()
+    {
+        if(!varstaET.getText().toString().isEmpty() && Integer.parseInt(varstaET.getText().toString()) >99)
+            lessThan100ok = false;
     }
 
 

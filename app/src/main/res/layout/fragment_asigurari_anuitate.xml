@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:tag="asigurari_av1_tag"
+    android:background="@color/appBackround"
     tools:context=".Asigurari.AsigAnuitatiFragment">
 
     <Spinner

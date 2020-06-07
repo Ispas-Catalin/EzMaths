@@ -54,6 +54,8 @@ public class AsigViataMultePlatiFragment extends Fragment {
     private NumberFormat fmt;
     private TextView resTV;
 
+    private boolean lessThan100ok;
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -210,9 +212,19 @@ public class AsigViataMultePlatiFragment extends Fragment {
                 }
                 else if (OK && anuitate != 0)
                 {
-                    calculate();
-                    resTV.setText(fmt.format(dRes));
-                    resTV.setVisibility(View.VISIBLE);
+                    lessThan100ok=true;
+                    lessThan100();
+                    if (lessThan100ok) {
+                        calculate();
+                        resTV.setText(fmt.format(dRes));
+                        resTV.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        resTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), "Limita de varsta depasita", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
                 }
             }
         });
@@ -253,4 +265,13 @@ public class AsigViataMultePlatiFragment extends Fragment {
         }
 
     }
+
+    private void lessThan100()
+    {
+        if(!nAsigurareET.getText().toString().isEmpty() && !xAsigurareET.getText().toString().isEmpty() && (Integer.parseInt(nAsigurareET.getText().toString()) + Integer.parseInt(xAsigurareET.getText().toString())) >99)
+            lessThan100ok = false;
+    }
+
+
+
 }

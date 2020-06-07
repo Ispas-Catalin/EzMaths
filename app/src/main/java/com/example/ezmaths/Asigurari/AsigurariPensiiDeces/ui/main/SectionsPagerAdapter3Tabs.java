@@ -25,7 +25,7 @@ public class SectionsPagerAdapter3Tabs extends FragmentPagerAdapter {
     private int asigType;
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_anuitateI,R.string.tab_text_anuitateII, R.string.tab_text_asig_viata_multe_plati_2};
+    private static int[] TAB_TITLES;
     private final Context mContext;
 
 
@@ -37,7 +37,13 @@ public class SectionsPagerAdapter3Tabs extends FragmentPagerAdapter {
         this.versiontab2 = version;
     }
 
-    public void setAsigType(int AsigType){this.asigType = AsigType;}
+    public void setAsigType(int AsigType){
+        this.asigType = AsigType;
+        if (AsigType == 22)
+            TAB_TITLES = new int[]{R.string.tab_anuitateI_22,R.string.tab_anuitateII_22, R.string.tab_III_22};
+        if (AsigType == 32)
+            TAB_TITLES = new int[]{R.string.tab_anuitateI_32,R.string.tab_anuitateII_32, R.string.tab_III_32};
+    }
 
     public SectionsPagerAdapter3Tabs(Context context, FragmentManager fm) {
         super(fm);

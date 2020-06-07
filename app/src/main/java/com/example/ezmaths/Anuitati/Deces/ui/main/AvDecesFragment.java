@@ -56,7 +56,7 @@ public class AvDecesFragment extends Fragment {
     private String amlimAux;
     private String mAux;
 
-    private Boolean setTextok;
+    private Boolean setTextok, lessThan100ok;
     private TextView rezultatTV;
     private NumberFormat resfmt;
     private Double doubleRes;
@@ -123,9 +123,14 @@ public class AvDecesFragment extends Fragment {
         calculeaza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calculeaza();
+                lessThan100ok = true;
+                lessThan100();
+                if (lessThan100ok)
+                    Calculeaza();
+                else
+                    setTextok = true;
 
-                if(setTextok){
+                if(setTextok && lessThan100ok){
                     if (!sumaCheckBox.isChecked()) {
                         rezultatTV.setVisibility(View.VISIBLE);
                         rezultatTV.setText(resfmt.format(doubleRes));}
@@ -145,10 +150,21 @@ public class AvDecesFragment extends Fragment {
                 }
                 else
                 {
-                    rezultatTV.setVisibility(View.INVISIBLE);
-                    Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.BOTTOM, 0, 40);
-                    toast.show();
+                    if (!lessThan100ok && setTextok)
+                    {
+                        rezultatTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), "Limita de varsta depasita", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
+                    else if (!setTextok)
+                    {
+                        rezultatTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
+
                 }
             }
         });
@@ -378,5 +394,26 @@ public class AvDecesFragment extends Fragment {
     private boolean okSuma()
     {
         return !sumaET.getText().toString().isEmpty();
+    }
+
+    private void lessThan100()
+    {
+        if (type==1)
+        {
+            if(!varstaET.getText().toString().isEmpty() && Integer.parseInt(varstaET.getText().toString())>99)
+                lessThan100ok=false;
+        }
+        else if (type==3)
+        {
+            if(!varstaET.getText().toString().isEmpty() && !amlimET.getText().toString().isEmpty() && (Integer.parseInt(varstaET.getText().toString()) + Integer.parseInt(amlimET.getText().toString()))>99)
+                lessThan100ok=false;
+            if(!varstaET.getText().toString().isEmpty() && !limitaET.getText().toString().isEmpty() && (Integer.parseInt(varstaET.getText().toString()) + Integer.parseInt(limitaET.getText().toString()))>99)
+                lessThan100ok=false;
+        }
+        else if (type ==2 || type ==4)
+        {
+            if(!varstaET.getText().toString().isEmpty() && !amlimET.getText().toString().isEmpty() && (Integer.parseInt(varstaET.getText().toString()) + Integer.parseInt(amlimET.getText().toString()))>99)
+                lessThan100ok=false;
+        }
     }
 }

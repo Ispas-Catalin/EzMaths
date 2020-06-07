@@ -22,7 +22,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private int asigType;
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_asig_viata_multe_plati_1, R.string.tab_text_asig_viata_multe_plati_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_asig_viata_multe_plati_1, R.string.tab_III_22};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {

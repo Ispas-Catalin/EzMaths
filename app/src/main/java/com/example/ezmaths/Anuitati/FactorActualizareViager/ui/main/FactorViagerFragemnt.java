@@ -40,6 +40,7 @@ public class FactorViagerFragemnt extends Fragment {
     private com.example.ezmaths.Anuitati.formuleAnuitati formuleAnuitati = new formuleAnuitati();
     private NumberFormat format;
     private Double doubleRes;
+    private boolean lessThan100ok;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -110,12 +111,14 @@ public class FactorViagerFragemnt extends Fragment {
 
 
         format = NumberFormat.getInstance();
-        format.setMaximumFractionDigits(4);
+        format.setMaximumFractionDigits(6);
 
         calculeazaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (toastOK())
+                lessThan100ok = true;
+                lessThan100();
+                if (toastOK() && lessThan100ok)
                 {
                     doubleRes = formuleAnuitati.FAV(Integer.parseInt(xDiferentaET.getText().toString()),Integer.parseInt(nVarstaET.getText().toString()));
                     resTV.setText(format.format(doubleRes));
@@ -123,10 +126,18 @@ public class FactorViagerFragemnt extends Fragment {
                 }
                 else
                 {
-                    resTV.setVisibility(View.INVISIBLE);
-                    Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.BOTTOM, 0, 40);
-                    toast.show();
+                    if (lessThan100ok){
+                        resTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
+                    else if (!lessThan100ok) {
+                        resTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), "Limita de varsta depasita", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
                 }
             }
         });
@@ -137,6 +148,12 @@ public class FactorViagerFragemnt extends Fragment {
     private boolean toastOK()
     {
         return !nVarstaET.getText().toString().isEmpty() && !xDiferentaET.getText().toString().isEmpty();
+    }
+
+    private void lessThan100()
+    {
+        if (!nVarstaET.getText().toString().isEmpty() && !xDiferentaET.getText().toString().isEmpty() && (Integer.parseInt(nVarstaET.getText().toString()) + Integer.parseInt(xDiferentaET.getText().toString()))>99)
+            lessThan100ok = false;
     }
 
 }

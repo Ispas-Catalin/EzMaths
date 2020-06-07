@@ -41,4 +41,14 @@
     <string name="tab_factor_2">Factor de actualizare de deces</string>
 
 
+    <string name="tab_anuitateI_22">Anuitate pensie</string>
+    <string name="tab_anuitateII_22">Anuitate plata</string>
+    <string name="tab_III_22">Variabile asigurat</string>
+
+    <string name="tab_anuitateI_32">Anuitate plata</string>
+    <string name="tab_anuitateII_32">Anuitate deces</string>
+    <string name="tab_III_32">Variabile asigurat</string>
+
+
+
 </resources>

@@ -37,6 +37,7 @@ public class FactorDecesFragment extends Fragment {
     private com.example.ezmaths.Anuitati.formuleAnuitati formuleAnuitati = new formuleAnuitati();
     private NumberFormat format;
     private Double doubleRes;
+    private boolean lessThan100ok;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -111,7 +112,9 @@ public class FactorDecesFragment extends Fragment {
         calculeazaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (toastOK())
+                lessThan100ok = true;
+                lessThan100();
+                if (toastOK() && lessThan100ok)
                 {
                     doubleRes = formuleAnuitati.anuitatiDeces_2(Integer.parseInt(xDiferentaET.getText().toString()),Integer.parseInt(nVarstaET.getText().toString()),Integer.parseInt(nVarstaET.getText().toString())+1);
                     resTV.setText(format.format(doubleRes));
@@ -119,10 +122,18 @@ public class FactorDecesFragment extends Fragment {
                 }
                 else
                 {
-                    resTV.setVisibility(View.INVISIBLE);
-                    Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.BOTTOM, 0, 40);
-                    toast.show();
+                    if (lessThan100ok){
+                        resTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
+                    else if (!lessThan100ok) {
+                        resTV.setVisibility(View.INVISIBLE);
+                        Toast toast = Toast.makeText(getActivity(), "Limita de varsta depasita", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
                 }
             }
         });
@@ -137,4 +148,9 @@ public class FactorDecesFragment extends Fragment {
         return !nVarstaET.getText().toString().isEmpty() && !xDiferentaET.getText().toString().isEmpty();
     }
 
+    private void lessThan100()
+    {
+        if (!nVarstaET.getText().toString().isEmpty() && !xDiferentaET.getText().toString().isEmpty() && (Integer.parseInt(nVarstaET.getText().toString()) + Integer.parseInt(xDiferentaET.getText().toString()))>98)
+            lessThan100ok = false;
+    }
 }

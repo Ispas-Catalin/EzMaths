@@ -68,7 +68,7 @@ public class AsigAnuitatiFragment extends Fragment {
     private NumberFormat resfmt;
 
     private int type;
-    private Boolean setTextok;
+    private Boolean setTextok, lessThan100ok;
     Fragment thisFragment;
     private double doubleRes;
 
@@ -238,9 +238,16 @@ public class AsigAnuitatiFragment extends Fragment {
         selecteazabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calculeaza();
 
-                if(setTextok){
+                lessThan100ok = true;
+                lessThan100();
+                if (lessThan100ok)
+                    Calculeaza();
+                else
+                    setTextok=true;
+
+
+                if(setTextok && lessThan100ok){
                     rezultatTV.setText(resfmt.format(doubleRes));
                     rezultatTV.setVisibility(View.VISIBLE);
                     Toast toast = Toast.makeText(getActivity(), "Anuitate selectata", Toast.LENGTH_SHORT);
@@ -283,11 +290,23 @@ public class AsigAnuitatiFragment extends Fragment {
                         anuitatiViewModel.setAnuitateLiveData2(doubleRes);
                         anuitatiViewModel.setAnuitateLiveData2Type(type); }
             }
-                else {
+                else{
                     rezultatTV.setVisibility(View.INVISIBLE);
-                    Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.BOTTOM, 0, 40);
-                    toast.show();
+
+                    if (!lessThan100ok && setTextok){
+                        Toast toast = Toast.makeText(getActivity(), "Limita de varsta depasita", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
+
+                    if (!setTextok) {
+                        Toast toast = Toast.makeText(getActivity(), getString(R.string.ToastMessage), Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 40);
+                        toast.show();
+                    }
+
+
+
 
                     if (asigType%10 == 1 || asigType == 12){
                         anuitatiViewModel.setAnuitateLiveData1(0);}
@@ -1058,6 +1077,19 @@ public class AsigAnuitatiFragment extends Fragment {
     public void setframgentVersion (int FragmentVersion)
     {
         fragmentVersion = FragmentVersion;
+    }
+
+    private void lessThan100()
+    {
+        if (type%10 ==2 || type%10 == 3){
+            if(!amlimET.getText().toString().isEmpty() && !varstaET.getText().toString().isEmpty() && (Integer.parseInt(amlimET.getText().toString()) + Integer.parseInt(varstaET.getText().toString())) >99)
+                lessThan100ok = false;
+                }
+        else
+        {
+            if(!varstaET.getText().toString().isEmpty() &Integer.parseInt(varstaET.getText().toString()) >99)
+                lessThan100ok = false;
+        }
     }
 
 

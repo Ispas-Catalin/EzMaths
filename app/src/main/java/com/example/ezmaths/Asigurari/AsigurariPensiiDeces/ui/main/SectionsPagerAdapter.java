@@ -23,14 +23,24 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private int asigType;
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_asig_viata_multe_plati_1, R.string.tab_text_asig_viata_multe_plati_2};
+    private static int[] TAB_TITLES;
     private final Context mContext;
 
     public void setVersion(int version) {
         this.version = version;
     }
 
-    public void setAsigType(int AsigType){this.asigType = AsigType;}
+    public void setAsigType(int AsigType){
+        this.asigType = AsigType;
+        if (AsigType == 21)
+        {
+            TAB_TITLES = new int[]{R.string.tab_anuitateI_22,R.string.tab_III_22};
+        }
+        if (AsigType == 31)
+        {
+            TAB_TITLES = new int[]{R.string.tab_anuitateII_32,R.string.tab_III_32};
+        }
+    }
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);

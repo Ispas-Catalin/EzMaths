@@ -45,6 +45,8 @@ public class AsigurariViataUnicaActivity extends AppCompatActivity {
 
     private double dres;
 
+    private boolean lessThan100ok;
+
     FormuleAsigurari formuleAsigurari = new FormuleAsigurari();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -128,9 +130,19 @@ public class AsigurariViataUnicaActivity extends AppCompatActivity {
                     }
                     else
                     {
-                     resultTV.setVisibility(View.VISIBLE);
-                     dres = formuleAsigurari.asigViata_Unic_P(Double.parseDouble(primaAsiguratET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()),Integer.parseInt(xAsigurareET.getText().toString()));
-                     resultTV.setText(resfmt.format(dres));
+                        lessThan100ok = true;
+                        lessThan100();
+                        if (lessThan100ok) {
+                            resultTV.setVisibility(View.VISIBLE);
+                            dres = formuleAsigurari.asigViata_Unic_P(Double.parseDouble(primaAsiguratET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()), Integer.parseInt(xAsigurareET.getText().toString()));
+                            resultTV.setText(resfmt.format(dres));
+                        }
+                        else{
+                            resultTV.setVisibility(View.INVISIBLE);
+                            Toast toast = Toast.makeText(getApplicationContext(), "Limita de varsta depasita", Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.BOTTOM, 0, 40);
+                            toast.show();
+                        }
                     }
 
                 }
@@ -143,11 +155,19 @@ public class AsigurariViataUnicaActivity extends AppCompatActivity {
                         toast.setGravity(Gravity.BOTTOM, 0, 40);
                         toast.show();
                     }
-                    else
-                    {
-                        resultTV.setVisibility(View.VISIBLE);
-                        dres = formuleAsigurari.asigViata_Unic_S(Double.parseDouble(primaAsiguratorET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()),Integer.parseInt(xAsigurareET.getText().toString()));
-                        resultTV.setText(resfmt.format(dres));
+                    else {
+                        lessThan100ok = true;
+                        lessThan100();
+                        if (lessThan100ok){
+                            resultTV.setVisibility(View.VISIBLE);
+                            dres = formuleAsigurari.asigViata_Unic_S(Double.parseDouble(primaAsiguratorET.getText().toString()), Integer.parseInt(nAsigurareET.getText().toString()),Integer.parseInt(xAsigurareET.getText().toString()));
+                            resultTV.setText(resfmt.format(dres));}
+                        else{
+                            resultTV.setVisibility(View.INVISIBLE);
+                            Toast toast = Toast.makeText(getApplicationContext(), "Limita de varsta depasita", Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.BOTTOM, 0, 40);
+                            toast.show();
+                        }
                     }
                 }
 
@@ -161,5 +181,11 @@ public class AsigurariViataUnicaActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void lessThan100()
+    {
+        if(!nAsigurareET.getText().toString().isEmpty() && !xAsigurareET.getText().toString().isEmpty() && (Integer.parseInt(nAsigurareET.getText().toString()) + Integer.parseInt(xAsigurareET.getText().toString())) >99)
+            lessThan100ok = false;
     }
 }
