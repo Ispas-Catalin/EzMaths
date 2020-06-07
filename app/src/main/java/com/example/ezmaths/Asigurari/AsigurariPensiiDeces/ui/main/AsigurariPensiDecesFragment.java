@@ -175,7 +175,11 @@ public class AsigurariPensiDecesFragment extends Fragment  {
 
 
         if (typeAsig%10 == 1) {
-            anuitate1TV.setText("Valoare anuitate selectata ");
+            if (typeAsig == 21)
+                anuitate1TV.setText("Anuitate pensie ");
+            if (typeAsig == 31)
+                anuitate1TV.setText("Anuitate deces ");
+
             anuitatiViewModel.getAnuitateLiveData1().observe(getViewLifecycleOwner(), new Observer<Double>() {
                 @Override
                 public void onChanged(Double aDouble) {
@@ -195,9 +199,14 @@ public class AsigurariPensiDecesFragment extends Fragment  {
 
 
         if (typeAsig %10 == 2) {
-
-            anuitate1TV.setText("Valoare anuitate I ");
-            anuitate2TV.setText("Valoare anuitate II");
+                if (typeAsig == 22 ){
+                anuitate1TV.setText("Anuitate S ");
+                anuitate2TV.setText("Anuitate P ");
+                }
+                if (typeAsig == 32) {
+                    anuitate1TV.setText("Anuitate P ");
+                    anuitate2TV.setText("Anuitate deces ");
+                }
             anuitatiViewModel.getAnuitateLiveData1().observe(getViewLifecycleOwner(), new Observer<Double>() {
                 @Override
                 public void onChanged(Double aDouble) {

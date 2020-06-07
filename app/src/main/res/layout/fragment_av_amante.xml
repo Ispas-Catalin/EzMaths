@@ -33,6 +33,7 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="@dimen/size_title"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

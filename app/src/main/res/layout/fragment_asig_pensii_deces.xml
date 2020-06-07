@@ -12,24 +12,25 @@
         android:id="@+id/titleAsigTVpd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="Asigurari de viata cu mai multe plati"
         android:textColor="@color/black"
-        android:textSize="@dimen/nomralTV"
+        android:textSize="@dimen/size_title"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="40dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
         android:id="@+id/resTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="45176"
-        android:textSize="@dimen/nomralTV"
-        android:textColor="@color/black"
         android:background="@drawable/result_backround"
+        android:text="45176"
+        android:textColor="@color/black"
+        android:textSize="@dimen/nomralTV"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/primaAsiguratorTVpd"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,25 +55,25 @@
         android:id="@+id/primaAsiguratorETpd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="p"
+        android:layout_marginLeft="4dp"
         android:gravity="center_horizontal"
-        android:textSize="@dimen/nomralTV"
+        android:hint="p"
         android:inputType="numberDecimal"
+        android:textSize="@dimen/nomralTV"
         app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratorTVpd"
         app:layout_constraintStart_toEndOf="@+id/primaAsiguratorTVpd"
         app:layout_constraintTop_toTopOf="@+id/primaAsiguratorTVpd"
-        app:layout_constraintVertical_bias="0.5"
-        android:layout_marginLeft="4dp"/>
+        app:layout_constraintVertical_bias="0.5" />
 
     <CheckBox
         android:id="@+id/primaAsiguratorCheckBoxTVpd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratorETpd"
         app:layout_constraintStart_toEndOf="@+id/primaAsiguratorETpd"
         app:layout_constraintTop_toTopOf="@+id/primaAsiguratorETpd"
-        app:layout_constraintVertical_bias="0.5"
-        android:layout_marginLeft="4dp"/>
+        app:layout_constraintVertical_bias="0.5" />
 
 
     <TextView
@@ -81,10 +82,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/distance_TV_Horizontal"
         android:layout_marginLeft="@dimen/distance_TV_Horizontal"
+        android:layout_marginTop="@dimen/distance_TV_Vertical"
         android:text="Calculeaza prima Asiguratului"
         android:textColor="@color/black"
         android:textSize="@dimen/nomralTV"
-        android:layout_marginTop="@dimen/distance_TV_Vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/primaAsiguratorTVpd" />
 
@@ -92,25 +93,25 @@
         android:id="@+id/primaAsiguratETpd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="s"
-        android:textSize="@dimen/nomralTV"
-        android:inputType="numberDecimal"
+        android:layout_marginLeft="4dp"
         android:gravity="center_horizontal"
+        android:hint="s"
+        android:inputType="numberDecimal"
+        android:textSize="@dimen/nomralTV"
         app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratTVpd"
         app:layout_constraintStart_toEndOf="@+id/primaAsiguratTVpd"
         app:layout_constraintTop_toTopOf="@+id/primaAsiguratTVpd"
-        app:layout_constraintVertical_bias="0.5"
-        android:layout_marginLeft="4dp"/>
+        app:layout_constraintVertical_bias="0.5" />
 
     <CheckBox
         android:id="@+id/primaAsiguratCheckBoxTVpd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/primaAsiguratETpd"
         app:layout_constraintStart_toEndOf="@+id/primaAsiguratETpd"
         app:layout_constraintTop_toTopOf="@+id/primaAsiguratETpd"
-        app:layout_constraintVertical_bias="0.5"
-        android:layout_marginLeft="4dp"/>
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/calculeazaAsigurareBtnpd"
@@ -144,16 +145,15 @@
         android:id="@+id/anuitate1RezTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/result_backround"
         android:text="1234.56"
         android:textColor="@color/black"
         android:textSize="@dimen/nomralTV"
         android:visibility="invisible"
-        android:background="@drawable/result_backround"
-        app:layout_constraintBottom_toBottomOf="@+id/anuitate1TV"
-        app:layout_constraintStart_toEndOf="@+id/anuitate1TV"
-        app:layout_constraintTop_toTopOf="@+id/anuitate1TV"
-        app:layout_constraintVertical_bias="0.5"
-        android:layout_marginLeft="4dp"/>
+        app:layout_constraintBottom_toTopOf="@+id/anuitate2RezTV"
+        app:layout_constraintStart_toStartOf="@+id/anuitate2RezTV" />
 
     <TextView
         android:id="@+id/anuitate2TV"
@@ -162,10 +162,10 @@
         android:layout_marginStart="@dimen/distance_TV_Horizontal"
         android:layout_marginLeft="@dimen/distance_TV_Horizontal"
         android:layout_marginTop="@dimen/distance_TV_Vertical"
-        android:text="Anuitate II"
-        android:visibility="invisible"
+        android:text="Anuitate pensie"
         android:textColor="@color/black"
         android:textSize="@dimen/nomralTV"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/anuitate1TV" />
 
@@ -174,16 +174,16 @@
         android:id="@+id/anuitate2RezTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:background="@drawable/result_backround"
         android:text="1234.56"
         android:textColor="@color/black"
         android:textSize="@dimen/nomralTV"
         android:visibility="invisible"
-        android:background="@drawable/result_backround"
         app:layout_constraintBottom_toBottomOf="@+id/anuitate2TV"
         app:layout_constraintStart_toEndOf="@+id/anuitate2TV"
         app:layout_constraintTop_toTopOf="@+id/anuitate2TV"
-        app:layout_constraintVertical_bias="0.5"
-        android:layout_marginLeft="4dp"/>
+        app:layout_constraintVertical_bias="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
