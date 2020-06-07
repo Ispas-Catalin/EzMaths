@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/appBackround"
-    tools:context=".Asigurari.AsigurariPensiiDeces.MainActivityAsigPensiiDecesUnica">
+    tools:context="com.android.ezmaths.Asigurari.AsigurariPensiiDeces.MainActivityAsigPensiiDecesUnica">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -26,8 +26,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/tabColor"
-            app:tabTextAppearance="@style/MyCustomTabText"/>
+            android:background="@color/tabColor" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

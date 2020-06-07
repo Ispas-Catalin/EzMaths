@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ezmaths">
+    package="com.android.ezmaths">
 
     <application
         android:allowBackup="true"
@@ -11,37 +11,49 @@
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan|adjustResize">
         <activity
-            android:name=".Anuitati.FactorActualizareViager.MainActivityFactorViager"
+            android:name="com.android.ezmaths.Anuitati.FactorActualizareViager.MainActivityFactorViager"
             android:label="@string/title_activity_main_factor_viager"
+            android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".RezervaMatematica.MainActivityRezerva" />
+        <activity android:name="com.android.ezmaths.RezervaMatematica.MainActivityRezerva"
+            android:screenOrientation="nosensor"/>
         <activity
-            android:name=".Asigurari.AsigurariPensiiDeces.MainActivityAsigPensiiDecesUnica"
+            android:name="com.android.ezmaths.Asigurari.AsigurariPensiiDeces.MainActivityAsigPensiiDecesUnica"
+            android:screenOrientation="nosensor"
             android:label="@string/title_activity_main_asig_pensii_deces"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Asigurari.AsigurariViata.MaiMultePlati.AsigurariViataMaiMultePlatiMainActivity"
+            android:name="com.android.ezmaths.Asigurari.AsigurariViata.MaiMultePlati.AsigurariViataMaiMultePlatiMainActivity"
+            android:screenOrientation="nosensor"
             android:label="@string/title_activity_asigurari_viata_mai_multe_plati_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Asigurari.AsigurariViata.PlataUnica.AsigurariViataUnicaActivity" />
-        <activity android:name=".Asigurari.MainActivityAsigurari" />
+        <activity android:name="com.android.ezmaths.Asigurari.AsigurariViata.PlataUnica.AsigurariViataUnicaActivity"
+            android:screenOrientation="nosensor"/>
+        <activity android:name="com.android.ezmaths.Asigurari.MainActivityAsigurari"
+            android:screenOrientation="nosensor"/>
         <activity
-            android:name=".Anuitati.Deces.MainActivityAnuitatiDeces"
+            android:name="com.android.ezmaths.Anuitati.Deces.MainActivityAnuitatiDeces"
+            android:screenOrientation="nosensor"
             android:label="@string/title_activity_main_anuitati_deces"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Anuitati.AntiPost.MainActivityAnuitatiAntiPost"
+            android:name="com.android.ezmaths.Anuitati.AntiPost.MainActivityAnuitatiAntiPost"
+            android:screenOrientation="nosensor"
             android:label="@string/title_activity_main_anuitati_anti_post"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Anuitati.MainActivityAnuitati" />
+        <activity android:name="com.android.ezmaths.Anuitati.MainActivityAnuitati"
+            android:screenOrientation="nosensor"/>
         <activity
-            android:name=".Rambursari.MainActivityRambursari"
+            android:name="com.android.ezmaths.Rambursari.MainActivityRambursari"
+            android:screenOrientation="nosensor"
             android:label="@string/title_activity_main_rambursari"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Rambursari.ActivityRambursariTable"
+            android:name="com.android.ezmaths.Rambursari.ActivityRambursariTable"
+            android:screenOrientation="nosensor"
             android:launchMode="singleTask" />
-        <activity android:name=".StartActivity">
+        <activity android:name="com.android.ezmaths.StartActivity" android:screenOrientation="nosensor">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

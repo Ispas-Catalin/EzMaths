@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:tag="asigurari_av1_tag"
     android:background="@color/appBackround"
-    tools:context=".Asigurari.AsigAnuitatiFragment">
+    tools:context="com.android.ezmaths.Asigurari.AsigAnuitatiFragment">
 
     <Spinner
         android:id="@+id/spinneraAV1"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/appBackround"
-    tools:context=".Asigurari.AsigurariViata.MaiMultePlati.ui.main.AsigViataMultePlatiFragment">
+    tools:context="com.android.ezmaths.Asigurari.AsigurariViata.MaiMultePlati.ui.main.AsigViataMultePlatiFragment">
 
 
     <TextView

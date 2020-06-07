@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/appBackround"
-    tools:context=".Anuitati.FactorActualizareViager.ui.main.FactorDecesFragment">
+    tools:context="com.android.ezmaths.Anuitati.FactorActualizareViager.ui.main.FactorDecesFragment">
 
 
     <TextView

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/appBackround"
-    tools:context=".Anuitati.Deces.ui.main.AvDecesFragment">
+    tools:context="com.android.ezmaths.Anuitati.Deces.ui.main.AvDecesFragment">
 
     <TextView
         android:id="@+id/atvAVDeces"

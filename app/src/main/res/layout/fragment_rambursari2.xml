@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/appBackround"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Rambursari.ui.main.Rambursari2Fragment">
+    tools:context="com.android.ezmaths.Rambursari.ui.main.Rambursari2Fragment">
 
     <ImageView
         android:layout_width="320dp"

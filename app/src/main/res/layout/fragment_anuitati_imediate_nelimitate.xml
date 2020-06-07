@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/appBackround"
-    tools:context=".Anuitati.AntiPost.ui.main.AvImediateNelimFragment">
+    tools:context="com.android.ezmaths.Anuitati.AntiPost.ui.main.AvImediateNelimFragment">
 
 
     <TextView

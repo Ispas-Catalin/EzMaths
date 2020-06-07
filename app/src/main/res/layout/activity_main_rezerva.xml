@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/appBackround"
-    tools:context=".RezervaMatematica.MainActivityRezerva">
+    tools:context="com.android.ezmaths.RezervaMatematica.MainActivityRezerva">
 
     <TextView
         android:id="@+id/textView"
